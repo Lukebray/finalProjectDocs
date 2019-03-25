@@ -405,6 +405,40 @@ How to implement a finished product. Is this done incrementally and step by step
 \subsection{Conclusion}
 What can I conclude from the above? My thoughts on how all the above information pertains to my project and some things I will have to be especially concious of during this project 
 
+\section{Implementation} 
+\subsection{Introduction}
+This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document. 
+
+\subsection{Physical Environment Setup}
+The first step of implementation was to get the hardware circuit working. The four main components are the Raspberry Pi, a DHT11 temperature and humidity sensor, the NoIR PiCamera and an FC-37 rain sensor. Initially these were implemented into a circuit using a breadboard. This allowed for a less permanent and more flexible setup for testing purposes. The circuit diagram is shown below along with some photographs of the hardware setup. 
+
+INSERT CIRCUIT DIAGRAM AND PHOTOGRAPHS
+
+\subsubsection{Circuit Details}
+The breadboard is connected to the 3.3v GPIO pin and this supplies power all along the connected rail. There is a 5v pin available however using this requires the inclusion of various resistors in the circuit and this would introduce unnecessary complications. The 3.3v pin also supplies plenty of power for all of the components. A ground pin on the Raspberry Pi is connected to the negative rail on the breadboard. A diagram of the Raspberry Pi Model 3 GPIO pins is shown below. 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/gpio-pins.png}
+    \caption{A diagram of the GPIO pins on a Raspberry Pi Model 3}
+    \label{fig:gpiopins}
+  \end{figure}
+
+Both the FC-37 and DHT11 sensors need 3 of their pins to be connected to the GPIO pins. The FC-37 consists of two components. These are the collector board and electrical board and when enough water is collected on the collector board there is a lower output voltage which signifies rainfall. The collector board connects to the electrical board which in turn connects to the Raspberry Pi. One pin on the electrical board is connected to the power rail on the bread board while another pin is connected to the ground rail. The third pin is the data pin and this is connected to the GPIO pin on the Raspberry Pi. In this case the FC-37 was connected to GPIO pin 27. The electrical board also houses a potentiometer and this can be used to adjust the sensitivity of the collector board. This was done by putting an amount of water onto the collector board and turning the potentiometer until is detected a change in the flow of current.
+
+INSERT PICTURE OF FC-37
+
+The DHT11 sensor was connected in a similar way to the FC-37. One sensor pin is connected to the power supply, one to the ground rail and the final pin is connected to a GPIO pin. In this case it was GPIO pin 17. 
+
+INSERT PICTURE OF DHT11
+
+The NoIR PiCamera is the least complicated piece of hardware to install. There is already a dedicated slot on the Raspberry Pi which is shown below. The camera is connected into this slot and enabled as described in the previous chapter on the Raspberry Pi itself. 
+
+INSERT PICTURE OF CAMERA SLOT
+
+\subsection{Data Collection}
+
+
+
 \section{Testing and Evaluation}
 \subsection{Introduction}
 Why testing is important for this product and what tests need to be done to ensure a good prototype
