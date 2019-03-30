@@ -1,0 +1,78 @@
+\contentsline {section}{\numberline {1}Abstract}{2}{section.1}
+\contentsline {section}{\numberline {2}Acknowledgements}{3}{section.2}
+\contentsline {section}{\numberline {3}Introduction}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Background}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Aims and Objectives}{8}{subsection.3.2}
+\contentsline {section}{\numberline {4}Literature Review}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Introduction}{9}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Raspberry Pi for Video Capture}{10}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Raspberry Pi as Monitoring Device}{11}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Powering the Raspberry Pi}{12}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}Solar Power}{13}{subsubsection.4.4.1}
+\contentsline {subsection}{\numberline {4.5}Raspberry Pi Connectivity}{14}{subsection.4.5}
+\contentsline {subsubsection}{\numberline {4.5.1}WiFi}{14}{subsubsection.4.5.1}
+\contentsline {subsubsection}{\numberline {4.5.2}Wired Transfer}{15}{subsubsection.4.5.2}
+\contentsline {subsubsection}{\numberline {4.5.3}Zigbee Wireless Protocol}{15}{subsubsection.4.5.3}
+\contentsline {subsection}{\numberline {4.6}Python Web Frameworks}{16}{subsection.4.6}
+\contentsline {subsubsection}{\numberline {4.6.1}Django\citep {website:django}}{16}{subsubsection.4.6.1}
+\contentsline {subsubsection}{\numberline {4.6.2}Flask\citep {website:flask}}{16}{subsubsection.4.6.2}
+\contentsline {subsubsection}{\numberline {4.6.3}Dash\citep {website:dash}}{16}{subsubsection.4.6.3}
+\contentsline {section}{\numberline {5}System Requirements and Design}{17}{section.5}
+\contentsline {subsection}{\numberline {5.1}Introduction}{17}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Use Cases}{17}{subsection.5.2}
+\contentsline {subsubsection}{\numberline {5.2.1}Stream a Live Video Feed}{17}{subsubsection.5.2.1}
+\contentsline {subsubsection}{\numberline {5.2.2}Record Environmental Data}{17}{subsubsection.5.2.2}
+\contentsline {subsubsection}{\numberline {5.2.3}Display Environmental Data}{18}{subsubsection.5.2.3}
+\contentsline {subsection}{\numberline {5.3}System Requirements}{18}{subsection.5.3}
+\contentsline {subsubsection}{\numberline {5.3.1}PiBB - SR001}{18}{subsubsection.5.3.1}
+\contentsline {subsubsection}{\numberline {5.3.2}PiBB - SR002}{19}{subsubsection.5.3.2}
+\contentsline {subsubsection}{\numberline {5.3.3}PiBB - SR003}{19}{subsubsection.5.3.3}
+\contentsline {subsubsection}{\numberline {5.3.4}PiBB - SR004}{19}{subsubsection.5.3.4}
+\contentsline {subsubsection}{\numberline {5.3.5}PiBB - SR005}{19}{subsubsection.5.3.5}
+\contentsline {subsubsection}{\numberline {5.3.6}PiBB - SR006}{19}{subsubsection.5.3.6}
+\contentsline {subsubsection}{\numberline {5.3.7}PiBB - SR007}{19}{subsubsection.5.3.7}
+\contentsline {subsubsection}{\numberline {5.3.8}PiBB - SR008}{19}{subsubsection.5.3.8}
+\contentsline {subsubsection}{\numberline {5.3.9}PiBB - SR009}{19}{subsubsection.5.3.9}
+\contentsline {subsubsection}{\numberline {5.3.10}PiBB - SR010}{19}{subsubsection.5.3.10}
+\contentsline {subsection}{\numberline {5.4}Power Supply}{19}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Connectivity}{20}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}PiCamera}{21}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Web Framework and Data Display Web Page}{21}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}Object Classes}{22}{subsection.5.8}
+\contentsline {subsection}{\numberline {5.9}Development Environment Setup}{23}{subsection.5.9}
+\contentsline {subsubsection}{\numberline {5.9.1}Raspberry Pi}{23}{subsubsection.5.9.1}
+\contentsline {subsubsection}{\numberline {5.9.2}Web Development Environment}{25}{subsubsection.5.9.2}
+\contentsline {section}{\numberline {6}Software Development Approach}{26}{section.6}
+\contentsline {subsection}{\numberline {6.1}Introduction}{26}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}SDLC Models}{26}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}The Waterfall Model}{26}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Agile Development}{27}{subsubsection.6.2.2}
+\contentsline {subsection}{\numberline {6.3}Introduction}{27}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Planning}{27}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Designing}{27}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}Building}{27}{subsubsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.4}Testing}{27}{subsubsection.6.3.4}
+\contentsline {subsubsection}{\numberline {6.3.5}Developing}{27}{subsubsection.6.3.5}
+\contentsline {subsubsection}{\numberline {6.3.6}Implementing}{27}{subsubsection.6.3.6}
+\contentsline {subsection}{\numberline {6.4}Conclusion}{27}{subsection.6.4}
+\contentsline {section}{\numberline {7}Implementation}{28}{section.7}
+\contentsline {subsection}{\numberline {7.1}Introduction}{28}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}System Overview}{28}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Physical Environment Setup}{28}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}Circuit Details}{28}{subsubsection.7.3.1}
+\contentsline {subsection}{\numberline {7.4}Data Collection}{29}{subsection.7.4}
+\contentsline {subsubsection}{\numberline {7.4.1}dht11.py}{29}{subsubsection.7.4.1}
+\contentsline {subsubsection}{\numberline {7.4.2}rainSensor.py}{29}{subsubsection.7.4.2}
+\contentsline {subsubsection}{\numberline {7.4.3}dataSend.py}{29}{subsubsection.7.4.3}
+\contentsline {subsection}{\numberline {7.5}MySQL Database}{30}{subsection.7.5}
+\contentsline {subsection}{\numberline {7.6}Data Processing and Presentation}{30}{subsection.7.6}
+\contentsline {subsubsection}{\numberline {7.6.1}Flask\_app.py}{30}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.2}main.html}{31}{subsubsection.7.6.2}
+\contentsline {section}{\numberline {8}Testing and Evaluation}{31}{section.8}
+\contentsline {subsection}{\numberline {8.1}Introduction}{31}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Testing Methodology}{31}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Device Functionality}{31}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Evaluation}{31}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Implementation of the Prototype}{31}{subsection.8.5}
+\contentsline {section}{\numberline {9}Further Work}{31}{section.9}
+\contentsline {section}{\numberline {10}Conclusions}{31}{section.10}
