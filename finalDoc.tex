@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{xparse}
 \usepackage{xcolor}
+\usepackage{hyperref}
 \graphicspath{ {./images/} }
 \author{Luke Bray - B00100787}
 \title{Bird Nest Box Monitoring Using Raspberry Pi and Python}
@@ -407,7 +408,10 @@ What can I conclude from the above? My thoughts on how all the above information
 
 \section{Implementation} 
 \subsection{Introduction}
-This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document. 
+This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
+
+\subsection{System Overview}
+The physical prototype was built and is explained later in this chapter. A bash script has been written so that on startup a linux command is automatically executed and this begins the streaming of the PiCamera to Youtube. The same bash script will also run dataSend.py. which uses classes dht11.py and rainSensor.py to record data. The data is then inserted into the MySQL database where it can be displayed on a web page. The Flask app processes the data and passes it to main.html and using the charts.js library the data is then displayed in a presentable manner. Main.html also embeds the live stream from Youtube. 
 
 \subsection{Physical Environment Setup}
 The first step of implementation was to get the hardware circuit working. The four main components are the Raspberry Pi, a DHT11 temperature and humidity sensor, the NoIR PiCamera and an FC-37 rain sensor. Initially these were implemented into a circuit using a breadboard. This allowed for a less permanent and more flexible setup for testing purposes. The circuit diagram is shown below along with some photographs of the hardware setup. 
@@ -435,8 +439,50 @@ The NoIR PiCamera is the least complicated piece of hardware to install. There i
 
 INSERT PICTURE OF CAMERA SLOT
 
+<<<<<<< HEAD
 \subsection{dataSend.py}
+=======
+\subsection{Data Collection}
+\subsubsection{dht11.py}
+This class was used to collect the temperature and humidity readings from the sensor. I did not write this class. There are many different classes written in Python that will interpret the data from a DHT11 sensor and given that the way the sensor gather data is quite complex, the decision was made to not write this class myself. The DHT11 class is used under the MIT licence - a copy of which can found in the appendixes of this document. 
 
+\subsubsection{rainSensor.py}
+This class is what is used to collect rain data. The class contains a constructor function which allows the user to import the class to another Python script. When initialising the new object the user can also use the relevant GPIO pin number as an argument. 
+
+The main function of the class, \texttt{read()}, sets up the GPIO pin. When water is present on the collector board the state of the GPIO will be equal to zero and the function will return \texttt{1} meaning it is raining. Otherwise it will return \texttt{0}. 
+
+\subsubsection{dataSend.py}
+This is the main data collection class and ties together the classes outlined above. 
+
+The class has a main function, \texttt{weatherData()}, which collects the data using the classes above and then prints the results to the console. The function then constructs an SQL query and inserts it to the data base. The function is contained within an infinite \texttt{While()} loop and makes use of  \texttt{time.sleep()} so that the amount of time between each dataset can be easily configured. The function is defined at the very beginning of the script. 
+
+The main function is then defined. The first thing this function does is use SSH tunnelling to establish a connection to the database. The database is hosted on PythonAnywhere.com so tunnelling had to be used. I used the \texttt{sshtunnel} Python library to do this. \texttt{MySQL.connector} is then used to establish a connection with the database. The function then checks for a successful connection and if the connection is successful \texttt{weatherData()} will run. Otherwise an error message will be printed to the console. 
+
+An advantage of the above process and the system design is that it isolates the data collection step of the entire process. This way it is very easy to test if the data is being collected and when errors occur they can be quickly diagnosed and resolved. At this point in the process to Raspberry Pi and data collection step is complete. 
+
+\subsection{MySQL Database}
+The database is hosted on Python Anywhere and uses MySQL 5.7.21. There are 5 columns in the database and they are listed below. 
+\begin{itemize}
+\item id - This is just a standard incrementing id field
+\item datetime - This stores the datetime value. These values will be used as the labels in the charts
+\item temp - holds an int value for the recorded temperature
+\item humidity - holds an int value for the recorded humidity percentage. This doesn't need to be a float as the DHT11 sensor will only record humidity in whole integers
+\item rain - This is another field with int data type
+\end{itemize}
+
+\subsection{Data Processing and Presentation}
+Now that the data has been recorded and passed from the Raspberry Pi to the database it can be processed and displayed on the web page. Again, Python is being used to achieve this along with other technologies like JSON, Javascript and HTML. Jinja2 template language is available for use within Flask applications however since this is only a single page application it was not needed. 
+
+\subsubsection{Flask\_app.py}
+This is the main controller and handles the passing of data to \texttt{main.html}. Navigating to \url{https://www.lukebray.ie/} will return the \texttt{main.html} template. A route has also been set up at \url{https://www.lukebray.ie/get_data} to trigger the retrieval and JSON-ification of data from the database. The raw JSON-ified data can be viewed here. Once this route is called a connection to the database is established and a cursor object from \texttt{MySQL.connector} is created. This object is used to execute an SQL query to the database and the requested data is then returned using the \texttt{fetchall()} function and assigned to a variable \texttt{r}. 
+
+Four empty Python lists are instantiated - one for each column in the database excluding the id column. A \texttt{for} loop now runs through all of the returned rows and for each row inserts the relevant piece of data into the relevant list. 
+
+The lists are then converted to a JSON format and stored in a JSON list called \texttt{payload}. 
+>>>>>>> 663f75272e54c8219df864f5e410159c177e7082
+
+\subsubsection{main.html}
+This 
 
 
 \section{Testing and Evaluation}

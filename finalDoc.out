@@ -1,0 +1,78 @@
+\BOOKMARK [1][-]{section.1}{Abstract}{}% 1
+\BOOKMARK [1][-]{section.2}{Acknowledgements}{}% 2
+\BOOKMARK [1][-]{section.3}{Introduction}{}% 3
+\BOOKMARK [2][-]{subsection.3.1}{Background}{section.3}% 4
+\BOOKMARK [2][-]{subsection.3.2}{Aims and Objectives}{section.3}% 5
+\BOOKMARK [1][-]{section.4}{Literature Review}{}% 6
+\BOOKMARK [2][-]{subsection.4.1}{Introduction}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.2}{Raspberry Pi for Video Capture}{section.4}% 8
+\BOOKMARK [2][-]{subsection.4.3}{Raspberry Pi as Monitoring Device}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.4}{Powering the Raspberry Pi}{section.4}% 10
+\BOOKMARK [3][-]{subsubsection.4.4.1}{Solar Power}{subsection.4.4}% 11
+\BOOKMARK [2][-]{subsection.4.5}{Raspberry Pi Connectivity}{section.4}% 12
+\BOOKMARK [3][-]{subsubsection.4.5.1}{WiFi}{subsection.4.5}% 13
+\BOOKMARK [3][-]{subsubsection.4.5.2}{Wired Transfer}{subsection.4.5}% 14
+\BOOKMARK [3][-]{subsubsection.4.5.3}{Zigbee Wireless Protocol}{subsection.4.5}% 15
+\BOOKMARK [2][-]{subsection.4.6}{Python Web Frameworks}{section.4}% 16
+\BOOKMARK [3][-]{subsubsection.4.6.1}{Djangowebsite:django}{subsection.4.6}% 17
+\BOOKMARK [3][-]{subsubsection.4.6.2}{Flaskwebsite:flask}{subsection.4.6}% 18
+\BOOKMARK [3][-]{subsubsection.4.6.3}{Dashwebsite:dash}{subsection.4.6}% 19
+\BOOKMARK [1][-]{section.5}{System Requirements and Design}{}% 20
+\BOOKMARK [2][-]{subsection.5.1}{Introduction}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.2}{Use Cases}{section.5}% 22
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Stream a Live Video Feed}{subsection.5.2}% 23
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Record Environmental Data}{subsection.5.2}% 24
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Display Environmental Data}{subsection.5.2}% 25
+\BOOKMARK [2][-]{subsection.5.3}{System Requirements}{section.5}% 26
+\BOOKMARK [3][-]{subsubsection.5.3.1}{PiBB - SR001}{subsection.5.3}% 27
+\BOOKMARK [3][-]{subsubsection.5.3.2}{PiBB - SR002}{subsection.5.3}% 28
+\BOOKMARK [3][-]{subsubsection.5.3.3}{PiBB - SR003}{subsection.5.3}% 29
+\BOOKMARK [3][-]{subsubsection.5.3.4}{PiBB - SR004}{subsection.5.3}% 30
+\BOOKMARK [3][-]{subsubsection.5.3.5}{PiBB - SR005}{subsection.5.3}% 31
+\BOOKMARK [3][-]{subsubsection.5.3.6}{PiBB - SR006}{subsection.5.3}% 32
+\BOOKMARK [3][-]{subsubsection.5.3.7}{PiBB - SR007}{subsection.5.3}% 33
+\BOOKMARK [3][-]{subsubsection.5.3.8}{PiBB - SR008}{subsection.5.3}% 34
+\BOOKMARK [3][-]{subsubsection.5.3.9}{PiBB - SR009}{subsection.5.3}% 35
+\BOOKMARK [3][-]{subsubsection.5.3.10}{PiBB - SR010}{subsection.5.3}% 36
+\BOOKMARK [2][-]{subsection.5.4}{Power Supply}{section.5}% 37
+\BOOKMARK [2][-]{subsection.5.5}{Connectivity}{section.5}% 38
+\BOOKMARK [2][-]{subsection.5.6}{PiCamera}{section.5}% 39
+\BOOKMARK [2][-]{subsection.5.7}{Web Framework and Data Display Web Page}{section.5}% 40
+\BOOKMARK [2][-]{subsection.5.8}{Object Classes}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.9}{Development Environment Setup}{section.5}% 42
+\BOOKMARK [3][-]{subsubsection.5.9.1}{Raspberry Pi}{subsection.5.9}% 43
+\BOOKMARK [3][-]{subsubsection.5.9.2}{Web Development Environment}{subsection.5.9}% 44
+\BOOKMARK [1][-]{section.6}{Software Development Approach}{}% 45
+\BOOKMARK [2][-]{subsection.6.1}{Introduction}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.2}{SDLC Models}{section.6}% 47
+\BOOKMARK [3][-]{subsubsection.6.2.1}{The Waterfall Model}{subsection.6.2}% 48
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Agile Development}{subsection.6.2}% 49
+\BOOKMARK [2][-]{subsection.6.3}{Introduction}{section.6}% 50
+\BOOKMARK [3][-]{subsubsection.6.3.1}{Planning}{subsection.6.3}% 51
+\BOOKMARK [3][-]{subsubsection.6.3.2}{Designing}{subsection.6.3}% 52
+\BOOKMARK [3][-]{subsubsection.6.3.3}{Building}{subsection.6.3}% 53
+\BOOKMARK [3][-]{subsubsection.6.3.4}{Testing}{subsection.6.3}% 54
+\BOOKMARK [3][-]{subsubsection.6.3.5}{Developing}{subsection.6.3}% 55
+\BOOKMARK [3][-]{subsubsection.6.3.6}{Implementing}{subsection.6.3}% 56
+\BOOKMARK [2][-]{subsection.6.4}{Conclusion}{section.6}% 57
+\BOOKMARK [1][-]{section.7}{Implementation}{}% 58
+\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 59
+\BOOKMARK [2][-]{subsection.7.2}{System Overview}{section.7}% 60
+\BOOKMARK [2][-]{subsection.7.3}{Physical Environment Setup}{section.7}% 61
+\BOOKMARK [3][-]{subsubsection.7.3.1}{Circuit Details}{subsection.7.3}% 62
+\BOOKMARK [2][-]{subsection.7.4}{Data Collection}{section.7}% 63
+\BOOKMARK [3][-]{subsubsection.7.4.1}{dht11.py}{subsection.7.4}% 64
+\BOOKMARK [3][-]{subsubsection.7.4.2}{rainSensor.py}{subsection.7.4}% 65
+\BOOKMARK [3][-]{subsubsection.7.4.3}{dataSend.py}{subsection.7.4}% 66
+\BOOKMARK [2][-]{subsection.7.5}{MySQL Database}{section.7}% 67
+\BOOKMARK [2][-]{subsection.7.6}{Data Processing and Presentation}{section.7}% 68
+\BOOKMARK [3][-]{subsubsection.7.6.1}{Flask\137app.py}{subsection.7.6}% 69
+\BOOKMARK [3][-]{subsubsection.7.6.2}{main.html}{subsection.7.6}% 70
+\BOOKMARK [1][-]{section.8}{Testing and Evaluation}{}% 71
+\BOOKMARK [2][-]{subsection.8.1}{Introduction}{section.8}% 72
+\BOOKMARK [2][-]{subsection.8.2}{Testing Methodology}{section.8}% 73
+\BOOKMARK [2][-]{subsection.8.3}{Device Functionality}{section.8}% 74
+\BOOKMARK [2][-]{subsection.8.4}{Evaluation}{section.8}% 75
+\BOOKMARK [2][-]{subsection.8.5}{Implementation of the Prototype}{section.8}% 76
+\BOOKMARK [1][-]{section.9}{Further Work}{}% 77
+\BOOKMARK [1][-]{section.10}{Conclusions}{}% 78
