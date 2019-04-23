@@ -439,9 +439,6 @@ The NoIR PiCamera is the least complicated piece of hardware to install. There i
 
 INSERT PICTURE OF CAMERA SLOT
 
-<<<<<<< HEAD
-\subsection{dataSend.py}
-=======
 \subsection{Data Collection}
 \subsubsection{dht11.py}
 This class was used to collect the temperature and humidity readings from the sensor. I did not write this class. There are many different classes written in Python that will interpret the data from a DHT11 sensor and given that the way the sensor gather data is quite complex, the decision was made to not write this class myself. The DHT11 class is used under the MIT licence - a copy of which can found in the appendixes of this document. 
@@ -454,7 +451,7 @@ The main function of the class, \texttt{read()}, sets up the GPIO pin. When wate
 \subsubsection{dataSend.py}
 This is the main data collection class and ties together the classes outlined above. 
 
-The class has a main function, \texttt{weatherData()}, which collects the data using the classes above and then prints the results to the console. The function then constructs an SQL query and inserts it to the data base. The function is contained within an infinite \texttt{While()} loop and makes use of  \texttt{time.sleep()} so that the amount of time between each dataset can be easily configured. The function is defined at the very beginning of the script. 
+The class has a main function, \texttt{weatherData()}, which collects the data using the classes above and then prints the results to the console. The function then constructs an SQL query and inserts it to the data base. The function is contained within an infinite \texttt{while()} loop and makes use of  \texttt{time.sleep()} so that the amount of time between each dataset can be easily configured. The function is defined at the very beginning of the script. 
 
 The main function is then defined. The first thing this function does is use SSH tunnelling to establish a connection to the database. The database is hosted on PythonAnywhere.com so tunnelling had to be used. I used the \texttt{sshtunnel} Python library to do this. \texttt{MySQL.connector} is then used to establish a connection with the database. The function then checks for a successful connection and if the connection is successful \texttt{weatherData()} will run. Otherwise an error message will be printed to the console. 
 
@@ -478,11 +475,34 @@ This is the main controller and handles the passing of data to \texttt{main.html
 
 Four empty Python lists are instantiated - one for each column in the database excluding the id column. A \texttt{for} loop now runs through all of the returned rows and for each row inserts the relevant piece of data into the relevant list. 
 
-The lists are then converted to a JSON format and stored in a JSON list called \texttt{payload}. 
->>>>>>> 663f75272e54c8219df864f5e410159c177e7082
+Since the rain sensor returns a value of -1 if it isn't raining I decided to add some extra code here to assign a value of \texttt{True} or \texttt{False} depending on the integer that is in the database. This made it easier going forward to get a quick idea of the value. 
+
+The lists are then converted to a JSON format using the JSON library for Python and stored in an array called \texttt{payload}. 
 
 \subsubsection{main.html}
-This 
+This file is where the data is displayed to the user. Bootstrap and JQuery were used to give the page a nice look and feel. These libraries also help with keeping the page so that it is responsive and will work across many devices. The charts were made using the charts.js library for Javascript. The Javascript logic is contained below the HTML content and I will explain it below. 
+
+First the script defines a function \texttt{getFreshData()} to get the fresh data when requested. This function uses an Ajax call to get the data from \url{/get_data} and then assigns it to an empty JSON array called \texttt{data}. 
+
+Ajax stands for Asynchronous Javascript and XML and it is in the Asynchronous nature of the call that I had the biggest issue to overcome. \texttt{getFreshData()} can easily make the Ajax call however it cannot process any of the data that is returned from the call. For example, the application retrieves all of the data in one large array. These need to be split into smaller arrays such as \texttt{\_rainData} and \texttt{\_humData}. Because the call is Asynchronous and Javascript executes sequentially it means that the next lines of Javascript are already executing before the Ajax call can return the data. Because the data is always changing it needs to be retrieved every few seconds. This fact combined with the Asynchronous nature of Ajax calls meant that I could not have a single function to get the data and assign the variables. The solution to this issue will be explained below as it is influenced by another factor of the design. 
+
+Charts.js requires that a container called a canvas be created to hold the chart and so this is done next. I also created a function called  \texttt{createLineChart(chartName, data, canvas)} which creates a line chart. 
+
+As previously mentioned, the data in the database is continuously changing. This means that a static chart will not serve a purpose and so it needs to be updated dynamically. To achieve this I first drew a static chart so that there would be some data displayed when the chart loads. Then the chart and all of the logic associated with it is contained within a \texttt{setInterval()} function. 
+
+Within in the above function is where the earlier issue with the Ajax calls is resolved. The call is made using \texttt{getFreshData()}. The returned JSON array is then parsed and split into smaller arrays as follows: 
+\begin{itemize}
+\item \texttt{\_tempData}
+\item \texttt{\_humData}
+\item \texttt{\_isRaining}
+\item \texttt{\_labels}
+\end{itemize}
+
+For temperature and humidity the most recent value in the array is used to display the current temperature/humidity value in the cards at the top of the page. Rain status is also displayed here. 
+
+The chart is then drawn using the earlier defined \texttt{createLineChart()} function. The now parsed data is passed into the function along with the canvas and the name of the chart. This process is repeated every two seconds. This is advantageous in that it means the data is current however it does mean that \texttt{flask\_app.py} is making constant calls to the database. Unfortunately due to the nature of this project that is unavoidable however using Javascript with Charts.js means most of the data processing is done client-side. 
+
+\subsubsection{Linux Automated Bash Scripts}
 
 
 \section{Testing and Evaluation}
