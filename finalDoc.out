@@ -42,38 +42,39 @@
 \BOOKMARK [2][-]{subsection.5.9}{Development Environment Setup}{section.5}% 42
 \BOOKMARK [3][-]{subsubsection.5.9.1}{Raspberry Pi}{subsection.5.9}% 43
 \BOOKMARK [3][-]{subsubsection.5.9.2}{Web Development Environment}{subsection.5.9}% 44
-\BOOKMARK [1][-]{section.6}{Software Development Approach}{}% 45
-\BOOKMARK [2][-]{subsection.6.1}{Introduction}{section.6}% 46
-\BOOKMARK [2][-]{subsection.6.2}{SDLC Models}{section.6}% 47
-\BOOKMARK [3][-]{subsubsection.6.2.1}{The Waterfall Model}{subsection.6.2}% 48
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Agile Development}{subsection.6.2}% 49
-\BOOKMARK [2][-]{subsection.6.3}{Introduction}{section.6}% 50
-\BOOKMARK [3][-]{subsubsection.6.3.1}{Planning}{subsection.6.3}% 51
-\BOOKMARK [3][-]{subsubsection.6.3.2}{Designing}{subsection.6.3}% 52
-\BOOKMARK [3][-]{subsubsection.6.3.3}{Building}{subsection.6.3}% 53
-\BOOKMARK [3][-]{subsubsection.6.3.4}{Testing}{subsection.6.3}% 54
-\BOOKMARK [3][-]{subsubsection.6.3.5}{Developing}{subsection.6.3}% 55
-\BOOKMARK [3][-]{subsubsection.6.3.6}{Implementing}{subsection.6.3}% 56
-\BOOKMARK [2][-]{subsection.6.4}{Conclusion}{section.6}% 57
-\BOOKMARK [1][-]{section.7}{Implementation}{}% 58
-\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 59
-\BOOKMARK [2][-]{subsection.7.2}{System Overview}{section.7}% 60
-\BOOKMARK [2][-]{subsection.7.3}{Physical Environment Setup}{section.7}% 61
-\BOOKMARK [3][-]{subsubsection.7.3.1}{Circuit Details}{subsection.7.3}% 62
-\BOOKMARK [2][-]{subsection.7.4}{Data Collection}{section.7}% 63
-\BOOKMARK [3][-]{subsubsection.7.4.1}{dht11.py}{subsection.7.4}% 64
-\BOOKMARK [3][-]{subsubsection.7.4.2}{rainSensor.py}{subsection.7.4}% 65
-\BOOKMARK [3][-]{subsubsection.7.4.3}{dataSend.py}{subsection.7.4}% 66
-\BOOKMARK [2][-]{subsection.7.5}{MySQL Database}{section.7}% 67
-\BOOKMARK [2][-]{subsection.7.6}{Data Processing and Presentation}{section.7}% 68
-\BOOKMARK [3][-]{subsubsection.7.6.1}{Flask\137app.py}{subsection.7.6}% 69
-\BOOKMARK [3][-]{subsubsection.7.6.2}{main.html}{subsection.7.6}% 70
-\BOOKMARK [3][-]{subsubsection.7.6.3}{Linux Automated Bash Scripts}{subsection.7.6}% 71
-\BOOKMARK [1][-]{section.8}{Testing and Evaluation}{}% 72
-\BOOKMARK [2][-]{subsection.8.1}{Introduction}{section.8}% 73
-\BOOKMARK [2][-]{subsection.8.2}{Testing Methodology}{section.8}% 74
-\BOOKMARK [2][-]{subsection.8.3}{Device Functionality}{section.8}% 75
-\BOOKMARK [2][-]{subsection.8.4}{Evaluation}{section.8}% 76
-\BOOKMARK [2][-]{subsection.8.5}{Implementation of the Prototype}{section.8}% 77
-\BOOKMARK [1][-]{section.9}{Further Work}{}% 78
-\BOOKMARK [1][-]{section.10}{Conclusions}{}% 79
+\BOOKMARK [1][-]{section.6}{System Implementation}{}% 45
+\BOOKMARK [1][-]{section.7}{Software Development Approach}{}% 46
+\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 47
+\BOOKMARK [2][-]{subsection.7.2}{SDLC Models}{section.7}% 48
+\BOOKMARK [3][-]{subsubsection.7.2.1}{The Waterfall Model}{subsection.7.2}% 49
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Agile Development}{subsection.7.2}% 50
+\BOOKMARK [2][-]{subsection.7.3}{Introduction}{section.7}% 51
+\BOOKMARK [3][-]{subsubsection.7.3.1}{Planning}{subsection.7.3}% 52
+\BOOKMARK [3][-]{subsubsection.7.3.2}{Designing}{subsection.7.3}% 53
+\BOOKMARK [3][-]{subsubsection.7.3.3}{Building}{subsection.7.3}% 54
+\BOOKMARK [3][-]{subsubsection.7.3.4}{Testing}{subsection.7.3}% 55
+\BOOKMARK [3][-]{subsubsection.7.3.5}{Developing}{subsection.7.3}% 56
+\BOOKMARK [3][-]{subsubsection.7.3.6}{Implementing}{subsection.7.3}% 57
+\BOOKMARK [2][-]{subsection.7.4}{Conclusion}{section.7}% 58
+\BOOKMARK [1][-]{section.8}{Implementation}{}% 59
+\BOOKMARK [2][-]{subsection.8.1}{Introduction}{section.8}% 60
+\BOOKMARK [2][-]{subsection.8.2}{System Overview}{section.8}% 61
+\BOOKMARK [2][-]{subsection.8.3}{Physical Environment Setup}{section.8}% 62
+\BOOKMARK [3][-]{subsubsection.8.3.1}{Circuit Details}{subsection.8.3}% 63
+\BOOKMARK [2][-]{subsection.8.4}{Data Collection}{section.8}% 64
+\BOOKMARK [3][-]{subsubsection.8.4.1}{dht11.py}{subsection.8.4}% 65
+\BOOKMARK [3][-]{subsubsection.8.4.2}{rainSensor.py}{subsection.8.4}% 66
+\BOOKMARK [3][-]{subsubsection.8.4.3}{dataSend.py}{subsection.8.4}% 67
+\BOOKMARK [2][-]{subsection.8.5}{MySQL Database}{section.8}% 68
+\BOOKMARK [2][-]{subsection.8.6}{Data Processing and Presentation}{section.8}% 69
+\BOOKMARK [3][-]{subsubsection.8.6.1}{Flask\137app.py}{subsection.8.6}% 70
+\BOOKMARK [3][-]{subsubsection.8.6.2}{main.html}{subsection.8.6}% 71
+\BOOKMARK [3][-]{subsubsection.8.6.3}{Linux Automated Bash Scripts}{subsection.8.6}% 72
+\BOOKMARK [1][-]{section.9}{Testing and Evaluation}{}% 73
+\BOOKMARK [2][-]{subsection.9.1}{Introduction}{section.9}% 74
+\BOOKMARK [2][-]{subsection.9.2}{Testing Methodology}{section.9}% 75
+\BOOKMARK [2][-]{subsection.9.3}{Device Functionality}{section.9}% 76
+\BOOKMARK [2][-]{subsection.9.4}{Evaluation}{section.9}% 77
+\BOOKMARK [2][-]{subsection.9.5}{Implementation of the Prototype}{section.9}% 78
+\BOOKMARK [1][-]{section.10}{Further Work}{}% 79
+\BOOKMARK [1][-]{section.11}{Conclusions}{}% 80

@@ -258,7 +258,8 @@ The sensor and camera controllers must be built using Python programming languag
 \subsubsection{PiBB - SR010}
 The web application should be built using a Python framework.
 \subsection{Power Supply}
-The device will be provided with power via solar panel. Solar power has been chosen because it is a renewable energy source therefore being environmentally friendly. Having solar power also removes the need for an electricity supply and this makes the device more portable and increases the versatility. 
+For a remote monitoring device the power supply is one of the most crucial aspects of the design. The power supply has to provide enough power for the device to be continuously powered but it also needs to be renewable. Below I have explored the option of using solar power.
+Solar power has been chosen because it is a renewable energy source therefore being environmentally friendly. It is also the most accessible renewable energy source in that to generate solar power is quite cheap and efficient despite the fact that we do not live in a particularly sunny country. Having solar power also removes the need for an electricity supply and this makes the device more portable and increases the versatility. 
 
 Power consumption of the Raspberry Pi with various configurations is shown in the below table. 
 
@@ -279,11 +280,12 @@ Pi + Data Sensors (Streaming Data) + PiCamera (Streaming Video) & 5.09          
 
 As can be seen from the table above, to run the system for 24 hours would require 183W of power. However running the system for 18 hours per day only requires 137W. With a 60W solar panel this could be achieved with 3 hours of sunlight per day. 
 
-As the device will be located in Ireland it is important to have an understanding of the sunshine levels. Ireland get on average 1100-1600 hours of sunshine per year\citep{website:metsunshine}. This translates to roughly 5-6.5 hours in the Summer months and 1-1.5 hours in the Winter months. This means that in the Summer months the device may be able to run for up to 18 hours per day. Cloud cover is not as predictable of sunshine hours and so the actual amount of sunlight the panel receives may be less than anticipated. In this case the device will have to run for less time during the day or a larger solar panel will have to be installed. 
+As the device will be located in Ireland it is important to have an understanding of the sunshine levels. Ireland gets, on average, 1100-1600 hours of sunshine per year\citep{website:metsunshine}. This translates to roughly 5-6.5 hours in the Summer months and 1-1.5 hours in the Winter months. This means that in the Summer months the device may be able to run for up to 18 hours per day however to be conservative it would be safe to say that during the summer months the device could run for 12 hours per day. Cloud cover is not as predictable of sunshine hours and so the actual amount of sunlight the panel receives may be less than anticipated. In this case the device will have to run for less time during the day or a larger solar panel will have to be installed. 
 
-The solar system will power the device and will simultaneously charge a 12V battery. The system will consist of a solar panel, solar charge controller, 12V battery and the device itself. A diagram of the proposed solar system is shown below. 
+There is one problem with using solar power. The Raspberry Pi cannot be put into a sleep mode - it is either on or off and there is no low power mode. If the device is shut down while it is writing to the SD card there is a danger that the operating system could be corrupted. This would be problematic if there was no available sunlight or the backup battery ran out. Due to the fact there is no sleep mode it also means the Pi cannot be powered on and off strategically and remotely which renders the device useless as a remote monitoring device. 
 
-INSERT DIAGRAM HERE
+Products and modifications are available that allow the Pi to go into a power saving mode however these are expensive and beyond the scope of this project. For this reason, for the purposes of this project, the device will be powered via USB plugged into an outlet. The device will still have use as a monitoring system in a garden. Use of alternative renewable energies such as wind power could be explored in a future iteration of the project.
+
 
 \subsection{Connectivity}
 A key requirement of this device is that it is able to function as a remote monitoring device. While Ethernet may be the most reliable form of connection, it is not the most portable as the range is limited by the length of cable you have. 
@@ -471,6 +473,8 @@ The database is hosted on Python Anywhere and uses MySQL 5.7.21. There are 5 col
 \item rain - This is another field with int data type
 \end{itemize}
 
+There is the potential for a lot of data to be stored in the data base. The hosting service allows for a size of 1GB which could potentially fill up quite quickly if the project is ever scaled to record more data however currently each row inserted to the database only takes up 84 bytes. In a 1GB database this allows for 12,632,256 rows to be added. If data is sent to the database 18 hours a day every 60 seconds there would be approximately 1080 values being stored each 18 hour period. At this rate it would take 11696 years to fill the database to its 1GB capacity. It is possible to create events in MySQL databases to delete data periodically however in this case it is not necessary. 
+
 \subsection{Data Processing and Presentation}
 Now that the data has been recorded and passed from the Raspberry Pi to the database it can be processed and displayed on the web page. Again, Python is being used to achieve this along with other technologies like JSON, Javascript and HTML. Jinja2 template language is available for use within Flask applications however since this is only a single page application it was not needed. 
 
@@ -511,8 +515,11 @@ The chart is then drawn using the earlier defined \texttt{createLineChart()} fun
 
 \section{Testing and Evaluation}
 \subsection{Introduction}
+There are many steps to ensuring this particular device works properly and the final data results are displayed to the user in the proper way. Therefore it is important to test each feature of the prototype thoroughly.  
 Why testing is important for this product and what tests need to be done to ensure a good prototype
 \subsection{Testing Methodology}
+To ensure a good prototype the testing will be split into 3 phases. Once the tests in each phase have been passed then development on the next phase can begin.
+
 Howe to be scientific about testing and create complete and useful tests. The testing timeline will be outlined here with one successful test meaning another can now be run. This schedule will be defined in this section
 \subsection{Device Functionality}
 Functions and features of the device. How the device is intended to perform
