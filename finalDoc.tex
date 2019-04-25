@@ -11,6 +11,7 @@
 \usepackage{listings}
 \usepackage{xparse}
 \usepackage{xcolor}
+\usepackage{hyperref}
 \graphicspath{ {./images/} }
 \author{Luke Bray - B00100787}
 \title{Bird Nest Box Monitoring Using Raspberry Pi and Python}
@@ -408,6 +409,105 @@ How to implement a finished product. Is this done incrementally and step by step
 
 \subsection{Conclusion}
 What can I conclude from the above? My thoughts on how all the above information pertains to my project and some things I will have to be especially concious of during this project 
+
+\section{Implementation} 
+\subsection{Introduction}
+This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
+
+\subsection{System Overview}
+The physical prototype was built and is explained later in this chapter. A bash script has been written so that on startup a linux command is automatically executed and this begins the streaming of the PiCamera to Youtube. The same bash script will also run dataSend.py. which uses classes dht11.py and rainSensor.py to record data. The data is then inserted into the MySQL database where it can be displayed on a web page. The Flask app processes the data and passes it to main.html and using the charts.js library the data is then displayed in a presentable manner. Main.html also embeds the live stream from Youtube. 
+
+\subsection{Physical Environment Setup}
+The first step of implementation was to get the hardware circuit working. The four main components are the Raspberry Pi, a DHT11 temperature and humidity sensor, the NoIR PiCamera and an FC-37 rain sensor. Initially these were implemented into a circuit using a breadboard. This allowed for a less permanent and more flexible setup for testing purposes. The circuit diagram is shown below along with some photographs of the hardware setup. 
+
+INSERT CIRCUIT DIAGRAM AND PHOTOGRAPHS
+
+\subsubsection{Circuit Details}
+The breadboard is connected to the 3.3v GPIO pin and this supplies power all along the connected rail. There is a 5v pin available however using this requires the inclusion of various resistors in the circuit and this would introduce unnecessary complications. The 3.3v pin also supplies plenty of power for all of the components. A ground pin on the Raspberry Pi is connected to the negative rail on the breadboard. A diagram of the Raspberry Pi Model 3 GPIO pins is shown below. 
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/gpio-pins.png}
+    \caption{A diagram of the GPIO pins on a Raspberry Pi Model 3}
+    \label{fig:gpiopins}
+  \end{figure}
+
+Both the FC-37 and DHT11 sensors need 3 of their pins to be connected to the GPIO pins. The FC-37 consists of two components. These are the collector board and electrical board and when enough water is collected on the collector board there is a lower output voltage which signifies rainfall. The collector board connects to the electrical board which in turn connects to the Raspberry Pi. One pin on the electrical board is connected to the power rail on the bread board while another pin is connected to the ground rail. The third pin is the data pin and this is connected to the GPIO pin on the Raspberry Pi. In this case the FC-37 was connected to GPIO pin 27. The electrical board also houses a potentiometer and this can be used to adjust the sensitivity of the collector board. This was done by putting an amount of water onto the collector board and turning the potentiometer until is detected a change in the flow of current.
+
+INSERT PICTURE OF FC-37
+
+The DHT11 sensor was connected in a similar way to the FC-37. One sensor pin is connected to the power supply, one to the ground rail and the final pin is connected to a GPIO pin. In this case it was GPIO pin 17. 
+
+INSERT PICTURE OF DHT11
+
+The NoIR PiCamera is the least complicated piece of hardware to install. There is already a dedicated slot on the Raspberry Pi which is shown below. The camera is connected into this slot and enabled as described in the previous chapter on the Raspberry Pi itself. 
+
+INSERT PICTURE OF CAMERA SLOT
+
+\subsection{Data Collection}
+\subsubsection{dht11.py}
+This class was used to collect the temperature and humidity readings from the sensor. I did not write this class. There are many different classes written in Python that will interpret the data from a DHT11 sensor and given that the way the sensor gather data is quite complex, the decision was made to not write this class myself. The DHT11 class is used under the MIT licence - a copy of which can found in the appendixes of this document. 
+
+\subsubsection{rainSensor.py}
+This class is what is used to collect rain data. The class contains a constructor function which allows the user to import the class to another Python script. When initialising the new object the user can also use the relevant GPIO pin number as an argument. 
+
+The main function of the class, \texttt{read()}, sets up the GPIO pin. When water is present on the collector board the state of the GPIO will be equal to zero and the function will return \texttt{1} meaning it is raining. Otherwise it will return \texttt{0}. 
+
+\subsubsection{dataSend.py}
+This is the main data collection class and ties together the classes outlined above. 
+
+The class has a main function, \texttt{weatherData()}, which collects the data using the classes above and then prints the results to the console. The function then constructs an SQL query and inserts it to the data base. The function is contained within an infinite \texttt{while()} loop and makes use of  \texttt{time.sleep()} so that the amount of time between each dataset can be easily configured. The function is defined at the very beginning of the script. 
+
+The main function is then defined. The first thing this function does is use SSH tunnelling to establish a connection to the database. The database is hosted on PythonAnywhere.com so tunnelling had to be used. I used the \texttt{sshtunnel} Python library to do this. \texttt{MySQL.connector} is then used to establish a connection with the database. The function then checks for a successful connection and if the connection is successful \texttt{weatherData()} will run. Otherwise an error message will be printed to the console. 
+
+An advantage of the above process and the system design is that it isolates the data collection step of the entire process. This way it is very easy to test if the data is being collected and when errors occur they can be quickly diagnosed and resolved. At this point in the process to Raspberry Pi and data collection step is complete. 
+
+\subsection{MySQL Database}
+The database is hosted on Python Anywhere and uses MySQL 5.7.21. There are 5 columns in the database and they are listed below. 
+\begin{itemize}
+\item id - This is just a standard incrementing id field
+\item datetime - This stores the datetime value. These values will be used as the labels in the charts
+\item temp - holds an int value for the recorded temperature
+\item humidity - holds an int value for the recorded humidity percentage. This doesn't need to be a float as the DHT11 sensor will only record humidity in whole integers
+\item rain - This is another field with int data type
+\end{itemize}
+
+\subsection{Data Processing and Presentation}
+Now that the data has been recorded and passed from the Raspberry Pi to the database it can be processed and displayed on the web page. Again, Python is being used to achieve this along with other technologies like JSON, Javascript and HTML. Jinja2 template language is available for use within Flask applications however since this is only a single page application it was not needed. 
+
+\subsubsection{Flask\_app.py}
+This is the main controller and handles the passing of data to \texttt{main.html}. Navigating to \url{https://www.lukebray.ie/} will return the \texttt{main.html} template. A route has also been set up at \url{https://www.lukebray.ie/get_data} to trigger the retrieval and JSON-ification of data from the database. The raw JSON-ified data can be viewed here. Once this route is called a connection to the database is established and a cursor object from \texttt{MySQL.connector} is created. This object is used to execute an SQL query to the database and the requested data is then returned using the \texttt{fetchall()} function and assigned to a variable \texttt{r}. 
+
+Four empty Python lists are instantiated - one for each column in the database excluding the id column. A \texttt{for} loop now runs through all of the returned rows and for each row inserts the relevant piece of data into the relevant list. 
+
+Since the rain sensor returns a value of -1 if it isn't raining I decided to add some extra code here to assign a value of \texttt{True} or \texttt{False} depending on the integer that is in the database. This made it easier going forward to get a quick idea of the value. 
+
+The lists are then converted to a JSON format using the JSON library for Python and stored in an array called \texttt{payload}. 
+
+\subsubsection{main.html}
+This file is where the data is displayed to the user. Bootstrap and JQuery were used to give the page a nice look and feel. These libraries also help with keeping the page so that it is responsive and will work across many devices. The charts were made using the charts.js library for Javascript. The Javascript logic is contained below the HTML content and I will explain it below. 
+
+First the script defines a function \texttt{getFreshData()} to get the fresh data when requested. This function uses an Ajax call to get the data from \url{/get_data} and then assigns it to an empty JSON array called \texttt{data}. 
+
+Ajax stands for Asynchronous Javascript and XML and it is in the Asynchronous nature of the call that I had the biggest issue to overcome. \texttt{getFreshData()} can easily make the Ajax call however it cannot process any of the data that is returned from the call. For example, the application retrieves all of the data in one large array. These need to be split into smaller arrays such as \texttt{\_rainData} and \texttt{\_humData}. Because the call is Asynchronous and Javascript executes sequentially it means that the next lines of Javascript are already executing before the Ajax call can return the data. Because the data is always changing it needs to be retrieved every few seconds. This fact combined with the Asynchronous nature of Ajax calls meant that I could not have a single function to get the data and assign the variables. The solution to this issue will be explained below as it is influenced by another factor of the design. 
+
+Charts.js requires that a container called a canvas be created to hold the chart and so this is done next. I also created a function called  \texttt{createLineChart(chartName, data, canvas)} which creates a line chart. 
+
+As previously mentioned, the data in the database is continuously changing. This means that a static chart will not serve a purpose and so it needs to be updated dynamically. To achieve this I first drew a static chart so that there would be some data displayed when the chart loads. Then the chart and all of the logic associated with it is contained within a \texttt{setInterval()} function. 
+
+Within in the above function is where the earlier issue with the Ajax calls is resolved. The call is made using \texttt{getFreshData()}. The returned JSON array is then parsed and split into smaller arrays as follows: 
+\begin{itemize}
+\item \texttt{\_tempData}
+\item \texttt{\_humData}
+\item \texttt{\_isRaining}
+\item \texttt{\_labels}
+\end{itemize}
+
+For temperature and humidity the most recent value in the array is used to display the current temperature/humidity value in the cards at the top of the page. Rain status is also displayed here. 
+
+The chart is then drawn using the earlier defined \texttt{createLineChart()} function. The now parsed data is passed into the function along with the canvas and the name of the chart. This process is repeated every two seconds. This is advantageous in that it means the data is current however it does mean that \texttt{flask\_app.py} is making constant calls to the database. Unfortunately due to the nature of this project that is unavoidable however using Javascript with Charts.js means most of the data processing is done client-side. 
+
+\subsubsection{Linux Automated Bash Scripts}
+
 
 \section{Testing and Evaluation}
 \subsection{Introduction}

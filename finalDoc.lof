@@ -1,11 +1,12 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Power consumption vs. CPU utilisation}}{12}
-\contentsline {figure}{\numberline {2}{\ignorespaces A basic solar circuit}}{14}
-\contentsline {figure}{\numberline {3}{\ignorespaces 2.4GHz WiFi Channels}}{15}
-\contentsline {figure}{\numberline {4}{\ignorespaces 2.4GHz Zigbee Channels}}{16}
-\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram}}{18}
-\contentsline {figure}{\numberline {6}{\ignorespaces Web Page Wireframe}}{22}
-\contentsline {figure}{\numberline {7}{\ignorespaces Object Diagram}}{23}
-\contentsline {figure}{\numberline {8}{\ignorespaces Enabling VNC Server}}{24}
-\contentsline {figure}{\numberline {9}{\ignorespaces Enabling PiCamera}}{24}
-\contentsline {figure}{\numberline {10}{\ignorespaces Selecting a web framework on Python Anywhere}}{25}
-\contentsline {figure}{\numberline {11}{\ignorespaces Selecting a which version of Python to use}}{26}
+\contentsline {figure}{\numberline {1}{\ignorespaces Power consumption vs. CPU utilisation}}{12}{figure.1}
+\contentsline {figure}{\numberline {2}{\ignorespaces A basic solar circuit}}{14}{figure.2}
+\contentsline {figure}{\numberline {3}{\ignorespaces 2.4GHz WiFi Channels}}{15}{figure.3}
+\contentsline {figure}{\numberline {4}{\ignorespaces 2.4GHz Zigbee Channels}}{16}{figure.4}
+\contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram}}{18}{figure.5}
+\contentsline {figure}{\numberline {6}{\ignorespaces Web Page Wireframe}}{22}{figure.6}
+\contentsline {figure}{\numberline {7}{\ignorespaces Object Diagram}}{23}{figure.7}
+\contentsline {figure}{\numberline {8}{\ignorespaces Enabling VNC Server}}{24}{figure.8}
+\contentsline {figure}{\numberline {9}{\ignorespaces Enabling PiCamera}}{24}{figure.9}
+\contentsline {figure}{\numberline {10}{\ignorespaces Selecting a web framework on Python Anywhere}}{25}{figure.10}
+\contentsline {figure}{\numberline {11}{\ignorespaces Selecting a which version of Python to use}}{26}{figure.11}
+\contentsline {figure}{\numberline {12}{\ignorespaces A diagram of the GPIO pins on a Raspberry Pi Model 3}}{28}{figure.12}
