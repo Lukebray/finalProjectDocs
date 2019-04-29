@@ -70,6 +70,7 @@ The third aim of this project is to enhance my learning and understanding of dev
 \item To design a system that allows for future expansion in case I find that the project could be expanded. 
 \end{itemize}
 
+\pagebreak
 \section{Literature Review}
 \subsection{Introduction}
 Birds have been used as tools all over the world for centuries for things such as hunting, entertainment and delivering messages. In the modern world birdwatching is an already a popular activity and it's recent increase in popularity has helped to integrate research into birds, bird conservation and socio-economics development\cite{Zhijun2013}. In China alone as of 2010 there were in excess of 20,000 birdwatchers\cite{Zhijun2013}. The hobby is essentially the monitoring of different bird species and recording information such as the time of year, the species of the bird and how many birds there are. Many countries have organisations where birdwatchers can submit this data and this leads to an overall picture of the welfare of a countries native species.
@@ -176,6 +177,7 @@ Flask is seen by many to be the main rival to Django. Like Django, it is a MVC s
 \subsubsection{Dash\citep{website:dash}}
 Dash is a micro-framework that is built on top of Flask and Plotly.js. The framework includes various UI elements and allows you to tie them together with Python code while also retaining all of the benefits of using a MVC framework like Flask. Dash is specially built to be used for building analytical web applications and this makes it ideal for a project where data is to be presented and analysed. 
 
+\pagebreak
 \section{System Requirements and Design}
 \subsection{Introduction}
 This chapter will outline the key requirements of this project and will then identify how the key software components interact with each other to meet these requirements. Requirements will mainly be derived from use cases and these will be important in identifying any previously unforeseen issues that may arise. UML diagrams will demonstrate the context and modes of use of the system as well as the system architecture, primary system objects, design models and specific interfacing methods. 
@@ -377,41 +379,7 @@ Setup of a new web app is as easy as selecting the Framework you'd like to use a
 
 Actual development of code will be done on my local machine using VSCode. The whole project will be stored in a Git repository which can then be cloned into Python Anywhere using one the virtual consoles. 
 
-\section{System Implementation}
-This chapter will explain in as much detail as possible how the system was implemented. This will include the 
-
-
-\section{Software Development Approach}
-\subsection{Introduction}
-Even in the early days of software engineering the criticality of having a sound software development approach was recognised. It can be easy to delay or avoid completing this process while deficiencies in it can be very difficult and expensive to correct later on. Other issues arise such as the user feeling alienated due to lack of transparency or documentation and testing being hard to define\citep{1674590}.
-
-This chapter will attempt to clearly define the software development model I intend to follow. It will also state my understood importance of each stage of the life cycle. 
-\subsection{SDLC Models}
-\subsubsection{The Waterfall Model}
-What is the Waterfall Model and some of it's advantages and disadvantages
-\subsubsection{Agile Development}
-What is Agile development and what are it's advantages and disadvantages. How do they relate to my project? 
-
-\subsection{Introduction}
-This will contain info about the SDLC method I will use and a brief explanation of what this method involves
-\subsubsection{Planning}
-Importance of planning. Some methods that can be used to plan effectively and efficiently
-\subsubsection{Designing}
-Importance of good design and some ways to ensure a good design 
-\subsubsection{Building}
-Which specifications will be followed when building the physical housing for the product. Why is this important and how do I make sure that I stick to these specifications. What technical drawings are needed
-\subsubsection{Testing}
-Importance of testing and how testing will be carried out. What kind of tests need to be run to ensure a complete product
-\subsubsection{Developing}
-Which language will be used. Some best practices for software development and the importance of using international and industry-recognised coding practices and standards 
-\subsubsection{Implementing}
-How to implement a finished product. Is this done incrementally and step by step or is the final version of the product released once it is finished? How is a product updated and maintained and the importance of this from a developers point of view and a consumers
-
-
-
-\subsection{Conclusion}
-What can I conclude from the above? My thoughts on how all the above information pertains to my project and some things I will have to be especially concious of during this project 
-
+\pagebreak
 \section{Implementation} 
 \subsection{Introduction}
 This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
@@ -526,15 +494,52 @@ The chart is then drawn using the earlier defined \texttt{createLineChart()} fun
 
 \subsubsection{Linux Automated Bash Scripts}
 
-
+\pagebreak
 \section{Testing and Evaluation}
 \subsection{Introduction}
-There are many steps to ensuring this particular device works properly and the final data results are displayed to the user in the proper way. Therefore it is important to test each feature of the prototype thoroughly.  
+There are many steps to ensuring this particular device works properly and the final data results are displayed to the user in the proper way. The project has been designed to be modular and this makes testing a lot easier to conduct. Each componenet can be tested before being implemented and this has meant that combining all components into the final project has been quick and efficient.
+
+This section will explain the testing methodology and show how each component was tested before being implemented fully. 
 Why testing is important for this product and what tests need to be done to ensure a good prototype
 \subsection{Testing Methodology}
-To ensure a good prototype the testing will be split into 3 phases. Once the tests in each phase have been passed then development on the next phase can begin.
+To ensure a good prototype the testing was be split into multiple phases. Once the tests in each phase have been passed then development on the next phase can begin.
+\subsubsection{PiCamera Testing}
+This was the first component to be tested. The criteria for passing the test were as follows: 
+\begin{enumerate}
+  \item The camera can record an image in the dark
+  \item The video can be viewed on Youtube without significant interruption
+\end{enumerate}
 
-Howe to be scientific about testing and create complete and useful tests. The testing timeline will be outlined here with one successful test meaning another can now be run. This schedule will be defined in this section
+To satisfy the first requirement a still image was taken in a dark room using the Camera library for Python. This test would confirm that the camera can take a still image and also that the infra-red LED attachments work. Below is the successful test image. 
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/testimage.jpg}
+    \caption{A test image taken with the infra-red PiCamera}
+    \label{fig:cameraTest}
+\end{figure}
+
+The second requirement was satisfied by navigating to the livestream URL and confirming that the camera was streaming video footage. The device was left to run for an hour to ensure it would not go down. This test was passed however there were some minor interruptions in the video streaming. The quality of the video can be lowered so that less data needs to be transmitted. 
+
+\subsubsection{Sensor Testing}
+The device receives multiple inputs from the sensors attached and testing the functionality of these was an important step. The requirements of the testing of each sensor was the same and so the same tests could be ran for each sensor. The requirements were as follows:
+\begin{enumerate}
+  \item The sensor can read values in real time and output them to the console
+\end{enumerate}
+
+A small script called \texttt{sensorTest.py} was written that would output a value to the console for each sensor every few seconds. Then each sensor was manipulated to see if it was providing live data. The DHT11 sensor was manipulated by covering it with my hand and seeing if the temperature and humidity values changed whilst the rain sensor had a small amount of water put onto it. The testing of the rain sensor failed at first however it was discovered this was because the sensor was not configured to be sensitive enough. After configuration of the rain sensor all sensors passed the testing. 
+
+\subsubsection{Data Collection Testing}
+This stage of testing was the first stage where multiple components of the project were combined into one larger component that made up the data collection aspect of the project. This phase of testing tested the data collection script \texttt{dataSend.py} which performed the actual collection of the data as well as sending the data to the database. The requirements were as follows: 
+
+\begin{enumerate}
+  \item The app can establish a connection to the database
+  \item Data can be recorded and output to the console
+  \item Data can be sent to the database
+\end{enumerate}
+
+To meet the requirements above, the database was first cleared of any data. Then \texttt{dataSend.py} was set to colelct data every 5 seconds and run for 1 minute. Then the MySQL database was checked to first of all see that all of the data had been recorded and also that the expected 12 rows of data were present. This was confirmed and therefore the test was successful.
+
 \subsection{Device Functionality}
 Functions and features of the device. How the device is intended to perform
 \subsection{Evaluation}
@@ -542,9 +547,11 @@ How the device performed on each of the tests that were conducted. What areas no
 \subsection{Implementation of the Prototype}
 How the prototype will be implemented. What considerations need to be taken when implementing and what conclusions can we draw from the testing that affect the implementation of the prototype
 
+\pagebreak
 \section{Further Work}
 How might the device be improved? What extra features could be included next time and how might a different SDLC have an effect on the design and functionality of this product
 
+\pagebreak
 \section{Conclusions}
 What did I learn while doing this project. What went wrong and what was done well. Is the device created as useful as was initially thought? Is the way I did this project the most effective way to achieve the intended result? 
 

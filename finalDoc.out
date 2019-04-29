@@ -42,40 +42,28 @@
 \BOOKMARK [2][-]{subsection.5.9}{Development Environment Setup}{section.5}% 42
 \BOOKMARK [3][-]{subsubsection.5.9.1}{Raspberry Pi}{subsection.5.9}% 43
 \BOOKMARK [3][-]{subsubsection.5.9.2}{Web Development Environment}{subsection.5.9}% 44
-\BOOKMARK [1][-]{section.6}{System Implementation}{}% 45
-\BOOKMARK [1][-]{section.7}{Software Development Approach}{}% 46
-\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 47
-\BOOKMARK [2][-]{subsection.7.2}{SDLC Models}{section.7}% 48
-\BOOKMARK [3][-]{subsubsection.7.2.1}{The Waterfall Model}{subsection.7.2}% 49
-\BOOKMARK [3][-]{subsubsection.7.2.2}{Agile Development}{subsection.7.2}% 50
-\BOOKMARK [2][-]{subsection.7.3}{Introduction}{section.7}% 51
-\BOOKMARK [3][-]{subsubsection.7.3.1}{Planning}{subsection.7.3}% 52
-\BOOKMARK [3][-]{subsubsection.7.3.2}{Designing}{subsection.7.3}% 53
-\BOOKMARK [3][-]{subsubsection.7.3.3}{Building}{subsection.7.3}% 54
-\BOOKMARK [3][-]{subsubsection.7.3.4}{Testing}{subsection.7.3}% 55
-\BOOKMARK [3][-]{subsubsection.7.3.5}{Developing}{subsection.7.3}% 56
-\BOOKMARK [3][-]{subsubsection.7.3.6}{Implementing}{subsection.7.3}% 57
-\BOOKMARK [2][-]{subsection.7.4}{Conclusion}{section.7}% 58
-\BOOKMARK [1][-]{section.8}{Implementation}{}% 59
-\BOOKMARK [2][-]{subsection.8.1}{Introduction}{section.8}% 60
-\BOOKMARK [2][-]{subsection.8.2}{Implmentation Method}{section.8}% 61
-\BOOKMARK [2][-]{subsection.8.3}{System Overview}{section.8}% 62
-\BOOKMARK [2][-]{subsection.8.4}{Physical Environment Setup}{section.8}% 63
-\BOOKMARK [3][-]{subsubsection.8.4.1}{Circuit Details}{subsection.8.4}% 64
-\BOOKMARK [2][-]{subsection.8.5}{Data Collection}{section.8}% 65
-\BOOKMARK [3][-]{subsubsection.8.5.1}{dht11.py}{subsection.8.5}% 66
-\BOOKMARK [3][-]{subsubsection.8.5.2}{rainSensor.py}{subsection.8.5}% 67
-\BOOKMARK [3][-]{subsubsection.8.5.3}{dataSend.py}{subsection.8.5}% 68
-\BOOKMARK [2][-]{subsection.8.6}{MySQL Database}{section.8}% 69
-\BOOKMARK [2][-]{subsection.8.7}{Data Processing and Presentation}{section.8}% 70
-\BOOKMARK [3][-]{subsubsection.8.7.1}{Flask\137app.py}{subsection.8.7}% 71
-\BOOKMARK [3][-]{subsubsection.8.7.2}{main.html}{subsection.8.7}% 72
-\BOOKMARK [3][-]{subsubsection.8.7.3}{Linux Automated Bash Scripts}{subsection.8.7}% 73
-\BOOKMARK [1][-]{section.9}{Testing and Evaluation}{}% 74
-\BOOKMARK [2][-]{subsection.9.1}{Introduction}{section.9}% 75
-\BOOKMARK [2][-]{subsection.9.2}{Testing Methodology}{section.9}% 76
-\BOOKMARK [2][-]{subsection.9.3}{Device Functionality}{section.9}% 77
-\BOOKMARK [2][-]{subsection.9.4}{Evaluation}{section.9}% 78
-\BOOKMARK [2][-]{subsection.9.5}{Implementation of the Prototype}{section.9}% 79
-\BOOKMARK [1][-]{section.10}{Further Work}{}% 80
-\BOOKMARK [1][-]{section.11}{Conclusions}{}% 81
+\BOOKMARK [1][-]{section.6}{Implementation}{}% 45
+\BOOKMARK [2][-]{subsection.6.1}{Introduction}{section.6}% 46
+\BOOKMARK [2][-]{subsection.6.2}{Implmentation Method}{section.6}% 47
+\BOOKMARK [2][-]{subsection.6.3}{System Overview}{section.6}% 48
+\BOOKMARK [2][-]{subsection.6.4}{Physical Environment Setup}{section.6}% 49
+\BOOKMARK [3][-]{subsubsection.6.4.1}{Circuit Details}{subsection.6.4}% 50
+\BOOKMARK [2][-]{subsection.6.5}{Data Collection}{section.6}% 51
+\BOOKMARK [3][-]{subsubsection.6.5.1}{dht11.py}{subsection.6.5}% 52
+\BOOKMARK [3][-]{subsubsection.6.5.2}{rainSensor.py}{subsection.6.5}% 53
+\BOOKMARK [3][-]{subsubsection.6.5.3}{dataSend.py}{subsection.6.5}% 54
+\BOOKMARK [2][-]{subsection.6.6}{MySQL Database}{section.6}% 55
+\BOOKMARK [2][-]{subsection.6.7}{Data Processing and Presentation}{section.6}% 56
+\BOOKMARK [3][-]{subsubsection.6.7.1}{Flask\137app.py}{subsection.6.7}% 57
+\BOOKMARK [3][-]{subsubsection.6.7.2}{main.html}{subsection.6.7}% 58
+\BOOKMARK [3][-]{subsubsection.6.7.3}{Linux Automated Bash Scripts}{subsection.6.7}% 59
+\BOOKMARK [1][-]{section.7}{Testing and Evaluation}{}% 60
+\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 61
+\BOOKMARK [2][-]{subsection.7.2}{Testing Methodology}{section.7}% 62
+\BOOKMARK [3][-]{subsubsection.7.2.1}{PiCamera Testing}{subsection.7.2}% 63
+\BOOKMARK [2][-]{subsection.7.3}{Sensor Testing}{section.7}% 64
+\BOOKMARK [2][-]{subsection.7.4}{Device Functionality}{section.7}% 65
+\BOOKMARK [2][-]{subsection.7.5}{Evaluation}{section.7}% 66
+\BOOKMARK [2][-]{subsection.7.6}{Implementation of the Prototype}{section.7}% 67
+\BOOKMARK [1][-]{section.8}{Further Work}{}% 68
+\BOOKMARK [1][-]{section.9}{Conclusions}{}% 69
