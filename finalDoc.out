@@ -58,23 +58,24 @@
 \BOOKMARK [2][-]{subsection.7.4}{Conclusion}{section.7}% 58
 \BOOKMARK [1][-]{section.8}{Implementation}{}% 59
 \BOOKMARK [2][-]{subsection.8.1}{Introduction}{section.8}% 60
-\BOOKMARK [2][-]{subsection.8.2}{System Overview}{section.8}% 61
-\BOOKMARK [2][-]{subsection.8.3}{Physical Environment Setup}{section.8}% 62
-\BOOKMARK [3][-]{subsubsection.8.3.1}{Circuit Details}{subsection.8.3}% 63
-\BOOKMARK [2][-]{subsection.8.4}{Data Collection}{section.8}% 64
-\BOOKMARK [3][-]{subsubsection.8.4.1}{dht11.py}{subsection.8.4}% 65
-\BOOKMARK [3][-]{subsubsection.8.4.2}{rainSensor.py}{subsection.8.4}% 66
-\BOOKMARK [3][-]{subsubsection.8.4.3}{dataSend.py}{subsection.8.4}% 67
-\BOOKMARK [2][-]{subsection.8.5}{MySQL Database}{section.8}% 68
-\BOOKMARK [2][-]{subsection.8.6}{Data Processing and Presentation}{section.8}% 69
-\BOOKMARK [3][-]{subsubsection.8.6.1}{Flask\137app.py}{subsection.8.6}% 70
-\BOOKMARK [3][-]{subsubsection.8.6.2}{main.html}{subsection.8.6}% 71
-\BOOKMARK [3][-]{subsubsection.8.6.3}{Linux Automated Bash Scripts}{subsection.8.6}% 72
-\BOOKMARK [1][-]{section.9}{Testing and Evaluation}{}% 73
-\BOOKMARK [2][-]{subsection.9.1}{Introduction}{section.9}% 74
-\BOOKMARK [2][-]{subsection.9.2}{Testing Methodology}{section.9}% 75
-\BOOKMARK [2][-]{subsection.9.3}{Device Functionality}{section.9}% 76
-\BOOKMARK [2][-]{subsection.9.4}{Evaluation}{section.9}% 77
-\BOOKMARK [2][-]{subsection.9.5}{Implementation of the Prototype}{section.9}% 78
-\BOOKMARK [1][-]{section.10}{Further Work}{}% 79
-\BOOKMARK [1][-]{section.11}{Conclusions}{}% 80
+\BOOKMARK [2][-]{subsection.8.2}{Implmentation Method}{section.8}% 61
+\BOOKMARK [2][-]{subsection.8.3}{System Overview}{section.8}% 62
+\BOOKMARK [2][-]{subsection.8.4}{Physical Environment Setup}{section.8}% 63
+\BOOKMARK [3][-]{subsubsection.8.4.1}{Circuit Details}{subsection.8.4}% 64
+\BOOKMARK [2][-]{subsection.8.5}{Data Collection}{section.8}% 65
+\BOOKMARK [3][-]{subsubsection.8.5.1}{dht11.py}{subsection.8.5}% 66
+\BOOKMARK [3][-]{subsubsection.8.5.2}{rainSensor.py}{subsection.8.5}% 67
+\BOOKMARK [3][-]{subsubsection.8.5.3}{dataSend.py}{subsection.8.5}% 68
+\BOOKMARK [2][-]{subsection.8.6}{MySQL Database}{section.8}% 69
+\BOOKMARK [2][-]{subsection.8.7}{Data Processing and Presentation}{section.8}% 70
+\BOOKMARK [3][-]{subsubsection.8.7.1}{Flask\137app.py}{subsection.8.7}% 71
+\BOOKMARK [3][-]{subsubsection.8.7.2}{main.html}{subsection.8.7}% 72
+\BOOKMARK [3][-]{subsubsection.8.7.3}{Linux Automated Bash Scripts}{subsection.8.7}% 73
+\BOOKMARK [1][-]{section.9}{Testing and Evaluation}{}% 74
+\BOOKMARK [2][-]{subsection.9.1}{Introduction}{section.9}% 75
+\BOOKMARK [2][-]{subsection.9.2}{Testing Methodology}{section.9}% 76
+\BOOKMARK [2][-]{subsection.9.3}{Device Functionality}{section.9}% 77
+\BOOKMARK [2][-]{subsection.9.4}{Evaluation}{section.9}% 78
+\BOOKMARK [2][-]{subsection.9.5}{Implementation of the Prototype}{section.9}% 79
+\BOOKMARK [1][-]{section.10}{Further Work}{}% 80
+\BOOKMARK [1][-]{section.11}{Conclusions}{}% 81

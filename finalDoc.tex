@@ -365,14 +365,14 @@ Setup of a new web app is as easy as selecting the Framework you'd like to use a
 \centering
   \includegraphics[width=\linewidth]{images/webappframework.png}
   \caption{Selecting a web framework on Python Anywhere}
-  \label{fig:picamera}
+  \label{fig:webappframework}
 \end{figure}
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{images/webapppython.png}
   \caption{Selecting a which version of Python to use}
-  \label{fig:picamera}
+  \label{fig:webapppython}
 \end{figure}
 
 Actual development of code will be done on my local machine using VSCode. The whole project will be stored in a Git repository which can then be cloned into Python Anywhere using one the virtual consoles. 
@@ -415,6 +415,20 @@ What can I conclude from the above? My thoughts on how all the above information
 \section{Implementation} 
 \subsection{Introduction}
 This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
+
+\subsection{Implmentation Method}
+Even in the early days of software engineering the criticality of having a sound software development approach was recognised. It can be easy to delay or avoid completing this process while deficiencies in it can be very difficult and expensive to correct later on. Other issues arise such as the user feeling alienated due to lack of transparency or documentation and testing being hard to define\citep{1674590}.
+
+This project will be implented using an iterative software development lifecycle. This type of methodology involves a planning stage where the requirements of the system are defined. The iterative part of the lifecycle see's the project designed, implemented, tested and then evaluated. This is important because the project can be split into multiple mini-projects that don't present as big of a task. This particular project has been designed to be modular and using an iteration development method allows each modular component to be thoroughly tested and integrated seamlessly into the overall project. Through testing it is ensured that every component of the design can work independently and then combine at a later stage to form one overall project. Each iteration of the project adds in a new component which brings with it extra features and stability. 
+
+Each conmponent of the project will be developed individually and then tested to make sure it works before introducing it into the final project. This is the advantage of using an iterative software development life cycle. A diagram of the lifecycle is shown below. 
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/iterativemodel.jpg}
+    \caption{Diagram of an Iterative SDLC}
+    \label{fig:iterativemodel}
+\end{figure}
 
 \subsection{System Overview}
 The physical prototype was built and is explained later in this chapter. A bash script has been written so that on startup a linux command is automatically executed and this begins the streaming of the PiCamera to Youtube. The same bash script will also run dataSend.py. which uses classes dht11.py and rainSensor.py to record data. The data is then inserted into the MySQL database where it can be displayed on a web page. The Flask app processes the data and passes it to main.html and using the charts.js library the data is then displayed in a presentable manner. Main.html also embeds the live stream from Youtube. 
