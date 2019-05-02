@@ -142,4 +142,14 @@ Libav Community.
 Software engineering.
 \newblock {\em IEEE Transactions on Computers}, C-25(12):1226--1241, Dec 1976.
 
+\bibitem{pandas}
+Wes McKinney.
+\newblock Data structures for statistical computing in python, 2010.
+
+\bibitem{douglaspeucker}
+David~H. Douglas and Thomas~K. Peucker.
+\newblock {\em Algorithms for the Reduction of the Number of Points Required to
+  Represent a Digitized Line or its Caricature}, chapter~2, pages 15--28.
+\newblock John Wiley and Sons, Ltd, 2011.
+
 \end{thebibliography}

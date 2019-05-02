@@ -12,6 +12,16 @@
 \usepackage{xparse}
 \usepackage{xcolor}
 \usepackage{hyperref}
+
+\makeatletter
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+            {-2.5ex\@plus -1ex \@minus -.25ex}%
+            {1.25ex \@plus .25ex}%
+            {\normalfont\normalsize\bfseries}}
+\makeatother
+\setcounter{secnumdepth}{4} % how many sectioning levels to assign numbers to
+\setcounter{tocdepth}{4}    % how many sectioning levels to show in ToC
+
 \graphicspath{ {./images/} }
 \author{Luke Bray - B00100787}
 \title{Bird Nest Box Monitoring Using Raspberry Pi and Python}
@@ -461,38 +471,51 @@ There is the potential for a lot of data to be stored in the data base. The host
 Now that the data has been recorded and passed from the Raspberry Pi to the database it can be processed and displayed on the web page. Again, Python is being used to achieve this along with other technologies like JSON, Javascript and HTML. Jinja2 template language is available for use within Flask applications however since this is only a single page application it was not needed. 
 
 \subsubsection{Flask\_app.py}
-This is the main controller and handles the passing of data to \texttt{main.html}. Navigating to \url{https://www.lukebray.ie/} will return the \texttt{main.html} template. A route has also been set up at \url{https://www.lukebray.ie/get_data} to trigger the retrieval and JSON-ification of data from the database. The raw JSON-ified data can be viewed here. Once this route is called a connection to the database is established and a cursor object from \texttt{MySQL.connector} is created. This object is used to execute an SQL query to the database and the requested data is then returned using the \texttt{fetchall()} function and assigned to a variable \texttt{r}. 
+This is the main controller and handles the passing of data to \texttt{main.html}. Navigating to \url{https://www.lukebray.ie/} will return the \texttt{main.html} template. A route has also been set up at \url{https://www.lukebray.ie/get_data/days} to trigger the retrieval and JSON-ification of data from the database. The raw JSON-ified data can be viewed here. Once this route is called a connection to the database is established and a cursor object from \texttt{MySQL.connector} is created. This object is used to execute an SQL query to the database and the requested data is then returned using the \texttt{fetchall()} function and assigned to a variable \texttt{r}. 
+
+The function \texttt{get\_data} performs the initial query to return the most current data values. The function accepts a variable \texttt{days}. This variable is used to determine for how many days the user would like to view historical data. The query to the database is constructed using \texttt{days} and the values are then returned. The nature of this project means that new values are submitted to the database at least every minutes. This is a problem when the user wants to see historical data. For example, one value in the database for every minute over 7 days means returning over 10'000 values which would render a chart virtually useless. To overcome this problem I have used the Pandas\citep{pandas} library which allows the application to take a large amount of data and summarise it. For the 30 day and 7 day periods I have chosen to summarise the data by day but for the 1 day period the data is summarised by hour. For the example of 7 days, Pandas can group the data by day and then return the average data value for that day. This is a particularly useful tool to have as it means that massive amounts of data can be grouped together to make the overall data more readable. One other option that was explored was using algorithms such as the Ramer-Douglas-Peucker\citep{douglaspeucker} algorithm however this was deemed unsuitable as the data representation using Pandas and averages was more accurate. 
 
 Four empty Python lists are instantiated - one for each column in the database excluding the id column. A \texttt{for} loop now runs through all of the returned rows and for each row inserts the relevant piece of data into the relevant list. 
 
 Since the rain sensor returns a value of -1 if it isn't raining I decided to add some extra code here to assign a value of \texttt{True} or \texttt{False} depending on the integer that is in the database. This made it easier going forward to get a quick idea of the value. 
 
-The lists are then converted to a JSON format using the JSON library for Python and stored in an array called \texttt{payload}. 
+The lists are then converted to a JSON format using the JSON library for Python and stored in an array called \texttt{payload}. The most current data values are also stored here. 
 
 \subsubsection{main.html}
 This file is where the data is displayed to the user. Bootstrap and JQuery were used to give the page a nice look and feel. These libraries also help with keeping the page so that it is responsive and will work across many devices. The charts were made using the charts.js library for Javascript. The Javascript logic is contained below the HTML content and I will explain it below. 
 
-First the script defines a function \texttt{getFreshData()} to get the fresh data when requested. This function uses an Ajax call to get the data from \url{/get_data} and then assigns it to an empty JSON array called \texttt{data}. 
+After the global variables and chart canvas have been declared a number of functions are created. 
+\paragraph{getFreshData()}
+This function is used to do the Ajax call which gets the set of data requested. It takes \texttt{days} as an argument and is called from buttons within the HTML. 
 
-Ajax stands for Asynchronous Javascript and XML and it is in the Asynchronous nature of the call that I had the biggest issue to overcome. \texttt{getFreshData()} can easily make the Ajax call however it cannot process any of the data that is returned from the call. For example, the application retrieves all of the data in one large array. These need to be split into smaller arrays such as \texttt{\_rainData} and \texttt{\_humData}. Because the call is Asynchronous and Javascript executes sequentially it means that the next lines of Javascript are already executing before the Ajax call can return the data. Because the data is always changing it needs to be retrieved every few seconds. This fact combined with the Asynchronous nature of Ajax calls meant that I could not have a single function to get the data and assign the variables. The solution to this issue will be explained below as it is influenced by another factor of the design. 
+Ajax stands for Asynchronous Javascript and XML and it is the Asynchronous nature of the call that I had the biggest issue to overcome. \texttt{getFreshData()} can easily make the Ajax call however it cannot process any of the data that is returned from the call. For example, the application retrieves all of the data in one large array. These need to be split into smaller arrays such as \texttt{\_rainData} and \texttt{\_humData}. Because the call is Asynchronous and Javascript executes sequentially it means that the next lines of Javascript are already executing before the Ajax call can return the data. Because the data is always changing it needs to be retrieved every few seconds. This fact combined with the Asynchronous nature of Ajax calls meant that I could not have a single function to get the data and assign the variables. The solution to this issue will be explained below as it is influenced by another factor of the design. 
 
-Charts.js requires that a container called a canvas be created to hold the chart and so this is done next. I also created a function called  \texttt{createLineChart(chartName, data, canvas)} which creates a line chart. 
+\paragraph{createLineChart(chartName, theData, canvas)}
+This function takes 3 arguments and is used to actually construct the chart. All of the chart options such as colours and tick options are set in this function and can be called at any time to create a chart. 
 
-As previously mentioned, the data in the database is continuously changing. This means that a static chart will not serve a purpose and so it needs to be updated dynamically. To achieve this I first drew a static chart so that there would be some data displayed when the chart loads. Then the chart and all of the logic associated with it is contained within a \texttt{setInterval()} function. 
+\paragraph{initialiseChart(days)}
+This is the function that gets the data and draws the chart. It also processes the data which is passed from \texttt{Flask\_app.py}. The function uses \texttt{getFreshData()} to retrieve the data and then assigns various pieces of data to variables that were earlier declared as global. Then the function defines the chart data and uses \texttt{createLineChart()} to draw the chart. 
 
-Within in the above function is where the earlier issue with the Ajax calls is resolved. The call is made using \texttt{getFreshData()}. The returned JSON array is then parsed and split into smaller arrays as follows: 
+\paragraph{historicChart()}
+This function takes an argument of \texttt{days}. A global boolean variable called \texttt{liveData} has already been set with a default value of \texttt{true}. This function first sets that value to \texttt{false} and then calls \texttt{initialiseChart()} to draw the historic chart. When this function is called a static chart is displated on the page. The function is called when buttons within the HTML are clicked. For example the 7 day button has an attribute \texttt{onclick="historicData(7)"}. 
+
+\paragraph{liveChart()}
+This function is used to draw a live chart which updates every x seconds. The chart will be set to update every 60 seconds. The function calls \texttt{initialiseChart()} and the sets \texttt{liveData = true}. Then every x seconds the function will check to see if \texttt{liveData} is still true. This is so that when a historic chart is called the page won't reload with a live chart - it will display a static historic chart. 
+
+\paragraph{Page Operation}
+When the page is loaded an initial chart is drawn. This will be a live chart that is continuously updating since I have set \texttt{liveData = true} by default. There is also some logic that checks for this value and if it is true then \texttt{liveChart()} is called. This allows the user to switch back to a live chart after they have viewed a historic chart. \texttt{liveChart()} is called from the live chart button which sets \texttt{liveData = true} which in turn allows the application to call \texttt{liveChart()}. This is effectively a \texttt{while} loop used to keep the live charts updating continuously. 
+
+The Ajax calls are resolved within \texttt{initialiseChart()}. The call is made using \texttt{getFreshData()}. The returned JSON array is then parsed and split into smaller arrays and variables as follows: 
 \begin{itemize}
 \item \texttt{\_tempData}
 \item \texttt{\_humData}
 \item \texttt{\_isRaining}
+\item \texttt{\_currentTemp} (variable)
+\item \texttt{\_currentHum} (variable)
 \item \texttt{\_labels}
 \end{itemize}
 
-For temperature and humidity the most recent value in the array is used to display the current temperature/humidity value in the cards at the top of the page. Rain status is also displayed here. 
-
-The chart is then drawn using the earlier defined \texttt{createLineChart()} function. The now parsed data is passed into the function along with the canvas and the name of the chart. This process is repeated every two seconds. This is advantageous in that it means the data is current however it does mean that \texttt{flask\_app.py} is making constant calls to the database. Unfortunately due to the nature of this project that is unavoidable however using Javascript with Charts.js means most of the data processing is done client-side. 
-
-\subsubsection{Linux Automated Bash Scripts}
+This is advantageous in that it means the data is current however it does mean that \texttt{flask\_app.py} is making constant calls to the database. Unfortunately due to the nature of this project constant calls are made to the database when a live chart is being viewed. However that is unavoidable given the nature of the project. Fortunately using Javascript with Charts.js means most of the real data processing is done client-side. 
 
 \pagebreak
 \section{Testing and Evaluation}
@@ -538,8 +561,20 @@ This stage of testing was the first stage where multiple components of the proje
   \item Data can be sent to the database
 \end{enumerate}
 
-To meet the requirements above, the database was first cleared of any data. Then \texttt{dataSend.py} was set to colelct data every 5 seconds and run for 1 minute. Then the MySQL database was checked to first of all see that all of the data had been recorded and also that the expected 12 rows of data were present. This was confirmed and therefore the test was successful.
+To meet the requirements above, the database was first cleared of any data. Then \texttt{dataSend.py} was set to collect data every 5 seconds and run for 1 minute. Then the MySQL database was checked to first of all see that all of the data had been recorded and also that the expected 12 rows of data were present. This was confirmed and therefore the test was successful.
 
+\subsubsection{Data Display Testing}
+This stage of testing was the most difficult to do and it was the stage that required the most iterations to finally meet the passing requirements. To pass this stage of testing the following requirements had to be met:
+
+\begin{enumerate}
+  \item The final web page displays a live, responsive chart section
+  \item The final web page displays the most recent temperature and humidity values as well as the current rain status
+  \item The final web page allows the user the view historic data in predefined date ranges
+\end{enumerate}
+
+The testing for this part of the project was done on the live website. Code was updated on PythonAnywhere and then the website refreshed to evaluate the changes. \texttt{console.log(var)} was used to evaluate that the correct values were being passed from the controller. Using Python Anywhere I was also able to view the error logs and server logs. So if anything went wrong with the front end template I could view it in the web browser console and anything that went wrong with the backend controller could be viewed using the logs on Python Anywhere. 
+
+I also used the web browser to test the web page on different devices to verify its responsiveness. 
 \subsection{Device Functionality}
 Functions and features of the device. How the device is intended to perform
 \subsection{Evaluation}
