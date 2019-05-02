@@ -575,10 +575,39 @@ This stage of testing was the most difficult to do and it was the stage that req
 The testing for this part of the project was done on the live website. Code was updated on PythonAnywhere and then the website refreshed to evaluate the changes. \texttt{console.log(var)} was used to evaluate that the correct values were being passed from the controller. Using Python Anywhere I was also able to view the error logs and server logs. So if anything went wrong with the front end template I could view it in the web browser console and anything that went wrong with the backend controller could be viewed using the logs on Python Anywhere. 
 
 I also used the web browser to test the web page on different devices to verify its responsiveness. 
-\subsection{Device Functionality}
-Functions and features of the device. How the device is intended to perform
+
 \subsection{Evaluation}
-How the device performed on each of the tests that were conducted. What areas now need to be improved to move towards a more complete prototype
+Overall the device performed well on most of the tests. The majority of tests were passed within 2 or 3 iterations of the test being run and this indicates that the design was well thought out. The most troublesome testing came during the data display testing and this took many iterations to eventually meet the testing requirements and be suitable for deployment. 
+
+After completing all of the testing and having a working prototype it is useful to see if the initial design requirements have been met.
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+\begin{table}[]
+  \begin{tabular}{@{}cc@{}}
+  \toprule
+  \multicolumn{1}{l}{\textbf{Requirement Reference}} & \multicolumn{1}{l}{\textbf{Requirement Met?}} \\ \midrule
+  SR001                                              & Yes                                           \\
+  SR002                                              & Yes                                           \\
+  SR003                                              & Yes                                           \\
+  SR004                                              & Yes                                           \\
+  SR005                                              & No                                            \\
+  SR006                                              & No                                            \\
+  SR007                                              & Yes                                           \\
+  SR008                                              & Yes                                           \\
+  SR009                                              & Yes                                           \\
+  SR010                                              & Yes                                           \\ \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{PiBB - SR001}
+\begin{center}
+  \framebox{\textit{The system will be able to output a live HD video feed of the inside of the dark nest box. This allows a user to see if anything is living inside of the nest box.}}\par
+\end{center}
+
+
+  As can be seen from the table, most of the technical requirements have been met. The major requirements that could not be met were SR005 and SR006. SR005 stated that the device must be able to be fully remote and placable outside using renewable energy and a wireless internet connection. As previously mentioned in this document, renewable enerygy was not a feasable option and so this requirement could not be met. 
+
+  SR006 stated that power failures should be handled in a way that does not corrupt the system. While this requirement has not been met, it is less relevant with the exclusion of renewable energy from the project. Mains power will supply the device and so power failures are less likely. However in a future iteration where a source of renewable energy is used for power this requirement will be a lot more critical.
 \subsection{Implementation of the Prototype}
 How the prototype will be implemented. What considerations need to be taken when implementing and what conclusions can we draw from the testing that affect the implementation of the prototype
 

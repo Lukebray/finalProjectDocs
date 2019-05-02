@@ -61,15 +61,16 @@
 \contentsline {paragraph}{\numberline {6.7.2.3}initialiseChart(days)}{33}{paragraph.6.7.2.3}
 \contentsline {paragraph}{\numberline {6.7.2.4}historicChart()}{33}{paragraph.6.7.2.4}
 \contentsline {paragraph}{\numberline {6.7.2.5}liveChart()}{33}{paragraph.6.7.2.5}
-\contentsline {subsubsection}{\numberline {6.7.3}Linux Automated Bash Scripts}{34}{subsubsection.6.7.3}
+\contentsline {paragraph}{\numberline {6.7.2.6}Page Operation}{33}{paragraph.6.7.2.6}
 \contentsline {section}{\numberline {7}Testing and Evaluation}{35}{section.7}
 \contentsline {subsection}{\numberline {7.1}Introduction}{35}{subsection.7.1}
 \contentsline {subsection}{\numberline {7.2}Testing Methodology}{35}{subsection.7.2}
 \contentsline {subsubsection}{\numberline {7.2.1}PiCamera Testing}{35}{subsubsection.7.2.1}
 \contentsline {subsubsection}{\numberline {7.2.2}Sensor Testing}{36}{subsubsection.7.2.2}
 \contentsline {subsubsection}{\numberline {7.2.3}Data Collection Testing}{36}{subsubsection.7.2.3}
-\contentsline {subsection}{\numberline {7.3}Device Functionality}{36}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Evaluation}{36}{subsection.7.4}
-\contentsline {subsection}{\numberline {7.5}Implementation of the Prototype}{37}{subsection.7.5}
-\contentsline {section}{\numberline {8}Further Work}{38}{section.8}
-\contentsline {section}{\numberline {9}Conclusions}{39}{section.9}
+\contentsline {subsubsection}{\numberline {7.2.4}Data Display Testing}{36}{subsubsection.7.2.4}
+\contentsline {subsection}{\numberline {7.3}Evaluation}{37}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}PiBB - SR001}{37}{subsubsection.7.3.1}
+\contentsline {subsection}{\numberline {7.4}Implementation of the Prototype}{38}{subsection.7.4}
+\contentsline {section}{\numberline {8}Further Work}{39}{section.8}
+\contentsline {section}{\numberline {9}Conclusions}{40}{section.9}
