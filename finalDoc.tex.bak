@@ -83,11 +83,11 @@ The third aim of this project is to enhance my learning and understanding of dev
 \pagebreak
 \section{Literature Review}
 \subsection{Introduction}
-Birds have been used as tools all over the world for centuries for things such as hunting, entertainment and delivering messages. In the modern world bird watching is an already a popular activity and it's recent increase in popularity has helped to integrate research into birds, bird conservation and socio-economics development\cite{Zhijun2013}. In China alone as of 2010 there were in excess of 20,000 birdwatchers\cite{Zhijun2013}. The hobby is essentially the monitoring of different bird species and recording information such as the time of year, the species of the bird and how many birds there are. Many countries have organisations where birdwatchers can submit this data and this leads to an overall picture of the welfare of a countries native species.
+Birds have been used as tools all over the world for centuries for things such as hunting, entertainment and delivering messages. In the modern world birdwatching is an already a popular activity and it's recent increase in popularity has helped to integrate research into birds, bird conservation and socio-economics development\cite{Zhijun2013}. In China alone as of 2010 there were in excess of 20,000 birdwatchers\cite{Zhijun2013}. The hobby is essentially the monitoring of different bird species and recording information such as the time of year, the species of the bird and how many birds there are. Many countries have organisations where birdwatchers can submit this data and this leads to an overall picture of the welfare of a countries native species.
 
 A parallel to this rise in birdwatchers over recent years has been the emergence of the large number physical objects which are connected to the internet, commonly known as the \textit{Internet of Things}. These devices can play a large role in our daily lives and in 2010 the number of devices connected to the internet surpassed the population of humans on Earth\cite{AlFuqaha2015} and by 2020 it is estimated that the number of IoT smart objects deployed globally will reach 50 billion entities\cite{Arumuga2017}. 
 
-When we see the clear trend upwards in both bird watching and smart devices connected to the IoT it becomes a natural step to combine the two and create a smart, connected device that can bring the hobby of bird watching and all of the benefits it provides into the digital world. Bird watching is essentially a hobby where monitoring takes place, albeit manually. It therefore seems natural with the help of small, powerful computers and all of the sensors available for them to build a monitoring device. 
+When we see the clear trend upwards in both birdwatching and smart devices connected to the IoT it becomes a natural step to combine the two and create a smart, connected device that can bring the hobby of birdwatching and all of the benefits it provides into the digital world. Birdwatching is essentially a hobby where monitoring takes place, albeit manually. It therefore seems natural with the help of small, powerful computers and all of the sensors available for them to build a monitoring device. 
 
 In this literature review I will explore some other monitoring projects which used technology similar to that I intend to use. Creating a bird monitoring device will present some challenges such as connectivity and power supply and I will attempt to gain a better understanding of how I might cope with these challenges in my monitoring device.
 \subsection{Raspberry Pi for Video Capture}
@@ -118,7 +118,7 @@ Raspberry Pi is powered by a +5.1V micro USB port and it is recommended to purch
 
 One paper set out to achieve an accurate estimation of the Raspberry Pi's power consumption and see if they could reduce power consumption by optimizing the software running on the platform\cite{Kaup2014}. In the study they set the Pi up to run only essential operations and specifically wrote lightweight utilization software to reduce power consumption while still achieving their goal. The monitor was not even permitted to write to the SD card, instead writing the results to RAM and copying the data after the monitoring had finished. The above was done with the intention of being able to monitor system utilisation without the process of monitoring affecting results. 
 
-The study then used software called \textit{cpulimit} to generate load on the system. This software creates an infinite loop which adds numbers until the CPU load is at the desired limit. The study ended up with 900,000 power measurements which were combined and plotted logarithmic-ally in a heat map fashion on the graph below\cite{Kaup2014}:
+The study then used software called \textit{cpulimit} to generate load on the system. This software creates an infinite loop which adds numbers until the CPU load is at the desired limit. The study ended up with 900,000 power measurements which were combined and plotted logarithmically in a heat map fashion on the graph below\cite{Kaup2014}:
 
 \begin{figure}[H]
 \centering
@@ -133,7 +133,7 @@ The study above is a good example of how to measure the power consumption of a s
 \subsubsection{Solar Power}
 It seems that the most efficient way to power a monitoring system would be to use a renewable energy source. The most accessible and affordable is solar power. A solar power system has three main components: 
 \begin{enumerate}
-\item\textit{The Solar Panel} - This is what most people think of when they think of solar power. It is a panel that uses the photo-voltaic effect to convert sunlight and to electricity and is the core of any solar power system.
+\item\textit{The Solar Panel} - This is what most people think of when they think of solar power. It is a panel that uses the photovoltaic effect to convert sunlight and to electricity and is the core of any solar power system.
 \item\textit{The Solar Controller} - This is an important part of any solar power system. It's role is to regulate the amount of charge coming from the panel to the battery and prevent overcharging\citep{website:energymatters}. Devices can also be charged directly from the solar controller with some versions even including 2.5A USB ports which are ideal for charging devices such as Raspberry Pi.
 \item\textit{The Battery} - This part of the solar power system is optional. If you have a device which is being charged directly then there will be no need for this part of the system however it could be important in climates where there is not a lot of sunlight or if you have a device that needs to be powered overnight.
 \end{enumerate}
@@ -176,7 +176,7 @@ Interference with Zigbee from WiFi can also occur and this is one of the main dr
   \label{fig:zigbeechannels}
 \end{figure}
 
-Usually the Zigbee network is the network that will lose packets. The side band lobes of the WiFi signal can easily drown out the less powerful Zigbee signals. This is one of the biggest problems with Zigbee and careful planning is required when it will be used in close proximity with any WiFi-enabled devices.
+Usually the Zigbee network is the network that will lose packets. The sideband lobes of the WiFi signal can easily drown out the less powerful Zigbee signals. This is one of the biggest problems with Zigbee and careful planning is required when it will be used in close proximity with any WiFi-enabled devices.
 
 \subsection{Python Web Frameworks}
 A key aspect of this project is to display the collected data in a way that is appealing and accessible. This will most likely mean displaying the data on a web page. However due to the rapid evolution of the World Wide Web it has become difficult to utilise all of the technologies required for good web development\citep{pop_altar_2014}. Using a web framework can be a good way to tie the various technologies together to allow for quicker development and also to facilitate future expansion more easily. This section will look at three Python web frameworks and discuss some of their features. 
@@ -230,7 +230,7 @@ This chapter will outline the key requirements of this project and will then ide
 \centering
 \begin{tabular}{p{2cm}p{9cm}}
 \toprule
-\textbf{Use Case}    & Display environmental data on a web page \\ \midrule
+\textbf{Use Case}    & Display environmental ata on a web page \\ \midrule
 \textbf{Actors}      & Data sensors, PiCamera, Raspberry Pi, web server, web page, web user                                                                          \\
 \textbf{Description} & The website will make a request to the web server to grab the data and the data will then be output to the web page in a way that is visually appealing         \\
 \textbf{Stimulus}    & Triggered by user accessing the web page\\
@@ -394,12 +394,12 @@ Actual development of code will be done on my local machine using VSCode. The wh
 \subsection{Introduction}
 This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
 
-\subsection{Implementation Method}
+\subsection{Implmentation Method}
 Even in the early days of software engineering the criticality of having a sound software development approach was recognised. It can be easy to delay or avoid completing this process while deficiencies in it can be very difficult and expensive to correct later on. Other issues arise such as the user feeling alienated due to lack of transparency or documentation and testing being hard to define\citep{1674590}.
 
-This project will be implanted using an iterative software development life-cycle. This type of methodology involves a planning stage where the requirements of the system are defined. The iterative part of the life-cycle see's the project designed, implemented, tested and then evaluated. This is important because the project can be split into multiple mini-projects that don't present as big of a task. This particular project has been designed to be modular and using an iteration development method allows each modular component to be thoroughly tested and integrated seamlessly into the overall project. Through testing it is ensured that every component of the design can work independently and then combine at a later stage to form one overall project. Each iteration of the project adds in a new component which brings with it extra features and stability. 
+This project will be implented using an iterative software development lifecycle. This type of methodology involves a planning stage where the requirements of the system are defined. The iterative part of the lifecycle see's the project designed, implemented, tested and then evaluated. This is important because the project can be split into multiple mini-projects that don't present as big of a task. This particular project has been designed to be modular and using an iteration development method allows each modular component to be thoroughly tested and integrated seamlessly into the overall project. Through testing it is ensured that every component of the design can work independently and then combine at a later stage to form one overall project. Each iteration of the project adds in a new component which brings with it extra features and stability. 
 
-Each component of the project will be developed individually and then tested to make sure it works before introducing it into the final project. This is the advantage of using an iterative software development life cycle. A diagram of the life-cycle is shown below. 
+Each conmponent of the project will be developed individually and then tested to make sure it works before introducing it into the final project. This is the advantage of using an iterative software development life cycle. A diagram of the lifecycle is shown below. 
 
 \begin{figure}[H]
   \centering
@@ -409,7 +409,7 @@ Each component of the project will be developed individually and then tested to 
 \end{figure}
 
 \subsection{System Overview}
-The physical prototype was built and is explained later in this chapter. A bash script has been written so that on startup a Linux command is automatically executed and this begins the streaming of the PiCamera to Youtube. The same bash script will also run dataSend.py. which uses classes dht11.py and rainSensor.py to record data. The data is then inserted into the MySQL database where it can be displayed on a web page. The Flask app processes the data and passes it to main.html and using the charts.js library the data is then displayed in a presentable manner. Main.html also embeds the live stream from Youtube. 
+The physical prototype was built and is explained later in this chapter. A bash script has been written so that on startup a linux command is automatically executed and this begins the streaming of the PiCamera to Youtube. The same bash script will also run dataSend.py. which uses classes dht11.py and rainSensor.py to record data. The data is then inserted into the MySQL database where it can be displayed on a web page. The Flask app processes the data and passes it to main.html and using the charts.js library the data is then displayed in a presentable manner. Main.html also embeds the live stream from Youtube. 
 
 \subsection{Physical Environment Setup}
 The first step of implementation was to get the hardware circuit working. The four main components are the Raspberry Pi, a DHT11 temperature and humidity sensor, the NoIR PiCamera and an FC-37 rain sensor. Initially these were implemented into a circuit using a breadboard. This allowed for a less permanent and more flexible setup for testing purposes. The circuit diagram is shown below along with some photographs of the hardware setup. 
@@ -497,7 +497,7 @@ This function takes 3 arguments and is used to actually construct the chart. All
 This is the function that gets the data and draws the chart. It also processes the data which is passed from \texttt{Flask\_app.py}. The function uses \texttt{getFreshData()} to retrieve the data and then assigns various pieces of data to variables that were earlier declared as global. Then the function defines the chart data and uses \texttt{createLineChart()} to draw the chart. 
 
 \paragraph{historicChart()}
-This function takes an argument of \texttt{days}. A global boolean variable called \texttt{liveData} has already been set with a default value of \texttt{true}. This function first sets that value to \texttt{false} and then calls \texttt{initialiseChart()} to draw the historic chart. When this function is called a static chart is displayed on the page. The function is called when buttons within the HTML are clicked. For example the 7 day button has an attribute \texttt{onclick="historicData(7)"}. 
+This function takes an argument of \texttt{days}. A global boolean variable called \texttt{liveData} has already been set with a default value of \texttt{true}. This function first sets that value to \texttt{false} and then calls \texttt{initialiseChart()} to draw the historic chart. When this function is called a static chart is displated on the page. The function is called when buttons within the HTML are clicked. For example the 7 day button has an attribute \texttt{onclick="historicData(7)"}. 
 
 \paragraph{liveChart()}
 This function is used to draw a live chart which updates every x seconds. The chart will be set to update every 60 seconds. The function calls \texttt{initialiseChart()} and the sets \texttt{liveData = true}. Then every x seconds the function will check to see if \texttt{liveData} is still true. This is so that when a historic chart is called the page won't reload with a live chart - it will display a static historic chart. 
@@ -520,7 +520,7 @@ This is advantageous in that it means the data is current however it does mean t
 \pagebreak
 \section{Testing and Evaluation}
 \subsection{Introduction}
-There are many steps to ensuring this particular device works properly and the final data results are displayed to the user in the proper way. The project has been designed to be modular and this makes testing a lot easier to conduct. Each component can be tested before being implemented and this has meant that combining all components into the final project has been quick and efficient.
+There are many steps to ensuring this particular device works properly and the final data results are displayed to the user in the proper way. The project has been designed to be modular and this makes testing a lot easier to conduct. Each componenet can be tested before being implemented and this has meant that combining all components into the final project has been quick and efficient.
 
 This section will explain the testing methodology and show how each component was tested before being implemented fully. 
 Why testing is important for this product and what tests need to be done to ensure a good prototype
@@ -618,7 +618,7 @@ This requirement has been satisfied by using the Raspberry Pi and hardware senso
 \textit{The web server must be able to display live data and the web page must update dynamically to display the latest data}
 \linebreak
 \end{center}
-This requirement has been achieved by using Javascript and Python to retrieve data from the web server and display it on the web page. Using Charts.js has allowed me to create charts that update dynamically.
+This requirement has been achieved by using Javascript and Python to retrieve data from the web server and display it on the webpage. Using Charts.js has allowed me to create charts that update dynamically.
 
 \subsubsection{PiBB - SR004}
 \begin{center}
@@ -665,13 +665,13 @@ This requirement was met. Using Python was a good design element as it is a robu
 
 \subsubsection{PiBB - SR010}
 \begin{center}
-\textit{The web application should be built using a Python framework.}q
+\textit{The web application should be built using a Python framework.}
 \linebreak
 \end{center}
 This requirement was achieved by using the Flask framework. Although this project only has one web page using Flask will make it very easy to scale the website in case that is ever required. 
 
 \subsection{Implementation of the Prototype}
-The prototype will be implemented in an environment that is not too remote but allows further testing of the functionality of the device in both a software and hardware sense. A garden would be a good place to implement the prototype. The device still needs to be connected to mains power which means it cannot be fully remotely deployed. The weather sealing of the device is still somewhat unknown and adverse weather may affect the device. One potential issue is that the device can get quite hot. To weather seal it the device is placed inside a plastic box and during the summer months airflow may be an issue so the device may overheat. 
+The prototype will be implemented in an environment that is not too remote but allows further testing of the functionality of the device in both a software and hardware sense. A garden would be a good place to implement the prototype. The device still needs to be connected to mains power which means it cannot be fully reomotely deployed. The weather sealing of the device is still somewhat unknown and adverse weather may affect the device. One potential issue is that the device can get quite hot. To weather seal it the device is placed inside a plastic box and during the summer months airflow may be an issue so the device may overheat. 
 
 Some bugs still remain with the software. The script that controls the DHT11 sensor produces intermittent errors and the cause of these errors is unknown. This will have to be monitored and considered when implementing the prototype. There is also a known but with Charts.js where hovering over the chart can sometimes display historic data so this will need to be considered when deploying the live website. Another charting library may need to be used in a future iteration. 
 
