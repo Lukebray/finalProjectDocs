@@ -82,13 +82,16 @@
 \BOOKMARK [3][-]{subsubsection.7.3.10}{PiBB - SR010}{subsection.7.3}% 82
 \BOOKMARK [2][-]{subsection.7.4}{Implementation of the Prototype}{section.7}% 83
 \BOOKMARK [1][-]{section.8}{Further Work}{}% 84
-\BOOKMARK [1][-]{section.9}{Conclusions}{}% 85
-\BOOKMARK [1][-]{appendix.A}{Application Code}{}% 86
-\BOOKMARK [2][-]{subsection.A.1}{dht11.py}{appendix.A}% 87
-\BOOKMARK [2][-]{subsection.A.2}{rainSensor.py}{appendix.A}% 88
-\BOOKMARK [2][-]{subsection.A.3}{dataSend.py}{appendix.A}% 89
-\BOOKMARK [2][-]{subsection.A.4}{flask\137app.py}{appendix.A}% 90
-\BOOKMARK [2][-]{subsection.A.5}{main.html}{appendix.A}% 91
-\BOOKMARK [2][-]{subsection.A.6}{camTest.py}{appendix.A}% 92
-\BOOKMARK [2][-]{subsection.A.7}{sensorTest.py}{appendix.A}% 93
-\BOOKMARK [2][-]{subsection.A.8}{pandasTest.py}{appendix.A}% 94
+\BOOKMARK [2][-]{subsection.8.1}{Power Management Software}{section.8}% 85
+\BOOKMARK [2][-]{subsection.8.2}{Website Improvements}{section.8}% 86
+\BOOKMARK [2][-]{subsection.8.3}{Connection to Other Services Using APIs and Community Creation}{section.8}% 87
+\BOOKMARK [1][-]{section.9}{Conclusions}{}% 88
+\BOOKMARK [1][-]{appendix.A}{Application Code}{}% 89
+\BOOKMARK [2][-]{subsection.A.1}{dht11.py}{appendix.A}% 90
+\BOOKMARK [2][-]{subsection.A.2}{rainSensor.py}{appendix.A}% 91
+\BOOKMARK [2][-]{subsection.A.3}{dataSend.py}{appendix.A}% 92
+\BOOKMARK [2][-]{subsection.A.4}{flask\137app.py}{appendix.A}% 93
+\BOOKMARK [2][-]{subsection.A.5}{main.html}{appendix.A}% 94
+\BOOKMARK [2][-]{subsection.A.6}{camTest.py}{appendix.A}% 95
+\BOOKMARK [2][-]{subsection.A.7}{sensorTest.py}{appendix.A}% 96
+\BOOKMARK [2][-]{subsection.A.8}{pandasTest.py}{appendix.A}% 97

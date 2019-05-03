@@ -32,14 +32,22 @@
 \includepdf[pages=-]{title_page.pdf}
 \pagebreak
 \section{Abstract}
+Man-made nest boxes form a large number of habitats for small birds in Ireland and this project seeks to find a better, less intrusive way to monitor them. 
+This project involves the development of a remote monitoring system that can be used to monitor bird nest boxes in the wild. The aim of this project is ultimately to provide useful data which can be consumed in an efficient way. 
+
+To achieve the above goal the project uses the Python programming language along with the most current web development technologies to ensure a scalable, robust and visually pleasing application. 
+
+The project has found that a truly remote monitoring system is a lot more difficult to implement than first imagined and can rely just as much on the hardware used than the software that has been developed. Even with the most robust software the hardware can still fail. 
+
+The project has indicated that to build a truly remote system some form of renewable energy must be used and further development work would be needed to ensure a device such as this could be deployed to a truly remote location. The project has also been found to be something that can be expanded to increase its effectiveness and relevance within the birdwatching community. 
+
 \pagebreak
 \section{Acknowledgements}
+I would like to take this opportunity to that my supervisor Aurelia Power for her help and support through out this project. The feedback and input from her has been truly valuable.
+I would also like to thank my partner Megan without whom I would never have known about this course and would not be where I am today, both academically and professionally. 
+Finally I would like to thank my family and friends who have been supportive and have shown interest in the project itself which has been a great encouragement.  
 \pagebreak
 \tableofcontents
-\pagebreak
-\listoffigures
-\pagebreak
-\listoftables
 \pagebreak
 \section{Introduction}
 \subsection{Background}
@@ -699,7 +707,6 @@ This requirement has not been fully achieved. The system has a wireless internet
 \end{center}
 This requirement was not met because it is less relevant with the exclusion of renewable energy from the project. Mains power will supply the device and so power failures are less likely. However in a future iteration where a source of renewable energy is used for power this requirement will be a lot more critical and could be a very interesting project by itself.
 
-
 \subsubsection{PiBB - SR007}
 \begin{center}
 \textit{The system must not be obtrusive to the wildlife occupying the nest box and must be as discreet as possible. }
@@ -735,12 +742,41 @@ Some bugs still remain with the software. The script that controls the DHT11 sen
 
 \pagebreak
 \section{Further Work}
-How might the device be improved? What extra features could be included next time and how might a different SDLC have an effect on the design and functionality of this product
+There is plenty of scope for further work on this project. Implementing the project and any of the below features would require a more through design and requirement process to be completed. When building this project I did not realise the amount of technologies that are available and I think researching technologies more throughly in future iterations would be helpful. I will explain some of the main features that could be implemented below.
+
+\subsection{Power Management Software}
+As mentioned earlier in the document, renewable power was something that not used due to the risk of power suddenly being lost. The Raspberry Pi does not have a sleep functionality which means that it is much more difficult to manage power consumption if the device is to be truly remote. A significant upgrade to this project would be writing software that can put the Raspberry Pi into a lower power consumption state and shut off every non-essential functionality. This would allow power expectations to be managed more effectively and would make the use of a renewable power source much less risky. 
+
+\subsection{Website Improvements}
+A good improvement would be to the functionality of the website. One of the main aspects to this would be more flexibility in viewing of the collected data. For example, currently the user can choose to view data from predefined date ranges however this could be improved to allow the user to select a custom amount of days as well as a custom amount of data points. Currently the historic data shows averages over the days displayed however with the use of the Pandas library there would be a great opportunity to use the data in many different ways and allow the user to choose how they want to view the data. This would allow the opportunity for extra types of charts to be used other than just the line chart. 
+
+\subsection{Connection to Other Services Using APIs and Community Creation}
+There are a few external services that could be integrated with the web app that would make it more useful and unique. One of these is the webcams.travel API. Using this API other webcams from around the world could be integrated into the site which could allow a network of birdwatching cameras from around the world to be built. A sign up feature could be implemented using social APIs like Facebook and Google which would allow users who have similar projects to share their webcam footage for all to view. This would mean scaling the website so that it is a larger application than the single page it is now.
+
 
 \pagebreak
 \section{Conclusions}
-What did I learn while doing this project. What went wrong and what was done well. Is the device created as useful as was initially thought? Is the way I did this project the most effective way to achieve the intended result? 
+There were many problems with this project and the main one of these was the discovery that the Raspberry Pi does not have a sleep mode meaning renewable energy could not be used. When I discovered this I had already committed to using the Raspberry Pi. This taught me that thorough research is invaluable. I discovered halfway through the project that the Pandas Python library would allow me to manipulate data very easily however this was after spending many painful days trying to manipulate my data. This again highlights the importance of researching technologies that might be available to you. 
 
+One of the most valuable lessons I have learned on this project is to read the error logs. This may sound like something obvious however learning where the specific error logs are and how to recreate the errors was really valuable in resolving errors and was something that I was not fully utilising when first developing the project. These logs were especially useful during the web development phase of the project. 
+
+Despite the above problems there were some major successes on this project. I was truly able to observe the benefit of having a well defined SDLC. At the end of the project I was able to directly compare my system requirements with what I had achieved in the application and this provided a good way of evaluating to worth and success of the project. Using an iterative process also helped greatly with development and making sure features are working correctly and can work together in the final implementation. 
+
+Another success was that I was able to build an application that I am proud of and believe is a good application. When starting this project I did not believe I could create as complex a system as I have however over the course of this project I have been able to develop something which I am genuinely proud of. The project works well and is useful. 
+
+The device unfortunately does not work as well as originally intended. All of the functionality of the software has been included but it is the hardware of this project that lets it down in that it cannot be a truly remote monitoring device. That said, it still does have the ability to monitor a nest box with wildlife living inside so in that sense the project is a success.
+
+This project is something I have thoroughly enjoyed and I have learnt a lot during the process. With more time and resources I believe this project could be developed into something that is more useful and more accessible for lots of other people and is something people could get some enjoyment from as well. 
+
+\pagebreak
+
+\bibliographystyle{unsrt}
+\bibliography{biblio}
+
+\pagebreak
+\listoffigures
+\pagebreak
+\listoftables
 \pagebreak
 
 \appendix
@@ -1513,8 +1549,5 @@ What did I learn while doing this project. What went wrong and what was done wel
   print(labels[0])
 \end{minted}
 
-\pagebreak
-\bibliographystyle{unsrt}
-\bibliography{biblio}
 
 \end{document}

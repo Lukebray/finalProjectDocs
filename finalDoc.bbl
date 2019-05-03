@@ -1,21 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{Kaup2014}
-F.~Kaup, P.~Gottschling, and D.~Hausheer.
-\newblock Powerpi: Measuring and modeling the power consumption of the
-  raspberry pi.
-\newblock pages 236--243, Sept 2014.
-
-\bibitem{website:edgefx}
-EdgeFX.
-\newblock Solar charge controller working using microcontroller, February 2019.
-
-\bibitem{zigbeechannels}
-Zigbee and wifi coexistence.
-\newblock
-  \url{https://www.metageek.com/training/resources/zigbee-wifi-coexistence.html}.
-\newblock Accessed: 2018-12-10.
-
 \bibitem{PIERRET201814}
 Pauline Pierret and Frédéric Jiguet.
 \newblock The potential virtue of garden bird feeders: More birds in citizen
@@ -79,9 +63,19 @@ Sriyanka and S.~R. Patil.
   raspberrypi 3.
 \newblock pages 595--600, Sept 2017.
 
+\bibitem{Kaup2014}
+F.~Kaup, P.~Gottschling, and D.~Hausheer.
+\newblock Powerpi: Measuring and modeling the power consumption of the
+  raspberry pi.
+\newblock pages 236--243, Sept 2014.
+
 \bibitem{website:energymatters}
 Energy Matters.
 \newblock What is a solar regulator/charge controller, February 2019.
+
+\bibitem{website:edgefx}
+EdgeFX.
+\newblock Solar charge controller working using microcontroller, February 2019.
 
 \bibitem{Ruckus2014}
 Ruckus Wireless.
@@ -112,6 +106,12 @@ M.~Idoudi, H.~Elkhorchani, and K.~Grayaa.
 \newblock Performance evaluation of wireless sensor networks based on zigbee
   technology in smart home.
 \newblock pages 1--4, March 2013.
+
+\bibitem{zigbeechannels}
+Zigbee and wifi coexistence.
+\newblock
+  \url{https://www.metageek.com/training/resources/zigbee-wifi-coexistence.html}.
+\newblock Accessed: 2018-12-10.
 
 \bibitem{pop_altar_2014}
 Dragos-Paul Pop and Adam Altar.
