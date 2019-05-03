@@ -1,0 +1,195 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    \PYG{k+kn}{import} \PYG{n+nn}{time}
+  \PYG{k+kn}{import} \PYG{n+nn}{RPi}
+
+
+  \PYG{k}{class} \PYG{n+nc}{DHT11Result}\PYG{p}{:}
+      \PYG{l+s+s1}{\PYGZsq{}DHT11 sensor result returned by DHT11.read() method\PYGZsq{}}
+
+      \PYG{n}{ERR\PYGZus{}NO\PYGZus{}ERROR} \PYG{o}{=} \PYG{l+m+mi}{0}
+      \PYG{n}{ERR\PYGZus{}MISSING\PYGZus{}DATA} \PYG{o}{=} \PYG{l+m+mi}{1}
+      \PYG{n}{ERR\PYGZus{}CRC} \PYG{o}{=} \PYG{l+m+mi}{2}
+
+      \PYG{n}{error\PYGZus{}code} \PYG{o}{=} \PYG{n}{ERR\PYGZus{}NO\PYGZus{}ERROR}
+      \PYG{n}{temperature} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+      \PYG{n}{humidity} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+
+      \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{error\PYGZus{}code}\PYG{p}{,} \PYG{n}{temperature}\PYG{p}{,} \PYG{n}{humidity}\PYG{p}{):}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{error\PYGZus{}code} \PYG{o}{=} \PYG{n}{error\PYGZus{}code}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{temperature} \PYG{o}{=} \PYG{n}{temperature}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{humidity} \PYG{o}{=} \PYG{n}{humidity}
+
+      \PYG{k}{def} \PYG{n+nf}{is\PYGZus{}valid}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+          \PYG{k}{return} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{error\PYGZus{}code} \PYG{o}{==} \PYG{n}{DHT11Result}\PYG{o}{.}\PYG{n}{ERR\PYGZus{}NO\PYGZus{}ERROR}
+
+
+  \PYG{k}{class} \PYG{n+nc}{DHT11}\PYG{p}{:}
+      \PYG{l+s+s1}{\PYGZsq{}DHT11 sensor reader class for Raspberry\PYGZsq{}}
+
+      \PYG{n}{\PYGZus{}\PYGZus{}pin} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+      \PYG{k}{def} \PYG{n+nf+fm}{\PYGZus{}\PYGZus{}init\PYGZus{}\PYGZus{}}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{pin}\PYG{p}{):}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}pin} \PYG{o}{=} \PYG{n}{pin}
+
+      \PYG{k}{def} \PYG{n+nf}{read}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+          \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setup}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}pin}\PYG{p}{,} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{OUT}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} send initial high}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}send\PYGZus{}and\PYGZus{}sleep}\PYG{p}{(}\PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{HIGH}\PYG{p}{,} \PYG{l+m+mf}{0.05}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} pull down to low}
+          \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}send\PYGZus{}and\PYGZus{}sleep}\PYG{p}{(}\PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{LOW}\PYG{p}{,} \PYG{l+m+mf}{0.02}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} change to input using pull up}
+          \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setup}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}pin}\PYG{p}{,} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{IN}\PYG{p}{,} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{PUD\PYGZus{}UP}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} collect data into an array}
+          \PYG{n}{data} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}collect\PYGZus{}input}\PYG{p}{()}
+
+          \PYG{c+c1}{\PYGZsh{} parse lengths of all data pull up periods}
+          \PYG{n}{pull\PYGZus{}up\PYGZus{}lengths} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}parse\PYGZus{}data\PYGZus{}pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} if bit count mismatch, return error (4 byte data + 1 byte checksum)}
+          \PYG{k}{if} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{)} \PYG{o}{!=} \PYG{l+m+mi}{40}\PYG{p}{:}
+              \PYG{k}{return} \PYG{n}{DHT11Result}\PYG{p}{(}\PYG{n}{DHT11Result}\PYG{o}{.}\PYG{n}{ERR\PYGZus{}MISSING\PYGZus{}DATA}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} calculate bits from lengths of the pull up periods}
+          \PYG{n}{bits} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}calculate\PYGZus{}bits}\PYG{p}{(}\PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} we have the bits, calculate bytes}
+          \PYG{n}{the\PYGZus{}bytes} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}bits\PYGZus{}to\PYGZus{}bytes}\PYG{p}{(}\PYG{n}{bits}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} calculate checksum and check}
+          \PYG{n}{checksum} \PYG{o}{=} \PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}calculate\PYGZus{}checksum}\PYG{p}{(}\PYG{n}{the\PYGZus{}bytes}\PYG{p}{)}
+          \PYG{k}{if} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{4}\PYG{p}{]} \PYG{o}{!=} \PYG{n}{checksum}\PYG{p}{:}
+              \PYG{k}{return} \PYG{n}{DHT11Result}\PYG{p}{(}\PYG{n}{DHT11Result}\PYG{o}{.}\PYG{n}{ERR\PYGZus{}CRC}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+
+          \PYG{c+c1}{\PYGZsh{} ok, we have valid data, return it}
+          \PYG{k}{return} \PYG{n}{DHT11Result}\PYG{p}{(}\PYG{n}{DHT11Result}\PYG{o}{.}\PYG{n}{ERR\PYGZus{}NO\PYGZus{}ERROR}\PYG{p}{,} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{],} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}send\PYGZus{}and\PYGZus{}sleep}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{output}\PYG{p}{,} \PYG{n}{sleep}\PYG{p}{):}
+          \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{output}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}pin}\PYG{p}{,} \PYG{n}{output}\PYG{p}{)}
+          \PYG{n}{time}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{n}{sleep}\PYG{p}{)}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}collect\PYGZus{}input}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{):}
+          \PYG{c+c1}{\PYGZsh{} collect the data while unchanged found}
+          \PYG{n}{unchanged\PYGZus{}count} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+          \PYG{c+c1}{\PYGZsh{} this is used to determine where is the end of the data}
+          \PYG{n}{max\PYGZus{}unchanged\PYGZus{}count} \PYG{o}{=} \PYG{l+m+mi}{100}
+
+          \PYG{n}{last} \PYG{o}{=} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{1}
+          \PYG{n}{data} \PYG{o}{=} \PYG{p}{[]}
+          \PYG{k}{while} \PYG{n+nb+bp}{True}\PYG{p}{:}
+              \PYG{n}{current} \PYG{o}{=} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{input}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{o}{.}\PYG{n}{\PYGZus{}\PYGZus{}pin}\PYG{p}{)}
+              \PYG{n}{data}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{current}\PYG{p}{)}
+              \PYG{k}{if} \PYG{n}{last} \PYG{o}{!=} \PYG{n}{current}\PYG{p}{:}
+                  \PYG{n}{unchanged\PYGZus{}count} \PYG{o}{=} \PYG{l+m+mi}{0}
+                  \PYG{n}{last} \PYG{o}{=} \PYG{n}{current}
+              \PYG{k}{else}\PYG{p}{:}
+                  \PYG{n}{unchanged\PYGZus{}count} \PYG{o}{+=} \PYG{l+m+mi}{1}
+                  \PYG{k}{if} \PYG{n}{unchanged\PYGZus{}count} \PYG{o}{\PYGZgt{}} \PYG{n}{max\PYGZus{}unchanged\PYGZus{}count}\PYG{p}{:}
+                      \PYG{k}{break}
+
+          \PYG{k}{return} \PYG{n}{data}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}parse\PYGZus{}data\PYGZus{}pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{data}\PYG{p}{):}
+          \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}DOWN} \PYG{o}{=} \PYG{l+m+mi}{1}
+          \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}UP} \PYG{o}{=} \PYG{l+m+mi}{2}
+          \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}FIRST\PYGZus{}PULL\PYGZus{}DOWN} \PYG{o}{=} \PYG{l+m+mi}{3}
+          \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}UP} \PYG{o}{=} \PYG{l+m+mi}{4}
+          \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}DOWN} \PYG{o}{=} \PYG{l+m+mi}{5}
+
+          \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}DOWN}
+
+          \PYG{n}{lengths} \PYG{o}{=} \PYG{p}{[]} \PYG{c+c1}{\PYGZsh{} will contain the lengths of data pull up periods}
+          \PYG{n}{current\PYGZus{}length} \PYG{o}{=} \PYG{l+m+mi}{0} \PYG{c+c1}{\PYGZsh{} will contain the length of the previous period}
+
+          \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{data}\PYG{p}{)):}
+
+              \PYG{n}{current} \PYG{o}{=} \PYG{n}{data}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+              \PYG{n}{current\PYGZus{}length} \PYG{o}{+=} \PYG{l+m+mi}{1}
+
+              \PYG{k}{if} \PYG{n}{state} \PYG{o}{==} \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}DOWN}\PYG{p}{:}
+                  \PYG{k}{if} \PYG{n}{current} \PYG{o}{==} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{LOW}\PYG{p}{:}
+                      \PYG{c+c1}{\PYGZsh{} ok, we got the initial pull down}
+                      \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}UP}
+                      \PYG{k}{continue}
+                  \PYG{k}{else}\PYG{p}{:}
+                      \PYG{k}{continue}
+              \PYG{k}{if} \PYG{n}{state} \PYG{o}{==} \PYG{n}{STATE\PYGZus{}INIT\PYGZus{}PULL\PYGZus{}UP}\PYG{p}{:}
+                  \PYG{k}{if} \PYG{n}{current} \PYG{o}{==} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{HIGH}\PYG{p}{:}
+                      \PYG{c+c1}{\PYGZsh{} ok, we got the initial pull up}
+                      \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}FIRST\PYGZus{}PULL\PYGZus{}DOWN}
+                      \PYG{k}{continue}
+                  \PYG{k}{else}\PYG{p}{:}
+                      \PYG{k}{continue}
+              \PYG{k}{if} \PYG{n}{state} \PYG{o}{==} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}FIRST\PYGZus{}PULL\PYGZus{}DOWN}\PYG{p}{:}
+                  \PYG{k}{if} \PYG{n}{current} \PYG{o}{==} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{LOW}\PYG{p}{:}
+                      \PYG{c+c1}{\PYGZsh{} we have the initial pull down, the next will be the data pull up}
+                      \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}UP}
+                      \PYG{k}{continue}
+                  \PYG{k}{else}\PYG{p}{:}
+                      \PYG{k}{continue}
+              \PYG{k}{if} \PYG{n}{state} \PYG{o}{==} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}UP}\PYG{p}{:}
+                  \PYG{k}{if} \PYG{n}{current} \PYG{o}{==} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{HIGH}\PYG{p}{:}
+                      \PYG{c+c1}{\PYGZsh{} data pulled up, the length of this pull up will determine whether it is 0 or 1}
+                      \PYG{n}{current\PYGZus{}length} \PYG{o}{=} \PYG{l+m+mi}{0}
+                      \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}DOWN}
+                      \PYG{k}{continue}
+                  \PYG{k}{else}\PYG{p}{:}
+                      \PYG{k}{continue}
+              \PYG{k}{if} \PYG{n}{state} \PYG{o}{==} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}DOWN}\PYG{p}{:}
+                  \PYG{k}{if} \PYG{n}{current} \PYG{o}{==} \PYG{n}{RPi}\PYG{o}{.}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{LOW}\PYG{p}{:}
+                      \PYG{c+c1}{\PYGZsh{} pulled down, we store the length of the previous pull up period}
+                      \PYG{n}{lengths}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{current\PYGZus{}length}\PYG{p}{)}
+                      \PYG{n}{state} \PYG{o}{=} \PYG{n}{STATE\PYGZus{}DATA\PYGZus{}PULL\PYGZus{}UP}
+                      \PYG{k}{continue}
+                  \PYG{k}{else}\PYG{p}{:}
+                      \PYG{k}{continue}
+
+          \PYG{k}{return} \PYG{n}{lengths}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}calculate\PYGZus{}bits}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{):}
+          \PYG{c+c1}{\PYGZsh{} find shortest and longest period}
+          \PYG{n}{shortest\PYGZus{}pull\PYGZus{}up} \PYG{o}{=} \PYG{l+m+mi}{1000}
+          \PYG{n}{longest\PYGZus{}pull\PYGZus{}up} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+          \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{)):}
+              \PYG{n}{length} \PYG{o}{=} \PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]}
+              \PYG{k}{if} \PYG{n}{length} \PYG{o}{\PYGZlt{}} \PYG{n}{shortest\PYGZus{}pull\PYGZus{}up}\PYG{p}{:}
+                  \PYG{n}{shortest\PYGZus{}pull\PYGZus{}up} \PYG{o}{=} \PYG{n}{length}
+              \PYG{k}{if} \PYG{n}{length} \PYG{o}{\PYGZgt{}} \PYG{n}{longest\PYGZus{}pull\PYGZus{}up}\PYG{p}{:}
+                  \PYG{n}{longest\PYGZus{}pull\PYGZus{}up} \PYG{o}{=} \PYG{n}{length}
+
+          \PYG{c+c1}{\PYGZsh{} use the halfway to determine whether the period it is long or short}
+          \PYG{n}{halfway} \PYG{o}{=} \PYG{n}{shortest\PYGZus{}pull\PYGZus{}up} \PYG{o}{+} \PYG{p}{(}\PYG{n}{longest\PYGZus{}pull\PYGZus{}up} \PYG{o}{\PYGZhy{}} \PYG{n}{shortest\PYGZus{}pull\PYGZus{}up}\PYG{p}{)} \PYG{o}{/} \PYG{l+m+mi}{2}
+          \PYG{n}{bits} \PYG{o}{=} \PYG{p}{[]}
+
+          \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{)):}
+              \PYG{n}{bit} \PYG{o}{=} \PYG{n+nb+bp}{False}
+              \PYG{k}{if} \PYG{n}{pull\PYGZus{}up\PYGZus{}lengths}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]} \PYG{o}{\PYGZgt{}} \PYG{n}{halfway}\PYG{p}{:}
+                  \PYG{n}{bit} \PYG{o}{=} \PYG{n+nb+bp}{True}
+              \PYG{n}{bits}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{bit}\PYG{p}{)}
+
+          \PYG{k}{return} \PYG{n}{bits}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}bits\PYGZus{}to\PYGZus{}bytes}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{bits}\PYG{p}{):}
+          \PYG{n}{the\PYGZus{}bytes} \PYG{o}{=} \PYG{p}{[]}
+          \PYG{n}{byte} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+          \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n+nb}{len}\PYG{p}{(}\PYG{n}{bits}\PYG{p}{)):}
+              \PYG{n}{byte} \PYG{o}{=} \PYG{n}{byte} \PYG{o}{\PYGZlt{}\PYGZlt{}} \PYG{l+m+mi}{1}
+              \PYG{k}{if} \PYG{p}{(}\PYG{n}{bits}\PYG{p}{[}\PYG{n}{i}\PYG{p}{]):}
+                  \PYG{n}{byte} \PYG{o}{=} \PYG{n}{byte} \PYG{o}{|} \PYG{l+m+mi}{1}
+              \PYG{k}{else}\PYG{p}{:}
+                  \PYG{n}{byte} \PYG{o}{=} \PYG{n}{byte} \PYG{o}{|} \PYG{l+m+mi}{0}
+              \PYG{k}{if} \PYG{p}{((}\PYG{n}{i} \PYG{o}{+} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{o}{\PYGZpc{}} \PYG{l+m+mi}{8} \PYG{o}{==} \PYG{l+m+mi}{0}\PYG{p}{):}
+                  \PYG{n}{the\PYGZus{}bytes}\PYG{o}{.}\PYG{n}{append}\PYG{p}{(}\PYG{n}{byte}\PYG{p}{)}
+                  \PYG{n}{byte} \PYG{o}{=} \PYG{l+m+mi}{0}
+
+          \PYG{k}{return} \PYG{n}{the\PYGZus{}bytes}
+
+      \PYG{k}{def} \PYG{n+nf}{\PYGZus{}\PYGZus{}calculate\PYGZus{}checksum}\PYG{p}{(}\PYG{n+nb+bp}{self}\PYG{p}{,} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{):}
+          \PYG{k}{return} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{]} \PYG{o}{+} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{1}\PYG{p}{]} \PYG{o}{+} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{2}\PYG{p}{]} \PYG{o}{+} \PYG{n}{the\PYGZus{}bytes}\PYG{p}{[}\PYG{l+m+mi}{3}\PYG{p}{]} \PYG{o}{\PYGZam{}} \PYG{l+m+mi}{255}
+\end{Verbatim}

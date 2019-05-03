@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{import} \PYG{n+nn}{pandas} \PYG{k+kn}{as} \PYG{n+nn}{pd}
+  \PYG{k+kn}{import} \PYG{n+nn}{datetime}
+
+  \PYG{n}{data} \PYG{o}{=} \PYG{p}{[(}\PYG{l+m+mi}{21}\PYG{p}{,} \PYG{l+m+mi}{55}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{29}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{57}\PYG{p}{,} \PYG{l+m+mi}{53}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{22}\PYG{p}{,} \PYG{l+m+mi}{55}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{29}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{56}\PYG{p}{,} \PYG{l+m+mi}{52}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{26}\PYG{p}{,} \PYG{l+m+mi}{47}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{29}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{55}\PYG{p}{,} \PYG{l+m+mi}{49}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{22}\PYG{p}{,} \PYG{l+m+mi}{54}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{54}\PYG{p}{,} \PYG{l+m+mi}{49}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{20}\PYG{p}{,} \PYG{l+m+mi}{54}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{4}\PYG{p}{,} \PYG{l+m+mi}{30}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{53}\PYG{p}{,} \PYG{l+m+mi}{49}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{19}\PYG{p}{,} \PYG{l+m+mi}{65}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{52}\PYG{p}{,} \PYG{l+m+mi}{48}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{18}\PYG{p}{,} \PYG{l+m+mi}{53}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{51}\PYG{p}{,} \PYG{l+m+mi}{47}\PYG{p}{)),}
+  \PYG{p}{(}\PYG{l+m+mi}{21}\PYG{p}{,} \PYG{l+m+mi}{58}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{p}{(}\PYG{l+m+mi}{2019}\PYG{p}{,} \PYG{l+m+mi}{5}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{9}\PYG{p}{,} \PYG{l+m+mi}{50}\PYG{p}{,} \PYG{l+m+mi}{46}\PYG{p}{))]}
+
+  \PYG{n}{df} \PYG{o}{=} \PYG{n}{pd}\PYG{o}{.}\PYG{n}{DataFrame}\PYG{p}{(}\PYG{n}{data}\PYG{p}{,} \PYG{n}{columns}\PYG{o}{=}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}temp\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}hum\PYGZsq{}}\PYG{p}{,} \PYG{l+s+s1}{\PYGZsq{}date\PYGZsq{}}\PYG{p}{])}\PYG{o}{.}\PYG{n}{set\PYGZus{}index}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}date\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{df\PYGZus{}day} \PYG{o}{=} \PYG{n}{df}\PYG{o}{.}\PYG{n}{resample}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}d\PYGZsq{}}\PYG{p}{)}\PYG{o}{.}\PYG{n}{mean}\PYG{p}{()}
+
+  \PYG{k}{print}\PYG{p}{(}\PYG{n}{df\PYGZus{}day}\PYG{p}{)}
+
+  \PYG{n}{tempData} \PYG{o}{=} \PYG{p}{[]}
+  \PYG{n}{humData} \PYG{o}{=} \PYG{p}{[]}
+  \PYG{n}{labels} \PYG{o}{=} \PYG{p}{[]}
+
+  \PYG{k}{for} \PYG{n}{index}\PYG{p}{,} \PYG{n}{row} \PYG{o+ow}{in} \PYG{n}{df\PYGZus{}day}\PYG{o}{.}\PYG{n}{iterrows}\PYG{p}{():}
+      \PYG{n}{tempData}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{row}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}temp\PYGZsq{}}\PYG{p}{])}
+      \PYG{n}{humData}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{row}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}hum\PYGZsq{}}\PYG{p}{])}
+      \PYG{n}{labels}\PYG{o}{.}\PYG{n}{insert}\PYG{p}{(}\PYG{l+m+mi}{0}\PYG{p}{,} \PYG{n}{index}\PYG{p}{,)}
+
+  \PYG{n}{tempData}\PYG{o}{.}\PYG{n}{reverse}\PYG{p}{()}
+  \PYG{n}{humData}\PYG{o}{.}\PYG{n}{reverse}\PYG{p}{()}
+  \PYG{n}{labels}\PYG{o}{.}\PYG{n}{reverse}\PYG{p}{()}
+  \PYG{k}{print}\PYG{p}{(}\PYG{n}{tempData}\PYG{p}{)}
+  \PYG{k}{print}\PYG{p}{(}\PYG{n}{humData}\PYG{p}{)}
+  \PYG{k}{print}\PYG{p}{(}\PYG{n}{labels}\PYG{p}{)}
+  \PYG{k}{print}\PYG{p}{(}\PYG{n}{labels}\PYG{p}{[}\PYG{l+m+mi}{0}\PYG{p}{])}
+\end{Verbatim}

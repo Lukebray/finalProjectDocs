@@ -12,6 +12,9 @@
 \usepackage{xparse}
 \usepackage{xcolor}
 \usepackage{hyperref}
+\usepackage{minted}
+\usepackage{pdfpages}
+\usepackage{tabularx}
 
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
@@ -26,7 +29,7 @@
 \author{Luke Bray - B00100787}
 \title{Bird Nest Box Monitoring Using Raspberry Pi and Python}
 \begin{document}
-\maketitle
+\includepdf[pages=-]{title_page.pdf}
 \pagebreak
 \section{Abstract}
 \pagebreak
@@ -40,11 +43,11 @@
 \pagebreak
 \section{Introduction}
 \subsection{Background}
-Man-made nest boxes are vital for native cavity-nesting birds. One of the main reasons for this is the increased competition for natural cavity spaces. Non-native invasive species such as Starlings and House Sparrows as well as increased urban sprawl have reduced the number of available natural cavities. The Irish landscape is one that is heavily agricultural and changes in agricultural policies and practices have provoked losses in biological diversity\citep{PIERRET201814}. Therefore as the Irish landscape and policies governing it change it becomes ever more important to monitor the populations of all birds to see how they are faring\citep{website:birdwatchireland}. 
+Man-made nest boxes are vital for native cavity-nesting birds. One of the main reasons for this is the increased competition for natural cavity spaces. Non-native invasive species such as Starlings and House Sparrows as well as increased urban sprawl have reduced the number of available natural cavities. The Irish landscape is one that is heavily agricultural and changes in agricultural policies and practices have provoked losses in biological diversity\cite{PIERRET201814}. Therefore as the Irish landscape and policies governing it change it becomes ever more important to monitor the populations of all birds to see how they are faring\cite{website:birdwatchireland}. 
 
 Monitoring a nest box is important for many reasons. First of all it can be interesting to see what kind of species is occupying the box. However this can be achieved by simply observing the coming and going of the box inhabitants. One of the biggest threats to nest boxes can be invasive species. This can include larger bird species and small mammals as well as insects and spiders. In this case it is helpful to have a view into the box. This can be achieved by physically inspecting the nest box however this can be intrusive and disturb the wildlife inside. Thus arises a need for a remote monitoring system using a non-intrusive camera. 
 
-Maintaining a healthy habitat is important for the wildlife inside the nest box. Different species of bird are responsive to changes in environment at varying levels and some environmental factors can be critical to the survival of some species\citep{wormworth06}. It is for this reason that some simple monitoring equipment would be useful to include in any kind of nest box monitoring system.
+Maintaining a healthy habitat is important for the wildlife inside the nest box. Different species of bird are responsive to changes in environment at varying levels and some environmental factors can be critical to the survival of some species\cite{wormworth06}. It is for this reason that some simple monitoring equipment would be useful to include in any kind of nest box monitoring system.
 
 All of the data that will be gathered is not very useful if it cannot be stored and displayed in a meaningful way. One of the most convenient ways to view data is through a graphical means and the particular data being collected in this project may be of interest to the public and anybody who has an interest in wildlife. Therefore it will be necessary to find a suitable way to store the data and display it in a way that is accessible and engaging. 
 
@@ -118,12 +121,12 @@ Raspberry Pi is powered by a +5.1V micro USB port and it is recommended to purch
 
 One paper set out to achieve an accurate estimation of the Raspberry Pi's power consumption and see if they could reduce power consumption by optimizing the software running on the platform\cite{Kaup2014}. In the study they set the Pi up to run only essential operations and specifically wrote lightweight utilization software to reduce power consumption while still achieving their goal. The monitor was not even permitted to write to the SD card, instead writing the results to RAM and copying the data after the monitoring had finished. The above was done with the intention of being able to monitor system utilisation without the process of monitoring affecting results. 
 
-The study then used software called \textit{cpulimit} to generate load on the system. This software creates an infinite loop which adds numbers until the CPU load is at the desired limit. The study ended up with 900,000 power measurements which were combined and plotted logarithmic-ally in a heat map fashion on the graph below\cite{Kaup2014}:
+The study then used software called \textit{cpulimit} to generate load on the system. This software creates an infinite loop which adds numbers until the CPU load is at the desired limit. The study ended up with 900,000 power measurements which were combined and plotted logarithmic-ally in a heat map fashion on the graph below:
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{images/powerconsumption.png}
-  \caption{Power consumption vs. CPU utilisation}
+  \caption{Power consumption vs. CPU utilisation\cite{Kaup2014}}
   \label{fig:pwervscpu}
 \end{figure}
 
@@ -134,16 +137,16 @@ The study above is a good example of how to measure the power consumption of a s
 It seems that the most efficient way to power a monitoring system would be to use a renewable energy source. The most accessible and affordable is solar power. A solar power system has three main components: 
 \begin{enumerate}
 \item\textit{The Solar Panel} - This is what most people think of when they think of solar power. It is a panel that uses the photo-voltaic effect to convert sunlight and to electricity and is the core of any solar power system.
-\item\textit{The Solar Controller} - This is an important part of any solar power system. It's role is to regulate the amount of charge coming from the panel to the battery and prevent overcharging\citep{website:energymatters}. Devices can also be charged directly from the solar controller with some versions even including 2.5A USB ports which are ideal for charging devices such as Raspberry Pi.
+\item\textit{The Solar Controller} - This is an important part of any solar power system. It's role is to regulate the amount of charge coming from the panel to the battery and prevent overcharging\cite{website:energymatters}. Devices can also be charged directly from the solar controller with some versions even including 2.5A USB ports which are ideal for charging devices such as Raspberry Pi.
 \item\textit{The Battery} - This part of the solar power system is optional. If you have a device which is being charged directly then there will be no need for this part of the system however it could be important in climates where there is not a lot of sunlight or if you have a device that needs to be powered overnight.
 \end{enumerate}
 
-With the three components above a typical solar power system circuit diagram might look like the one below\citep{website:edgefx}: 
+With the three components above a typical solar power system circuit diagram might look like the one below: 
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{images/solarcircuit.jpg}
-  \caption{A basic solar circuit}
+  \caption{A basic solar circuit\cite{website:edgefx}}
   \label{fig:solarcircuit}
 \end{figure}
 
@@ -160,32 +163,32 @@ Zigbee is wireless specification based on IEEE 802.15.4 that was first seen in 2
 
 A strength of Zigbee is that it can transmit signal at distances of up to 100m between sender and receiver. One criticism has been that their needs to be line of site between sender and receiver however there have been papers that suggest signal strength may not be affected by obstacles. Idoudi, 2013 used the Received Signal Strength Indicator (RSSI) to show that there was little other than distance between two nodes that negatively affected RSSI values and that distance had a more negative effect on RSSI than any obstacles in the way\cite{Idoudi2013}. However the study did not state the distance between two nodes when the obstacles were placed between them. RSSI indicates the strength of the signal at the receiving node. 
 
-Interference with Zigbee from WiFi can also occur and this is one of the main drawbacks of Zigbee, along with the rate of transfer. Zigbee uses 16 channels within the 2.4GHz band and these directly overlap with the 3 channels used by WiFi. This is shown in the figures below \cite{zigbeechannels}:
+Interference with Zigbee from WiFi can also occur and this is one of the main drawbacks of Zigbee, along with the rate of transfer. Zigbee uses 16 channels within the 2.4GHz band and these directly overlap with the 3 channels used by WiFi. This is shown in the figures below:
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{images/wifi_channels.png}
-  \caption{2.4GHz WiFi Channels}
+  \caption{2.4GHz WiFi Channels\cite{zigbeechannels}}
   \label{fig:wifichannels}
 \end{figure}
 
 \begin{figure}[H]
 \centering
   \includegraphics[width=\linewidth]{images/zigbee_channels.png}
-  \caption{2.4GHz Zigbee Channels}
+  \caption{2.4GHz Zigbee Channels\cite{zigbeechannels}}
   \label{fig:zigbeechannels}
 \end{figure}
 
 Usually the Zigbee network is the network that will lose packets. The side band lobes of the WiFi signal can easily drown out the less powerful Zigbee signals. This is one of the biggest problems with Zigbee and careful planning is required when it will be used in close proximity with any WiFi-enabled devices.
 
 \subsection{Python Web Frameworks}
-A key aspect of this project is to display the collected data in a way that is appealing and accessible. This will most likely mean displaying the data on a web page. However due to the rapid evolution of the World Wide Web it has become difficult to utilise all of the technologies required for good web development\citep{pop_altar_2014}. Using a web framework can be a good way to tie the various technologies together to allow for quicker development and also to facilitate future expansion more easily. This section will look at three Python web frameworks and discuss some of their features. 
-\subsubsection{Django\citep{website:django}}
-Django is a free, open-source Python web framework. It is a Model View Controller (MVC) style framework and is focused on never having to repeat yourself when programming. Django is a framework that allows for quick development and minimal repetition of code. It also ensures that your app is secure against a multitude of vulnerabilities. This richness of features is also one of the main criticisms against Django. While the vast array of features may be ideal for a large scale project, they are not needed for a smaller scale project. Django is also considered to be quite monolithic and not hugely flexible. You get features such as admin panels and database interfaces out of the box which means it is not nearly as customisable as some other frameworks. 
-\subsubsection{Flask\citep{website:flask}}
-Flask is seen by many to be the main rival to Django. Like Django, it is a MVC style framework however it is not nearly as feature-rich and provides only the more essential features. This more minimalist design means that Flask may be better suited to smaller project however there are some large projects such as Netflix and Pinterest which are built on Flask. This may be an indicator that there is also good scalability with Flask. 
-\subsubsection{Dash\citep{website:dash}}
-Dash is a micro-framework that is built on top of Flask and Plotly.js. The framework includes various UI elements and allows you to tie them together with Python code while also retaining all of the benefits of using a MVC framework like Flask. Dash is specially built to be used for building analytical web applications and this makes it ideal for a project where data is to be presented and analysed. 
+A key aspect of this project is to display the collected data in a way that is appealing and accessible. This will most likely mean displaying the data on a web page. However due to the rapid evolution of the World Wide Web it has become difficult to utilise all of the technologies required for good web development\cite{pop_altar_2014}. Using a web framework can be a good way to tie the various technologies together to allow for quicker development and also to facilitate future expansion more easily. This section will look at three Python web frameworks and discuss some of their features. 
+\subsubsection{Django}
+Django\cite{website:django} is a free, open-source Python web framework. It is a Model View Controller (MVC) style framework and is focused on never having to repeat yourself when programming. Django is a framework that allows for quick development and minimal repetition of code. It also ensures that your app is secure against a multitude of vulnerabilities. This richness of features is also one of the main criticisms against Django. While the vast array of features may be ideal for a large scale project, they are not needed for a smaller scale project. Django is also considered to be quite monolithic and not hugely flexible. You get features such as admin panels and database interfaces out of the box which means it is not nearly as customisable as some other frameworks. 
+\subsubsection{Flask}
+Flask\cite{website:flask} is seen by many to be the main rival to Django. Like Django, it is a MVC style framework however it is not nearly as feature-rich and provides only the more essential features. This more minimalist design means that Flask may be better suited to smaller project however there are some large projects such as Netflix and Pinterest which are built on Flask. This may be an indicator that there is also good scalability with Flask. 
+\subsubsection{Dash}
+Dash\cite{website:dash} is a micro-framework that is built on top of Flask and Plotly.js. The framework includes various UI elements and allows you to tie them together with Python code while also retaining all of the benefits of using a MVC framework like Flask. Dash is specially built to be used for building analytical web applications and this makes it ideal for a project where data is to be presented and analysed. 
 
 \pagebreak
 \section{System Requirements and Design}
@@ -275,24 +278,22 @@ Solar power has been chosen because it is a renewable energy source therefore be
 
 Power consumption of the Raspberry Pi with various configurations is shown in the below table. 
 
-\begin{table}[]
-\centering
-\begin{tabular}{lllllllll}
-\hline
-\multicolumn{1}{c}{\textbf{Configuration}}                      & \multicolumn{1}{c}{\textbf{Volts}} & \multicolumn{1}{c}{\textbf{Amps}} & \multicolumn{1}{c}{\textbf{Watts}} & \multicolumn{1}{c}{\textbf{Watts (+15\%)}} & \multicolumn{1}{c}{\textbf{24 Hour Requirement (W)}} & \multicolumn{1}{c}{\textbf{18 Hour Requirement (W)}} & \multicolumn{1}{c}{\textbf{12 Hour Requirement (W)}} & \multicolumn{1}{c}{\textbf{6 Hour Requirement (W)}} \\ \hline
-Raspberry Pi                                                    & 5.06                               & 0.4                               & 2.0                                & 2.3                                        & 56                                                   & 42                                                   & 28                                                   & 14                                                  \\
-Pi + Data Sensors (Streaming Data)                              & 5.06                               & 0.4                               & 2.1                                & 2.4                                        & 58                                                   & 43                                                   & 29                                                   & 14                                                  \\
-Pi + Data Sensors (Streaming Data) + PiCamera (Idle)            & 5.09                               & 1                                 & 5.1                                & 5.9                                        & 140                                                  & 105                                                  & 70                                                   & 35                                                  \\
-Pi + Data Sensors (Streaming Data) + PiCamera (Streaming Video) & 5.09                               & 1.3                               & 6.6                                & 7.6                                        & 183                                                  & 137                                                  & 91                                                   & 46                                                  \\
-                                                                &                                    &                                   &                                    &                                            &                                                      &                                                      &                                                      &                                                     \\ \hline
-\end{tabular}
-\caption{Raspberry Pi Monitoring System Power Requirements}
-\label{tab:powerRequirements}
-\end{table}
+\begin{table}
+  \centering
+  \resizebox{\linewidth}{!}{%
+  \begin{tabular}{lllllllll}
+  \textbf{Configuration} & \textbf{Volts} & \textbf{Amps} & \textbf{Watts} & \textbf{Watts(+15\%)} & \textbf{24H Req.} & \textbf{18HR Req.} & \textbf{12HR Req.} & \textbf{6HR Req.} \\
+  Raspi & 5.06 & 0.4 & 2.0 & 2.3 & 56 & 42 & 28 & 14 \\
+  Pi + Sensors & 5.06 & 0.4 & 2.1 & 2.4 & 58 & 43 & 29 & 14 \\
+  Pi + Camera + Sensors & 5.09 & 1.3 & 6.6 & 7.6 & 183 & 137 & 91 & 46
+  \end{tabular}}
+  \caption{Monitoring system power requirements}
+  \label{tab:powerRequirements}
+  \end{table}
 
 As can be seen from the table above, to run the system for 24 hours would require 183W of power. However running the system for 18 hours per day only requires 137W. With a 60W solar panel this could be achieved with 3 hours of sunlight per day. 
 
-As the device will be located in Ireland it is important to have an understanding of the sunshine levels. Ireland gets, on average, 1100-1600 hours of sunshine per year\citep{website:metsunshine}. This translates to roughly 5-6.5 hours in the Summer months and 1-1.5 hours in the Winter months. This means that in the Summer months the device may be able to run for up to 18 hours per day however to be conservative it would be safe to say that during the summer months the device could run for 12 hours per day. Cloud cover is not as predictable of sunshine hours and so the actual amount of sunlight the panel receives may be less than anticipated. In this case the device will have to run for less time during the day or a larger solar panel will have to be installed. 
+As the device will be located in Ireland it is important to have an understanding of the sunshine levels. Ireland gets, on average, 1100-1600 hours of sunshine per year\cite{website:metsunshine}. This translates to roughly 5-6.5 hours in the Summer months and 1-1.5 hours in the Winter months. This means that in the Summer months the device may be able to run for up to 18 hours per day however to be conservative it would be safe to say that during the summer months the device could run for 12 hours per day. Cloud cover is not as predictable of sunshine hours and so the actual amount of sunlight the panel receives may be less than anticipated. In this case the device will have to run for less time during the day or a larger solar panel will have to be installed. 
 
 There is one problem with using solar power. The Raspberry Pi cannot be put into a sleep mode - it is either on or off and there is no low power mode. If the device is shut down while it is writing to the SD card there is a danger that the operating system could be corrupted. This would be problematic if there was no available sunlight or the backup battery ran out. Due to the fact there is no sleep mode it also means the Pi cannot be powered on and off strategically and remotely which renders the device useless as a remote monitoring device. 
 
@@ -309,7 +310,7 @@ This leaves WiFi to transfer the data. The device will connect to a 4G hotspot a
 \subsection{PiCamera}
 To satisfy the requirement of capturing video footage from inside a dark nestbox the camera must be able to see in the dark. This can be achieved using a camera without an infra-red (IR) filter however there must also be an IR-emitting source for the camera to pick up. This device will use a specially modified PiCamera which will have no IR filter. Attached to the camera will be two IR-emitting bulbs and this will bathe the inside of the nest box in IR light which the camera can then pick up. 
 
-The actual video footage can be streamed using a package from Libav called avconv. Avconv is a very fast audio and video converter which can process raw audio and video frames, convert them to the specified format and then encode and output them to a video streaming platform\citep{avconv}
+The actual video footage can be streamed using a package from Libav called avconv. Avconv is a very fast audio and video converter which can process raw audio and video frames, convert them to the specified format and then encode and output them to a video streaming platform\cite{avconv}
 
 \subsection{Web Framework and Data Display Web Page}
 The web framework that will be used is called Flask. Flask is a more minimal Python web framework than Django and this means that it is more configurable and easier to set up. Flask uses SQLAlchemy which is the Python toolkit for working with SQL databases and this will make it easier to work with the large amounts of data this project will eventually accumulate. Flask makes use of Jinja2 which is a HTML templating language specifically made for use with Python. The use of this templating language should make creating the web page front end a lot simpler.
@@ -395,7 +396,7 @@ Actual development of code will be done on my local machine using VSCode. The wh
 This chapter will cover how the software has been developed and how it is used within the project. It will aim to layout the different technologies that have been used, how they have been implemented and finally how they all work together to achieve the system requirements set out earlier in this document.
 
 \subsection{Implementation Method}
-Even in the early days of software engineering the criticality of having a sound software development approach was recognised. It can be easy to delay or avoid completing this process while deficiencies in it can be very difficult and expensive to correct later on. Other issues arise such as the user feeling alienated due to lack of transparency or documentation and testing being hard to define\citep{1674590}.
+Even in the early days of software engineering the criticality of having a sound software development approach was recognised. It can be easy to delay or avoid completing this process while deficiencies in it can be very difficult and expensive to correct later on. Other issues arise such as the user feeling alienated due to lack of transparency or documentation and testing being hard to define\cite{1674590}.
 
 This project will be implanted using an iterative software development life-cycle. This type of methodology involves a planning stage where the requirements of the system are defined. The iterative part of the life-cycle see's the project designed, implemented, tested and then evaluated. This is important because the project can be split into multiple mini-projects that don't present as big of a task. This particular project has been designed to be modular and using an iteration development method allows each modular component to be thoroughly tested and integrated seamlessly into the overall project. Through testing it is ensured that every component of the design can work independently and then combine at a later stage to form one overall project. Each iteration of the project adds in a new component which brings with it extra features and stability. 
 
@@ -414,7 +415,28 @@ The physical prototype was built and is explained later in this chapter. A bash 
 \subsection{Physical Environment Setup}
 The first step of implementation was to get the hardware circuit working. The four main components are the Raspberry Pi, a DHT11 temperature and humidity sensor, the NoIR PiCamera and an FC-37 rain sensor. Initially these were implemented into a circuit using a breadboard. This allowed for a less permanent and more flexible setup for testing purposes. The circuit diagram is shown below along with some photographs of the hardware setup. 
 
-INSERT CIRCUIT DIAGRAM AND PHOTOGRAPHS
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/RPi.jpg}
+    \caption{The Raspberry Pi}
+    \label{fig:Raspberry Pi}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/piCam.jpg}
+    \caption{The PiCamera with IR bulb attachments}
+    \label{fig:piCam}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/overView.jpg}
+    \caption{An overall image of the completed circuit}
+    \label{fig:overView}
+\end{figure}
+
+INSERT CIRCUIT DIAGRAM
 
 \subsubsection{Circuit Details}
 The breadboard is connected to the 3.3v GPIO pin and this supplies power all along the connected rail. There is a 5v pin available however using this requires the inclusion of various resistors in the circuit and this would introduce unnecessary complications. The 3.3v pin also supplies plenty of power for all of the components. A ground pin on the Raspberry Pi is connected to the negative rail on the breadboard. A diagram of the Raspberry Pi Model 3 GPIO pins is shown below. 
@@ -423,19 +445,55 @@ The breadboard is connected to the 3.3v GPIO pin and this supplies power all alo
     \includegraphics[width=\linewidth]{images/gpio-pins.png}
     \caption{A diagram of the GPIO pins on a Raspberry Pi Model 3}
     \label{fig:gpiopins}
-  \end{figure}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/pinCloseUp.jpg}
+    \caption{An image of the GPIO pins}
+    \label{fig:pinCloseUp}
+\end{figure}
 
 Both the FC-37 and DHT11 sensors need 3 of their pins to be connected to the GPIO pins. The FC-37 consists of two components. These are the collector board and electrical board and when enough water is collected on the collector board there is a lower output voltage which signifies rainfall. The collector board connects to the electrical board which in turn connects to the Raspberry Pi. One pin on the electrical board is connected to the power rail on the bread board while another pin is connected to the ground rail. The third pin is the data pin and this is connected to the GPIO pin on the Raspberry Pi. In this case the FC-37 was connected to GPIO pin 27. The electrical board also houses a potentiometer and this can be used to adjust the sensitivity of the collector board. This was done by putting an amount of water onto the collector board and turning the potentiometer until is detected a change in the flow of current.
 
-INSERT PICTURE OF FC-37
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/potentiometer.jpg}
+    \caption{The small controller board for the rain sensor. This board has a potentiometer which can be used to adjust the sensitivity of the rain sensor.}
+    \label{fig:potentiometer}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/rainPanel.jpg}
+    \caption{The FC-37 rain sensor}
+    \label{fig:rain panel}
+\end{figure}
 
 The DHT11 sensor was connected in a similar way to the FC-37. One sensor pin is connected to the power supply, one to the ground rail and the final pin is connected to a GPIO pin. In this case it was GPIO pin 17. 
 
-INSERT PICTURE OF DHT11
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/dht11.jpg}
+    \caption{The DHT11 temperature and humidity Sensor.}
+    \label{fig:dht11}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/sensorCloseup.jpg}
+    \caption{An image showing sensors connected to the breadboard. The DHT11 is on the left and you can see here the three pins on the sensor.}
+    \label{fig:piCam}
+\end{figure}
 
 The NoIR PiCamera is the least complicated piece of hardware to install. There is already a dedicated slot on the Raspberry Pi which is shown below. The camera is connected into this slot and enabled as described in the previous chapter on the Raspberry Pi itself. 
 
-INSERT PICTURE OF CAMERA SLOT
+\begin{figure}[H]
+  \centering
+    \includegraphics[width=\linewidth]{images/cameraCloseUp.jpg}
+    \caption{An image of the slot that the PiCamera goes into}
+    \label{fig:piCamCloseUp}
+\end{figure}
 
 \subsection{Data Collection}
 \subsubsection{dht11.py}
@@ -473,7 +531,7 @@ Now that the data has been recorded and passed from the Raspberry Pi to the data
 \subsubsection{Flask\_app.py}
 This is the main controller and handles the passing of data to \texttt{main.html}. Navigating to \url{https://www.lukebray.ie/} will return the \texttt{main.html} template. A route has also been set up at \url{https://www.lukebray.ie/get_data/days} to trigger the retrieval and JSON-ification of data from the database. The raw JSON-ified data can be viewed here. Once this route is called a connection to the database is established and a cursor object from \texttt{MySQL.connector} is created. This object is used to execute an SQL query to the database and the requested data is then returned using the \texttt{fetchall()} function and assigned to a variable \texttt{r}. 
 
-The function \texttt{get\_data} performs the initial query to return the most current data values. The function accepts a variable \texttt{days}. This variable is used to determine for how many days the user would like to view historical data. The query to the database is constructed using \texttt{days} and the values are then returned. The nature of this project means that new values are submitted to the database at least every minutes. This is a problem when the user wants to see historical data. For example, one value in the database for every minute over 7 days means returning over 10'000 values which would render a chart virtually useless. To overcome this problem I have used the Pandas\citep{pandas} library which allows the application to take a large amount of data and summarise it. For the 30 day and 7 day periods I have chosen to summarise the data by day but for the 1 day period the data is summarised by hour. For the example of 7 days, Pandas can group the data by day and then return the average data value for that day. This is a particularly useful tool to have as it means that massive amounts of data can be grouped together to make the overall data more readable. One other option that was explored was using algorithms such as the Ramer-Douglas-Peucker\citep{douglaspeucker} algorithm however this was deemed unsuitable as the data representation using Pandas and averages was more accurate. 
+The function \texttt{get\_data} performs the initial query to return the most current data values. The function accepts a variable \texttt{days}. This variable is used to determine for how many days the user would like to view historical data. The query to the database is constructed using \texttt{days} and the values are then returned. The nature of this project means that new values are submitted to the database at least every minutes. This is a problem when the user wants to see historical data. For example, one value in the database for every minute over 7 days means returning over 10'000 values which would render a chart virtually useless. To overcome this problem I have used the Pandas\cite{pandas} library which allows the application to take a large amount of data and summarise it. For the 30 day and 7 day periods I have chosen to summarise the data by day but for the 1 day period the data is summarised by hour. For the example of 7 days, Pandas can group the data by day and then return the average data value for that day. This is a particularly useful tool to have as it means that massive amounts of data can be grouped together to make the overall data more readable. One other option that was explored was using algorithms such as the Ramer-Douglas-Peucker\cite{douglaspeucker} algorithm however this was deemed unsuitable as the data representation using Pandas and averages was more accurate. 
 
 Four empty Python lists are instantiated - one for each column in the database excluding the id column. A \texttt{for} loop now runs through all of the returned rows and for each row inserts the relevant piece of data into the relevant list. 
 
@@ -525,7 +583,7 @@ There are many steps to ensuring this particular device works properly and the f
 This section will explain the testing methodology and show how each component was tested before being implemented fully. 
 Why testing is important for this product and what tests need to be done to ensure a good prototype
 \subsection{Testing Methodology}
-To ensure a good prototype the testing was be split into multiple phases. Once the tests in each phase have been passed then development on the next phase can begin.
+To ensure a good prototype the testing was to be split into multiple phases. Once the tests in each phase have been passed then development on the next phase can begin.
 \subsubsection{PiCamera Testing}
 This was the first component to be tested. The criteria for passing the test were as follows: 
 \begin{enumerate}
@@ -580,8 +638,6 @@ I also used the web browser to test the web page on different devices to verify 
 Overall the device performed well on most of the tests. The majority of tests were passed within 2 or 3 iterations of the test being run and this indicates that the design was well thought out. The most troublesome testing came during the data display testing and this took many iterations to eventually meet the testing requirements and be suitable for deployment. 
 
 After completing all of the testing and having a working prototype it is useful to see if the initial design requirements have been met.
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
 \begin{table}[]
   \begin{tabular}{@{}cc@{}}
   \toprule
@@ -597,6 +653,8 @@ After completing all of the testing and having a working prototype it is useful 
   SR009                                              & Yes                                           \\
   SR010                                              & Yes                                           \\ \bottomrule
   \end{tabular}
+  \caption{System requirements and if they were fulfileld or not}
+\label{tab:systemRequirements}
 \end{table}
 
 \subsubsection{PiBB - SR001}
@@ -682,6 +740,778 @@ How might the device be improved? What extra features could be included next tim
 \pagebreak
 \section{Conclusions}
 What did I learn while doing this project. What went wrong and what was done well. Is the device created as useful as was initially thought? Is the way I did this project the most effective way to achieve the intended result? 
+
+\pagebreak
+
+\appendix
+\section{Application Code}
+\subsection{dht11.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+    import time
+  import RPi
+
+
+  class DHT11Result:
+      'DHT11 sensor result returned by DHT11.read() method'
+
+      ERR_NO_ERROR = 0
+      ERR_MISSING_DATA = 1
+      ERR_CRC = 2
+
+      error_code = ERR_NO_ERROR
+      temperature = -1
+      humidity = -1
+
+      def __init__(self, error_code, temperature, humidity):
+          self.error_code = error_code
+          self.temperature = temperature
+          self.humidity = humidity
+
+      def is_valid(self):
+          return self.error_code == DHT11Result.ERR_NO_ERROR
+
+
+  class DHT11:
+      'DHT11 sensor reader class for Raspberry'
+
+      __pin = 0
+
+      def __init__(self, pin):
+          self.__pin = pin
+
+      def read(self):
+          RPi.GPIO.setup(self.__pin, RPi.GPIO.OUT)
+
+          # send initial high
+          self.__send_and_sleep(RPi.GPIO.HIGH, 0.05)
+
+          # pull down to low
+          self.__send_and_sleep(RPi.GPIO.LOW, 0.02)
+
+          # change to input using pull up
+          RPi.GPIO.setup(self.__pin, RPi.GPIO.IN, RPi.GPIO.PUD_UP)
+
+          # collect data into an array
+          data = self.__collect_input()
+
+          # parse lengths of all data pull up periods
+          pull_up_lengths = self.__parse_data_pull_up_lengths(data)
+
+          # if bit count mismatch, return error (4 byte data + 1 byte checksum)
+          if len(pull_up_lengths) != 40:
+              return DHT11Result(DHT11Result.ERR_MISSING_DATA, 0, 0)
+
+          # calculate bits from lengths of the pull up periods
+          bits = self.__calculate_bits(pull_up_lengths)
+
+          # we have the bits, calculate bytes
+          the_bytes = self.__bits_to_bytes(bits)
+
+          # calculate checksum and check
+          checksum = self.__calculate_checksum(the_bytes)
+          if the_bytes[4] != checksum:
+              return DHT11Result(DHT11Result.ERR_CRC, 0, 0)
+
+          # ok, we have valid data, return it
+          return DHT11Result(DHT11Result.ERR_NO_ERROR, the_bytes[2], the_bytes[0])
+
+      def __send_and_sleep(self, output, sleep):
+          RPi.GPIO.output(self.__pin, output)
+          time.sleep(sleep)
+
+      def __collect_input(self):
+          # collect the data while unchanged found
+          unchanged_count = 0
+
+          # this is used to determine where is the end of the data
+          max_unchanged_count = 100
+
+          last = -1
+          data = []
+          while True:
+              current = RPi.GPIO.input(self.__pin)
+              data.append(current)
+              if last != current:
+                  unchanged_count = 0
+                  last = current
+              else:
+                  unchanged_count += 1
+                  if unchanged_count > max_unchanged_count:
+                      break
+
+          return data
+
+      def __parse_data_pull_up_lengths(self, data):
+          STATE_INIT_PULL_DOWN = 1
+          STATE_INIT_PULL_UP = 2
+          STATE_DATA_FIRST_PULL_DOWN = 3
+          STATE_DATA_PULL_UP = 4
+          STATE_DATA_PULL_DOWN = 5
+
+          state = STATE_INIT_PULL_DOWN
+
+          lengths = [] # will contain the lengths of data pull up periods
+          current_length = 0 # will contain the length of the previous period
+
+          for i in range(len(data)):
+
+              current = data[i]
+              current_length += 1
+
+              if state == STATE_INIT_PULL_DOWN:
+                  if current == RPi.GPIO.LOW:
+                      # ok, we got the initial pull down
+                      state = STATE_INIT_PULL_UP
+                      continue
+                  else:
+                      continue
+              if state == STATE_INIT_PULL_UP:
+                  if current == RPi.GPIO.HIGH:
+                      # ok, we got the initial pull up
+                      state = STATE_DATA_FIRST_PULL_DOWN
+                      continue
+                  else:
+                      continue
+              if state == STATE_DATA_FIRST_PULL_DOWN:
+                  if current == RPi.GPIO.LOW:
+                      # we have the initial pull down, the next will be the data pull up
+                      state = STATE_DATA_PULL_UP
+                      continue
+                  else:
+                      continue
+              if state == STATE_DATA_PULL_UP:
+                  if current == RPi.GPIO.HIGH:
+                      # data pulled up, the length of this pull up will determine whether it is 0 or 1
+                      current_length = 0
+                      state = STATE_DATA_PULL_DOWN
+                      continue
+                  else:
+                      continue
+              if state == STATE_DATA_PULL_DOWN:
+                  if current == RPi.GPIO.LOW:
+                      # pulled down, we store the length of the previous pull up period
+                      lengths.append(current_length)
+                      state = STATE_DATA_PULL_UP
+                      continue
+                  else:
+                      continue
+
+          return lengths
+
+      def __calculate_bits(self, pull_up_lengths):
+          # find shortest and longest period
+          shortest_pull_up = 1000
+          longest_pull_up = 0
+
+          for i in range(0, len(pull_up_lengths)):
+              length = pull_up_lengths[i]
+              if length < shortest_pull_up:
+                  shortest_pull_up = length
+              if length > longest_pull_up:
+                  longest_pull_up = length
+
+          # use the halfway to determine whether the period it is long or short
+          halfway = shortest_pull_up + (longest_pull_up - shortest_pull_up) / 2
+          bits = []
+
+          for i in range(0, len(pull_up_lengths)):
+              bit = False
+              if pull_up_lengths[i] > halfway:
+                  bit = True
+              bits.append(bit)
+
+          return bits
+
+      def __bits_to_bytes(self, bits):
+          the_bytes = []
+          byte = 0
+
+          for i in range(0, len(bits)):
+              byte = byte << 1
+              if (bits[i]):
+                  byte = byte | 1
+              else:
+                  byte = byte | 0
+              if ((i + 1) % 8 == 0):
+                  the_bytes.append(byte)
+                  byte = 0
+
+          return the_bytes
+
+      def __calculate_checksum(self, the_bytes):
+          return the_bytes[0] + the_bytes[1] + the_bytes[2] + the_bytes[3] & 255
+\end{minted}
+
+\subsection{rainSensor.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  import time
+  import RPi.GPIO as GPIO
+
+  class RainSensor():
+      'Rain sensor reader class'    
+      __pin = 0
+
+      #each instance has a self and a gpio pin
+      def __init__(self, pin):
+          self.__pin = pin
+      
+      def read(self):
+          GPIO.setup(self.__pin, GPIO.IN)
+          state = GPIO.input(self.__pin)
+          
+          if (state == 0):
+              return 1
+          else:
+              return 0
+\end{minted}
+
+\subsection{dataSend.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  import RPi.GPIO as GPIO
+  import dht11
+  import rainSensor
+  import time
+  import datetime
+  import mysql.connector
+  from mysql.connector import Error
+  import sshtunnel
+
+  GPIO.setwarnings(False)
+  GPIO.setmode(GPIO.BCM)
+  GPIO.cleanup()
+
+  temphum = dht11.DHT11(pin = 21)
+  GPIO.cleanup()
+
+  rain = rainSensor.RainSensor(pin = 17)
+  GPIO.cleanup()
+
+  sshtunnel.SSH_TIMEOUT = 5.0
+  sshtunnel.TUNNEL_TIMEOUT = 5.0
+
+  def weatherData():
+      while True:
+              resultDHT = temphum.read()
+              resultRain = rain.read()
+              if resultDHT.is_valid():
+                  print("Last Valid Input: " + str(datetime.datetime.now()))
+                  print ("Temperature: %d C" % resultDHT.temperature)
+                  print ("Humidity: %d %%" % resultDHT.humidity)
+                  print ("Raining?: %d" % resultRain)
+                  query = "INSERT INTO data (temp, humidity, rain, datetime) VALUES (%s, %s, %s, %s)"
+                  args = (resultDHT.temperature, resultDHT.humidity, resultRain, datetime.datetime.now())
+
+                  cursor.execute(query, args)
+                  connection.commit()
+                  time.sleep(60)
+              else:
+                  print("Error ", resultDHT.error_code)
+
+
+  
+  if __name__ == '__main__':
+      with sshtunnel.SSHTunnelForwarder(
+      ('ssh.pythonanywhere.com'),
+      ssh_username='USERNAME', ssh_password='PASSWORD',
+      remote_bind_address=('REMOTE_BIND_ADDRESS', 3306)
+  ) as tunnel:
+          connection = mysql.connector.connect(
+          user='USER', password='PASSWORD',
+          host='127.0.0.1', port=tunnel.local_bind_port,
+          database='DATABASE',       
+      )
+          db_info = connection.get_server_info()
+          if connection.is_connected():
+              cursor = connection.cursor()
+              print('Connected to MySQL DB...version on ', db_info)
+              weatherData()
+          else:
+              print('Failed to connect to database.')
+      
+          connection.close()
+\end{minted}
+
+\subsection{flask\_app.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  from flask import Flask, render_template, jsonify
+  from datetime import datetime, timedelta
+  import pandas as pd
+  import mysql.connector
+  import json
+
+  app = Flask(__name__)
+
+  @app.route('/')
+  def index():
+      return render_template("main.html")
+
+  @app.route('/get_data/<days>')
+  def get_data(days):
+      conn = mysql.connector.connect(
+      host='HOSTNAME',
+      user='USERNAME',
+      passwd='PASSWORD',
+      db='DATABASE')
+
+      c = conn.cursor()
+
+      days = int(days)
+
+      rows = None
+
+      value = datetime.now() - timedelta(days)
+      print(value)
+
+      tempData = []
+      humData = []
+      rainData = []
+      labels = []
+
+      c.execute("SELECT temp, humidity, rain, datetime FROM data ORDER BY datetime DESC LIMIT 1;")
+      currentRow = c.fetchall()
+      currentData = list(currentRow)
+
+      currentTemp = currentData[0][0]
+      currentHum = currentData[0][1]
+      currentRain = currentData[0][2]
+
+      if days == 7 or days == 30:
+          c.execute("SELECT temp, humidity, rain, datetime FROM data WHERE datetime >= %s ORDER BY datetime DESC;", (value,))
+
+          rows = c.fetchall()
+
+          df = pd.DataFrame(rows, columns=['temp', 'hum', 'rain', 'date']).set_index('date')
+          df_day = df.resample('d').mean()
+          print('DF_DAY IS BELOW THIS')
+          print(df_day)
+
+          for index, row in df_day.iterrows():
+
+              tempData.insert(0, row['temp'])
+              humData.insert(0, row['hum'])
+              rainData.insert(0, row['rain'])
+              labels.insert(0, str(index.date()))
+
+          tempData.reverse()
+          humData.reverse()
+          rainData.reverse()
+          labels.reverse()
+
+          latestRain = rainData[-1]
+          isRaining = True
+
+          if (latestRain == 1):
+              isRaining = True
+          else:
+              isRaining = False
+
+          return jsonify({'payload':json.dumps({'tempData':tempData, 'humData':humData, 'isRaining':isRaining, 'labels':labels, 'currentTemp':currentTemp, 'currentHum':currentHum, 'currentRain':currentRain})})
+
+      elif days == 1:
+          c.execute("SELECT temp, humidity, rain, datetime FROM data WHERE datetime >= %s ORDER BY datetime DESC;", (value,))
+
+          rows = c.fetchall()
+
+          df = pd.DataFrame(rows, columns=['temp', 'hum', 'rain', 'date']).set_index('date')
+          df_hour = df.resample('H').mean()
+          print('DF_HOUR IS BELOW THIS')
+          print(df_hour)
+
+          for index, row in df_hour.iterrows():
+
+              tempData.insert(0, row['temp'])
+              humData.insert(0, row['hum'])
+              rainData.insert(0, row['rain'])
+              labels.insert(0, str(index.time()))
+
+          tempData.reverse()
+          humData.reverse()
+          rainData.reverse()
+          labels.reverse()
+
+          latestRain = rainData[-1]
+          isRaining = True
+
+          if (latestRain == 1):
+              isRaining = True
+          else:
+              isRaining = False
+
+          return jsonify({'payload':json.dumps({'tempData':tempData, 'humData':humData, 'isRaining':isRaining, 'labels':labels, 'currentTemp':currentTemp, 'currentHum':currentHum, 'currentRain':currentRain})})
+
+      else:
+          c.execute("SELECT temp, humidity, rain, datetime FROM data ORDER BY datetime DESC LIMIT 25;")
+          currentRows = c.fetchall()
+
+          for r in currentRows:
+
+              data = list(r)
+
+              temp = data[0]
+              tempData.insert(0, temp)
+
+              hum = data[1]
+              humData.insert(0, hum)
+
+              rain = data[2]
+              rainData.insert(0, rain)
+
+              datetimeval = str(data[3])
+              labels.insert(0, datetimeval)
+
+          latestRain = rainData[-1]
+          isRaining = True
+
+          if (latestRain == 1):
+              isRaining = True
+          else:
+              isRaining = False
+
+              return jsonify({'payload':json.dumps({'tempData':tempData, 'humData':humData, 'isRaining':isRaining, 'labels':labels, 'currentTemp':currentTemp, 'currentHum':currentHum, 'currentRain':currentRain})})
+
+  if __name__ == "__main__":
+      app.run()
+\end{minted}
+
+\subsection{main.html}
+\begin{minted}[linenos,tabsize=2,breaklines]{html}
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+      <meta charset="utf-8">
+      <title>My test page</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/
+      css/bootstrap.min.css"
+      integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1
+      jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+      <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5
+      smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/
+      1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzl
+      Xwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/
+      4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9
+      VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist
+      /Chart.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery
+      /3.2.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+      <div id="wrapper" class="container">
+          <!-- Info will go here -->
+          <div class="row">
+              <div class="col-12">
+                  <h2>Welcome to my birdbox site</h2>
+                  <p id="info">
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. A condimentum vitae sapien pellentesque. Ut consequat
+                      semper viverra nam libero justo. Quis auctor elit sed vulputate
+                      mi sit amet mauris commodo. Tempor nec feugiat nisl pretium.
+                      Justo donec enim diam vulputate ut pharetra. Tortor at auctor
+                      urna nunc id cursus. Mauris vitae ultricies leo integer malesuada
+                      nunc vel risus. Tristique magna sit amet purus. Dui ut ornare
+                      lectus sit amet est placerat. Libero volutpat sed cras ornare
+                      arcu. In pellentesque massa placerat duis ultricies.
+                  </p>
+              </div>
+          </div>
+
+          <hr>
+
+
+          <!-- Cards go here -->
+          <div class="card-deck">
+
+              <!-- Current Temp -->
+              <div class="card bg-light mb-3 text-center">
+                  <div class="card-header">Current Temperature</div>
+                  <div class="card-body">
+                      <h3 class="card-text" id="currentTemp"></h3>
+                  </div>
+              </div>
+
+              <!-- Current Humidity -->
+              <div class="card bg-light mb-3 text-center">
+                  <div class="card-header">Current Humidity</div>
+                  <div class="card-body">
+                      <h3 class="card-text" id="currentHum"></h3>
+                  </div>
+              </div>
+
+              <!-- Rain Status -->
+              <div class="card bg-light mb-3 text-center">
+                  <div class="card-header">Rain Status</div>
+                  <div class="card-body">
+                      <h3 class="card-text" id="currentRain"></h3>
+                  </div>
+              </div>
+          </div>
+
+          <hr>
+          <!-- Charts go here -->
+          <div class="row">
+              <div id="tempHumChart" class="col-12">
+                  <h3>Temperature & Humidity Chart</h3>
+                  <!-- bar chart canvas element -->
+                  <canvas class="my-4 chartjs-render-monitor" id="myChart" height="150px"></canvas>
+                  <div class="row">
+                      <div id="dropdown" class="col-4">
+                          <div class="btn-group" role="group" aria-label="Basic example">
+                              <button id="live" class="btn btn-secondary" type="button" onclick="liveChart()">Live Feed</button>
+                              <button id="oneDay" class="btn btn-secondary" type="button" onclick="historicChart(1)">Past Day</button>
+                              <button id="sevenDay" class="btn btn-secondary" type="button" onclick="historicChart(7)">Past Week</button>
+                              <button id="thirtyDay" class="btn btn-secondary" type="button" onclick="historicChart(30)">Past 30 days</button>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          <hr>
+
+          <!-- Video content goes here -->
+          <div class="row">
+              <div class="embed-responsive embed-responsive-16by9">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/Bey4XXJAqS8"
+                  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                  allowfullscreen></iframe>
+              </div>
+          </div>
+
+
+      </div>
+  </body>
+
+  <script>
+  // Global parameters and variables:
+  Chart.defaults.global.responsive = true;
+  Chart.defaults.global.maintainAspectRatio = true;
+  Chart.defaults.global.animation.duration = 0;
+  Chart.defaults.global.elements.point.radius = 3;
+  Chart.defaults.global.elements.point.hoverRadius = 3;
+
+  var _tempData;
+  var _humData;
+  var _labels;
+
+  var _currentTemp;
+  var _currentHum;
+  var _isRaining;
+
+  //assign days var
+  var days = 33;
+
+  // get chart canvas
+  var ctx = document.getElementById("myChart").getContext("2d");
+
+  //function to get new data
+  function getFreshData(days) {
+      return $.ajax({
+          url: "/get_data/" + days,
+          type: "GET",
+          data: { vals: '' },
+      });
+  }
+
+
+
+  //a function to create charts
+  function createLineChart(chartName, theData, canvas) {
+      var chartName = new Chart(canvas, {
+          type: 'line',
+          data: theData,
+          options: {
+              title: {
+                  display: true,
+                  text: chartName
+              },
+              scales: {
+                  xAxes: [{
+                      ticks: {
+                          autoSkip: true
+                      }
+                  }],
+                  yAxes: [{
+                      ticks: {
+                          min: -10,
+                          max: 100
+                      }
+                  }]
+              }
+          }
+      });
+  }
+
+  //create chart function
+  function initialiseChart(days){
+      console.log(days);
+      getFreshData(days).then(function(data) {
+          full_data = JSON.parse(data.payload);
+          _tempData = full_data['tempData'];
+          _humData = full_data['humData'];
+          _isRaining = full_data['currentRain'];
+          _labels = full_data['labels'];
+          _currentTemp = full_data['currentTemp'];
+          document.getElementById("currentTemp").innerHTML = _currentTemp + "&#8451;";
+          _currentHum = full_data['currentHum'];
+          document.getElementById("currentHum").innerHTML = _currentHum + "&#37;";
+
+          //check for rain
+          if (_isRaining == 1) {
+              document.getElementById("currentRain").innerHTML = "It\'s raining.";
+          } else {
+              document.getElementById("currentRain").innerHTML = "It\'s not raining.";
+          }
+
+          //define chart data
+          var chartData = {
+              labels: _labels,
+              datasets: [{
+                  label: 'Temperature',
+                  fill: false,
+                  borderColor: 'rgba(255, 0, 0, 1.0)',
+                  data: _tempData,
+              },{
+                  label: 'Humidity',
+                  fill: false,
+                  borderColor: 'rgba(0, 0, 255, 1.0)',
+                  data: _humData,
+              }]
+          };
+          createLineChart("Temperature & Humidity Chart", chartData, ctx);
+      });
+  }
+
+  var liveData = true;
+  console.log("global: " + liveData);
+
+  //function for a historic chart
+  function historicChart(days) {
+      liveData = false;
+      initialiseChart(days);
+      console.log(_labels);
+  }
+
+  //this function is for the live chart
+  function liveChart() {
+      initialiseChart(33);
+      console.log(liveData);
+      liveData = true;
+      setInterval(function() {
+          if (liveData == true) {
+              initialiseChart(33);
+          }
+      }, 5000);
+  }
+
+  //create a chart on loading of the page
+  $(document).ready(function() {
+      initialiseChart(33);
+  });
+
+  //does a live chart
+  if (liveData == true) {
+      console.log(liveData);
+      $(document).ready(function() {
+          liveChart();
+      });
+  }
+
+  </script>
+  </html>
+\end{minted}
+
+\subsection{camTest.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  from picamera import PiCamera
+  from time import sleep
+
+  camera = PiCamera()
+  camera.start_preview()
+  sleep(5)
+  camera.capture('/home/pi/Documents/ProjectFiles/PiBirdBox/tests/testimage.jpg')
+  camera.stop_preview()
+\end{minted}
+
+\subsection{sensorTest.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  import RPi.GPIO as GPIO
+  import dht11
+  import rainSensor
+  import time
+  import datetime
+
+  GPIO.setwarnings(False)
+  GPIO.setmode(GPIO.BCM)
+  GPIO.cleanup()
+
+  temphum = dht11.DHT11(pin = 21)
+  GPIO.cleanup()
+
+  rain = rainSensor.RainSensor(pin = 17)
+  GPIO.cleanup()
+
+  def sensorTest():
+      while True:
+              resultDHT = temphum.read()
+              resultRain = rain.read()
+              if resultDHT.is_valid():
+                  print("Last Valid Input: " + str(datetime.datetime.now()))
+                  print ("Temperature: %d C" % resultDHT.temperature)
+                  print ("Humidity: %d %%" % resultDHT.humidity)
+                  print ("Raining?: %d" % resultRain)
+
+              else:
+                  print("Error ", resultDHT.error_code)
+              
+              time.sleep(5)
+                  
+  if __name__ == "__main__":
+    sensorTest()
+\end{minted}
+
+\subsection{pandasTest.py}
+\begin{minted}[linenos,tabsize=2,breaklines]{python}
+  import pandas as pd
+  import datetime
+
+  data = [(21, 55, datetime.datetime(2019, 4, 29, 9, 57, 53)), 
+  (22, 55, datetime.datetime(2019, 4, 29, 9, 56, 52)), 
+  (26, 47, datetime.datetime(2019, 4, 29, 9, 55, 49)), 
+  (22, 54, datetime.datetime(2019, 4, 30, 9, 54, 49)), 
+  (20, 54, datetime.datetime(2019, 4, 30, 9, 53, 49)), 
+  (19, 65, datetime.datetime(2019, 5, 1, 9, 52, 48)), 
+  (18, 53, datetime.datetime(2019, 5, 1, 9, 51, 47)), 
+  (21, 58, datetime.datetime(2019, 5, 1, 9, 50, 46))]
+
+  df = pd.DataFrame(data, columns=['temp', 'hum', 'date']).set_index('date')
+  df_day = df.resample('d').mean()
+
+  print(df_day)
+
+  tempData = []
+  humData = []
+  labels = []
+
+  for index, row in df_day.iterrows():
+      tempData.insert(0, row['temp'])
+      humData.insert(0, row['hum'])
+      labels.insert(0, index,)
+
+  tempData.reverse()
+  humData.reverse()
+  labels.reverse()
+  print(tempData)
+  print(humData)
+  print(labels)
+  print(labels[0])
+\end{minted}
 
 \pagebreak
 \bibliographystyle{unsrt}

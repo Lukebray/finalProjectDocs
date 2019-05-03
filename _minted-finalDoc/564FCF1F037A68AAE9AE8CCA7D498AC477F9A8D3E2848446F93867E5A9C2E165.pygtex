@@ -1,0 +1,252 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{c+cp}{\PYGZlt{}!DOCTYPE html\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{html} \PYG{n+na}{lang}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}en\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{meta} \PYG{n+na}{charset}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}utf\PYGZhy{}8\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}My test page\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{title}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{meta} \PYG{n+na}{name}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}viewport\PYGZdq{}} \PYG{n+na}{content}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}width=device\PYGZhy{}width, initial\PYGZhy{}scale=1\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{link} \PYG{n+na}{rel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}stylesheet\PYGZdq{}} \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/}
+\PYG{l+s}{      css/bootstrap.min.css\PYGZdq{}}
+      \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1}
+\PYG{l+s}{      jddIhOegiu1FwO5qRGvFXOdJZ4\PYGZdq{}} \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{link} \PYG{n+na}{rel}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}shortcut icon\PYGZdq{}} \PYG{n+na}{href}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZob{}\PYGZob{} url\PYGZus{}for(\PYGZsq{}static\PYGZsq{}, filename=\PYGZsq{}favicon.ico\PYGZsq{}) \PYGZcb{}\PYGZcb{}\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://code.jquery.com/jquery\PYGZhy{}3.3.1.slim.min.js\PYGZdq{}} \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5}
+\PYG{l+s}{      smXKp4YfRvH+8abtTE1Pi6jizo\PYGZdq{}} \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdnjs.cloudflare.com/ajax/libs/popper.js/}
+\PYG{l+s}{      1.14.0/umd/popper.min.js\PYGZdq{}} \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzl}
+\PYG{l+s}{      Xwp5UZB1LY//20VyM2taTB4QvJ\PYGZdq{}} \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://stackpath.bootstrapcdn.com/bootstrap/}
+\PYG{l+s}{      4.1.0/js/bootstrap.min.js\PYGZdq{}} \PYG{n+na}{integrity}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sha384\PYGZhy{}uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9}
+\PYG{l+s}{      VI8SKNVmz4sk7buKt/6v9KI65qnm\PYGZdq{}} \PYG{n+na}{crossorigin}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}anonymous\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist}
+\PYG{l+s}{      /Chart.min.js\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://ajax.googleapis.com/ajax/libs/jquery}
+\PYG{l+s}{      /3.2.1/jquery.min.js\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{head}\PYG{p}{\PYGZgt{}}
+
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}wrapper\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}container\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+          \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Info will go here \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}row\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZhy{}12\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h2}\PYG{p}{\PYGZgt{}}Welcome to my birdbox site\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{h2}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{p} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}info\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                      do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. A condimentum vitae sapien pellentesque. Ut consequat
+                      semper viverra nam libero justo. Quis auctor elit sed vulputate
+                      mi sit amet mauris commodo. Tempor nec feugiat nisl pretium.
+                      Justo donec enim diam vulputate ut pharetra. Tortor at auctor
+                      urna nunc id cursus. Mauris vitae ultricies leo integer malesuada
+                      nunc vel risus. Tristique magna sit amet purus. Dui ut ornare
+                      lectus sit amet est placerat. Libero volutpat sed cras ornare
+                      arcu. In pellentesque massa placerat duis ultricies.
+                  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{p}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{hr}\PYG{p}{\PYGZgt{}}
+
+
+          \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Cards go here \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}deck\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+
+              \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Current Temp \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card bg\PYGZhy{}light mb\PYGZhy{}3 text\PYGZhy{}center\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}header\PYGZdq{}}\PYG{p}{\PYGZgt{}}Current Temperature\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}body\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h3} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}text\PYGZdq{}} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}currentTemp\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{h3}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+              \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Current Humidity \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card bg\PYGZhy{}light mb\PYGZhy{}3 text\PYGZhy{}center\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}header\PYGZdq{}}\PYG{p}{\PYGZgt{}}Current Humidity\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}body\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h3} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}text\PYGZdq{}} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}currentHum\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{h3}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+              \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Rain Status \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card bg\PYGZhy{}light mb\PYGZhy{}3 text\PYGZhy{}center\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}header\PYGZdq{}}\PYG{p}{\PYGZgt{}}Rain Status\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}body\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h3} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}card\PYGZhy{}text\PYGZdq{}} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}currentRain\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{h3}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{hr}\PYG{p}{\PYGZgt{}}
+          \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Charts go here \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}row\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}tempHumChart\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZhy{}12\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{h3}\PYG{p}{\PYGZgt{}}Temperature \PYG{err}{\PYGZam{}} Humidity Chart\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{h3}\PYG{p}{\PYGZgt{}}
+                  \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} bar chart canvas element \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{canvas} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}my\PYGZhy{}4 chartjs\PYGZhy{}render\PYGZhy{}monitor\PYGZdq{}} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}myChart\PYGZdq{}} \PYG{n+na}{height}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}150px\PYGZdq{}}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{canvas}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}row\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                      \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}dropdown\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}col\PYGZhy{}4\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}btn\PYGZhy{}group\PYGZdq{}} \PYG{n+na}{role}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}group\PYGZdq{}} \PYG{n+na}{aria\PYGZhy{}label}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}Basic example\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{button} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}live\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}btn btn\PYGZhy{}secondary\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}button\PYGZdq{}} \PYG{n+na}{onclick}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}liveChart()\PYGZdq{}}\PYG{p}{\PYGZgt{}}Live Feed\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{button}\PYG{p}{\PYGZgt{}}
+                              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{button} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}oneDay\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}btn btn\PYGZhy{}secondary\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}button\PYGZdq{}} \PYG{n+na}{onclick}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}historicChart(1)\PYGZdq{}}\PYG{p}{\PYGZgt{}}Past Day\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{button}\PYG{p}{\PYGZgt{}}
+                              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{button} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}sevenDay\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}btn btn\PYGZhy{}secondary\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}button\PYGZdq{}} \PYG{n+na}{onclick}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}historicChart(7)\PYGZdq{}}\PYG{p}{\PYGZgt{}}Past Week\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{button}\PYG{p}{\PYGZgt{}}
+                              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{button} \PYG{n+na}{id}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}thirtyDay\PYGZdq{}} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}btn btn\PYGZhy{}secondary\PYGZdq{}} \PYG{n+na}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}button\PYGZdq{}} \PYG{n+na}{onclick}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}historicChart(30)\PYGZdq{}}\PYG{p}{\PYGZgt{}}Past 30 days\PYG{p}{\PYGZlt{}/}\PYG{n+nt}{button}\PYG{p}{\PYGZgt{}}
+                          \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+                      \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{hr}\PYG{p}{\PYGZgt{}}
+
+          \PYG{c}{\PYGZlt{}!\PYGZhy{}\PYGZhy{} Video content goes here \PYGZhy{}\PYGZhy{}\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}row\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}}\PYG{n+nt}{div} \PYG{n+na}{class}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}embed\PYGZhy{}responsive embed\PYGZhy{}responsive\PYGZhy{}16by9\PYGZdq{}}\PYG{p}{\PYGZgt{}}
+                  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{iframe} \PYG{n+na}{width}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}560\PYGZdq{}} \PYG{n+na}{height}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}315\PYGZdq{}} \PYG{n+na}{src}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}https://www.youtube.com/embed/Bey4XXJAqS8\PYGZdq{}}
+                  \PYG{n+na}{frameborder}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0\PYGZdq{}} \PYG{n+na}{allow}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}accelerometer; autoplay; encrypted\PYGZhy{}media; gyroscope; picture\PYGZhy{}in\PYGZhy{}picture\PYGZdq{}}
+                  \PYG{n+na}{allowfullscreen}\PYG{p}{\PYGZgt{}\PYGZlt{}/}\PYG{n+nt}{iframe}\PYG{p}{\PYGZgt{}}
+              \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+          \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+
+
+      \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{div}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{body}\PYG{p}{\PYGZgt{}}
+
+  \PYG{p}{\PYGZlt{}}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+  \PYG{c+c1}{// Global parameters and variables:}
+  \PYG{n+nx}{Chart}\PYG{p}{.}\PYG{n+nx}{defaults}\PYG{p}{.}\PYG{n+nx}{global}\PYG{p}{.}\PYG{n+nx}{responsive} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{n+nx}{Chart}\PYG{p}{.}\PYG{n+nx}{defaults}\PYG{p}{.}\PYG{n+nx}{global}\PYG{p}{.}\PYG{n+nx}{maintainAspectRatio} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{n+nx}{Chart}\PYG{p}{.}\PYG{n+nx}{defaults}\PYG{p}{.}\PYG{n+nx}{global}\PYG{p}{.}\PYG{n+nx}{animation}\PYG{p}{.}\PYG{n+nx}{duration} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;}
+  \PYG{n+nx}{Chart}\PYG{p}{.}\PYG{n+nx}{defaults}\PYG{p}{.}\PYG{n+nx}{global}\PYG{p}{.}\PYG{n+nx}{elements}\PYG{p}{.}\PYG{n+nx}{point}\PYG{p}{.}\PYG{n+nx}{radius} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{p}{;}
+  \PYG{n+nx}{Chart}\PYG{p}{.}\PYG{n+nx}{defaults}\PYG{p}{.}\PYG{n+nx}{global}\PYG{p}{.}\PYG{n+nx}{elements}\PYG{p}{.}\PYG{n+nx}{point}\PYG{p}{.}\PYG{n+nx}{hoverRadius} \PYG{o}{=} \PYG{l+m+mi}{3}\PYG{p}{;}
+
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}tempData}\PYG{p}{;}
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}humData}\PYG{p}{;}
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}labels}\PYG{p}{;}
+
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}currentTemp}\PYG{p}{;}
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}currentHum}\PYG{p}{;}
+  \PYG{k+kd}{var} \PYG{n+nx}{\PYGZus{}isRaining}\PYG{p}{;}
+
+  \PYG{c+c1}{//assign days var}
+  \PYG{k+kd}{var} \PYG{n+nx}{days} \PYG{o}{=} \PYG{l+m+mi}{33}\PYG{p}{;}
+
+  \PYG{c+c1}{// get chart canvas}
+  \PYG{k+kd}{var} \PYG{n+nx}{ctx} \PYG{o}{=} \PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{getElementById}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}myChart\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{getContext}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}2d\PYGZdq{}}\PYG{p}{);}
+
+  \PYG{c+c1}{//function to get new data}
+  \PYG{k+kd}{function} \PYG{n+nx}{getFreshData}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k}{return} \PYG{n+nx}{\PYGZdl{}}\PYG{p}{.}\PYG{n+nx}{ajax}\PYG{p}{(\PYGZob{}}
+          \PYG{n+nx}{url}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}/get\PYGZus{}data/\PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{days}\PYG{p}{,}
+          \PYG{n+nx}{type}\PYG{o}{:} \PYG{l+s+s2}{\PYGZdq{}GET\PYGZdq{}}\PYG{p}{,}
+          \PYG{n+nx}{data}\PYG{o}{:} \PYG{p}{\PYGZob{}} \PYG{n+nx}{vals}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}\PYGZsq{}} \PYG{p}{\PYGZcb{},}
+      \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+
+
+  \PYG{c+c1}{//a function to create charts}
+  \PYG{k+kd}{function} \PYG{n+nx}{createLineChart}\PYG{p}{(}\PYG{n+nx}{chartName}\PYG{p}{,} \PYG{n+nx}{theData}\PYG{p}{,} \PYG{n+nx}{canvas}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{k+kd}{var} \PYG{n+nx}{chartName} \PYG{o}{=} \PYG{k}{new} \PYG{n+nx}{Chart}\PYG{p}{(}\PYG{n+nx}{canvas}\PYG{p}{,} \PYG{p}{\PYGZob{}}
+          \PYG{n+nx}{type}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}line\PYGZsq{}}\PYG{p}{,}
+          \PYG{n+nx}{data}\PYG{o}{:} \PYG{n+nx}{theData}\PYG{p}{,}
+          \PYG{n+nx}{options}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+              \PYG{n+nx}{title}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+                  \PYG{n+nx}{display}\PYG{o}{:} \PYG{k+kc}{true}\PYG{p}{,}
+                  \PYG{n+nx}{text}\PYG{o}{:} \PYG{n+nx}{chartName}
+              \PYG{p}{\PYGZcb{},}
+              \PYG{n+nx}{scales}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+                  \PYG{n+nx}{xAxes}\PYG{o}{:} \PYG{p}{[\PYGZob{}}
+                      \PYG{n+nx}{ticks}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+                          \PYG{n+nx}{autoSkip}\PYG{o}{:} \PYG{k+kc}{true}
+                      \PYG{p}{\PYGZcb{}}
+                  \PYG{p}{\PYGZcb{}],}
+                  \PYG{n+nx}{yAxes}\PYG{o}{:} \PYG{p}{[\PYGZob{}}
+                      \PYG{n+nx}{ticks}\PYG{o}{:} \PYG{p}{\PYGZob{}}
+                          \PYG{n+nx}{min}\PYG{o}{:} \PYG{o}{\PYGZhy{}}\PYG{l+m+mi}{10}\PYG{p}{,}
+                          \PYG{n+nx}{max}\PYG{o}{:} \PYG{l+m+mi}{100}
+                      \PYG{p}{\PYGZcb{}}
+                  \PYG{p}{\PYGZcb{}]}
+              \PYG{p}{\PYGZcb{}}
+          \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+c1}{//create chart function}
+  \PYG{k+kd}{function} \PYG{n+nx}{initialiseChart}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{)\PYGZob{}}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{);}
+      \PYG{n+nx}{getFreshData}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{).}\PYG{n+nx}{then}\PYG{p}{(}\PYG{k+kd}{function}\PYG{p}{(}\PYG{n+nx}{data}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+          \PYG{n+nx}{full\PYGZus{}data} \PYG{o}{=} \PYG{n+nx}{JSON}\PYG{p}{.}\PYG{n+nx}{parse}\PYG{p}{(}\PYG{n+nx}{data}\PYG{p}{.}\PYG{n+nx}{payload}\PYG{p}{);}
+          \PYG{n+nx}{\PYGZus{}tempData} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}tempData\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nx}{\PYGZus{}humData} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}humData\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nx}{\PYGZus{}isRaining} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}currentRain\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nx}{\PYGZus{}labels} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}labels\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nx}{\PYGZus{}currentTemp} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}currentTemp\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{getElementById}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}currentTemp\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{innerHTML} \PYG{o}{=} \PYG{n+nx}{\PYGZus{}currentTemp} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZam{}\PYGZsh{}8451;\PYGZdq{}}\PYG{p}{;}
+          \PYG{n+nx}{\PYGZus{}currentHum} \PYG{o}{=} \PYG{n+nx}{full\PYGZus{}data}\PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}currentHum\PYGZsq{}}\PYG{p}{];}
+          \PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{getElementById}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}currentHum\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{innerHTML} \PYG{o}{=} \PYG{n+nx}{\PYGZus{}currentHum} \PYG{o}{+} \PYG{l+s+s2}{\PYGZdq{}\PYGZam{}\PYGZsh{}37;\PYGZdq{}}\PYG{p}{;}
+
+          \PYG{c+c1}{//check for rain}
+          \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{\PYGZus{}isRaining} \PYG{o}{==} \PYG{l+m+mi}{1}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+              \PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{getElementById}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}currentRain\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{innerHTML} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}It\PYGZbs{}\PYGZsq{}s raining.\PYGZdq{}}\PYG{p}{;}
+          \PYG{p}{\PYGZcb{}} \PYG{k}{else} \PYG{p}{\PYGZob{}}
+              \PYG{n+nb}{document}\PYG{p}{.}\PYG{n+nx}{getElementById}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}currentRain\PYGZdq{}}\PYG{p}{).}\PYG{n+nx}{innerHTML} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}It\PYGZbs{}\PYGZsq{}s not raining.\PYGZdq{}}\PYG{p}{;}
+          \PYG{p}{\PYGZcb{}}
+
+          \PYG{c+c1}{//define chart data}
+          \PYG{k+kd}{var} \PYG{n+nx}{chartData} \PYG{o}{=} \PYG{p}{\PYGZob{}}
+              \PYG{n+nx}{labels}\PYG{o}{:} \PYG{n+nx}{\PYGZus{}labels}\PYG{p}{,}
+              \PYG{n+nx}{datasets}\PYG{o}{:} \PYG{p}{[\PYGZob{}}
+                  \PYG{n+nx}{label}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}Temperature\PYGZsq{}}\PYG{p}{,}
+                  \PYG{n+nx}{fill}\PYG{o}{:} \PYG{k+kc}{false}\PYG{p}{,}
+                  \PYG{n+nx}{borderColor}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}rgba(255, 0, 0, 1.0)\PYGZsq{}}\PYG{p}{,}
+                  \PYG{n+nx}{data}\PYG{o}{:} \PYG{n+nx}{\PYGZus{}tempData}\PYG{p}{,}
+              \PYG{p}{\PYGZcb{},\PYGZob{}}
+                  \PYG{n+nx}{label}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}Humidity\PYGZsq{}}\PYG{p}{,}
+                  \PYG{n+nx}{fill}\PYG{o}{:} \PYG{k+kc}{false}\PYG{p}{,}
+                  \PYG{n+nx}{borderColor}\PYG{o}{:} \PYG{l+s+s1}{\PYGZsq{}rgba(0, 0, 255, 1.0)\PYGZsq{}}\PYG{p}{,}
+                  \PYG{n+nx}{data}\PYG{o}{:} \PYG{n+nx}{\PYGZus{}humData}\PYG{p}{,}
+              \PYG{p}{\PYGZcb{}]}
+          \PYG{p}{\PYGZcb{};}
+          \PYG{n+nx}{createLineChart}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Temperature \PYGZam{} Humidity Chart\PYGZdq{}}\PYG{p}{,} \PYG{n+nx}{chartData}\PYG{p}{,} \PYG{n+nx}{ctx}\PYG{p}{);}
+      \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{k+kd}{var} \PYG{n+nx}{liveData} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+  \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}global: \PYGZdq{}} \PYG{o}{+} \PYG{n+nx}{liveData}\PYG{p}{);}
+
+  \PYG{c+c1}{//function for a historic chart}
+  \PYG{k+kd}{function} \PYG{n+nx}{historicChart}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{liveData} \PYG{o}{=} \PYG{k+kc}{false}\PYG{p}{;}
+      \PYG{n+nx}{initialiseChart}\PYG{p}{(}\PYG{n+nx}{days}\PYG{p}{);}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{\PYGZus{}labels}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+c1}{//this function is for the live chart}
+  \PYG{k+kd}{function} \PYG{n+nx}{liveChart}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{initialiseChart}\PYG{p}{(}\PYG{l+m+mi}{33}\PYG{p}{);}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{liveData}\PYG{p}{);}
+      \PYG{n+nx}{liveData} \PYG{o}{=} \PYG{k+kc}{true}\PYG{p}{;}
+      \PYG{n+nx}{setInterval}\PYG{p}{(}\PYG{k+kd}{function}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+          \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{liveData} \PYG{o}{==} \PYG{k+kc}{true}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+              \PYG{n+nx}{initialiseChart}\PYG{p}{(}\PYG{l+m+mi}{33}\PYG{p}{);}
+          \PYG{p}{\PYGZcb{}}
+      \PYG{p}{\PYGZcb{},} \PYG{l+m+mi}{5000}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{c+c1}{//create a chart on loading of the page}
+  \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{n+nb}{document}\PYG{p}{).}\PYG{n+nx}{ready}\PYG{p}{(}\PYG{k+kd}{function}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{initialiseChart}\PYG{p}{(}\PYG{l+m+mi}{33}\PYG{p}{);}
+  \PYG{p}{\PYGZcb{});}
+
+  \PYG{c+c1}{//does a live chart}
+  \PYG{k}{if} \PYG{p}{(}\PYG{n+nx}{liveData} \PYG{o}{==} \PYG{k+kc}{true}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+      \PYG{n+nx}{console}\PYG{p}{.}\PYG{n+nx}{log}\PYG{p}{(}\PYG{n+nx}{liveData}\PYG{p}{);}
+      \PYG{n+nx}{\PYGZdl{}}\PYG{p}{(}\PYG{n+nb}{document}\PYG{p}{).}\PYG{n+nx}{ready}\PYG{p}{(}\PYG{k+kd}{function}\PYG{p}{()} \PYG{p}{\PYGZob{}}
+          \PYG{n+nx}{liveChart}\PYG{p}{();}
+      \PYG{p}{\PYGZcb{});}
+  \PYG{p}{\PYGZcb{}}
+
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{script}\PYG{p}{\PYGZgt{}}
+  \PYG{p}{\PYGZlt{}/}\PYG{n+nt}{html}\PYG{p}{\PYGZgt{}}
+\end{Verbatim}

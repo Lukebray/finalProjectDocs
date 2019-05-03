@@ -1,0 +1,35 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{import} \PYG{n+nn}{RPi.GPIO} \PYG{k+kn}{as} \PYG{n+nn}{GPIO}
+  \PYG{k+kn}{import} \PYG{n+nn}{dht11}
+  \PYG{k+kn}{import} \PYG{n+nn}{rainSensor}
+  \PYG{k+kn}{import} \PYG{n+nn}{time}
+  \PYG{k+kn}{import} \PYG{n+nn}{datetime}
+
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setwarnings}\PYG{p}{(}\PYG{n+nb+bp}{False}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setmode}\PYG{p}{(}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{BCM}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{n}{temphum} \PYG{o}{=} \PYG{n}{dht11}\PYG{o}{.}\PYG{n}{DHT11}\PYG{p}{(}\PYG{n}{pin} \PYG{o}{=} \PYG{l+m+mi}{21}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{n}{rain} \PYG{o}{=} \PYG{n}{rainSensor}\PYG{o}{.}\PYG{n}{RainSensor}\PYG{p}{(}\PYG{n}{pin} \PYG{o}{=} \PYG{l+m+mi}{17}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{k}{def} \PYG{n+nf}{sensorTest}\PYG{p}{():}
+      \PYG{k}{while} \PYG{n+nb+bp}{True}\PYG{p}{:}
+              \PYG{n}{resultDHT} \PYG{o}{=} \PYG{n}{temphum}\PYG{o}{.}\PYG{n}{read}\PYG{p}{()}
+              \PYG{n}{resultRain} \PYG{o}{=} \PYG{n}{rain}\PYG{o}{.}\PYG{n}{read}\PYG{p}{()}
+              \PYG{k}{if} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{is\PYGZus{}valid}\PYG{p}{():}
+                  \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Last Valid Input: \PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{o}{.}\PYG{n}{now}\PYG{p}{()))}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Temperature: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{ C\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{temperature}\PYG{p}{)}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Humidity: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{ }\PYG{l+s+si}{\PYGZpc{}\PYGZpc{}}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{humidity}\PYG{p}{)}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Raining?: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultRain}\PYG{p}{)}
+
+              \PYG{k}{else}\PYG{p}{:}
+                  \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Error \PYGZdq{}}\PYG{p}{,} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{error\PYGZus{}code}\PYG{p}{)}
+
+              \PYG{n}{time}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}
+
+  \PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s2}{\PYGZdq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZdq{}}\PYG{p}{:}
+    \PYG{n}{sensorTest}\PYG{p}{()}
+\end{Verbatim}

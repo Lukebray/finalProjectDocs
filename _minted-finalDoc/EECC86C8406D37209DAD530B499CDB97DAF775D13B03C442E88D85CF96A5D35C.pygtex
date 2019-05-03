@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{from} \PYG{n+nn}{picamera} \PYG{k+kn}{import} \PYG{n}{PiCamera}
+  \PYG{k+kn}{from} \PYG{n+nn}{time} \PYG{k+kn}{import} \PYG{n}{sleep}
+
+  \PYG{n}{camera} \PYG{o}{=} \PYG{n}{PiCamera}\PYG{p}{()}
+  \PYG{n}{camera}\PYG{o}{.}\PYG{n}{start\PYGZus{}preview}\PYG{p}{()}
+  \PYG{n}{sleep}\PYG{p}{(}\PYG{l+m+mi}{5}\PYG{p}{)}
+  \PYG{n}{camera}\PYG{o}{.}\PYG{n}{capture}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}/home/pi/Documents/ProjectFiles/PiBirdBox/tests/testimage.jpg\PYGZsq{}}\PYG{p}{)}
+  \PYG{n}{camera}\PYG{o}{.}\PYG{n}{stop\PYGZus{}preview}\PYG{p}{()}
+\end{Verbatim}

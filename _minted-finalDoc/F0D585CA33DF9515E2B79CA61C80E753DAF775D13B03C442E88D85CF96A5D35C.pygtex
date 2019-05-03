@@ -1,0 +1,64 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+  \PYG{k+kn}{import} \PYG{n+nn}{RPi.GPIO} \PYG{k+kn}{as} \PYG{n+nn}{GPIO}
+  \PYG{k+kn}{import} \PYG{n+nn}{dht11}
+  \PYG{k+kn}{import} \PYG{n+nn}{rainSensor}
+  \PYG{k+kn}{import} \PYG{n+nn}{time}
+  \PYG{k+kn}{import} \PYG{n+nn}{datetime}
+  \PYG{k+kn}{import} \PYG{n+nn}{mysql.connector}
+  \PYG{k+kn}{from} \PYG{n+nn}{mysql.connector} \PYG{k+kn}{import} \PYG{n}{Error}
+  \PYG{k+kn}{import} \PYG{n+nn}{sshtunnel}
+
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setwarnings}\PYG{p}{(}\PYG{n+nb+bp}{False}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{setmode}\PYG{p}{(}\PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{BCM}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{n}{temphum} \PYG{o}{=} \PYG{n}{dht11}\PYG{o}{.}\PYG{n}{DHT11}\PYG{p}{(}\PYG{n}{pin} \PYG{o}{=} \PYG{l+m+mi}{21}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{n}{rain} \PYG{o}{=} \PYG{n}{rainSensor}\PYG{o}{.}\PYG{n}{RainSensor}\PYG{p}{(}\PYG{n}{pin} \PYG{o}{=} \PYG{l+m+mi}{17}\PYG{p}{)}
+  \PYG{n}{GPIO}\PYG{o}{.}\PYG{n}{cleanup}\PYG{p}{()}
+
+  \PYG{n}{sshtunnel}\PYG{o}{.}\PYG{n}{SSH\PYGZus{}TIMEOUT} \PYG{o}{=} \PYG{l+m+mf}{5.0}
+  \PYG{n}{sshtunnel}\PYG{o}{.}\PYG{n}{TUNNEL\PYGZus{}TIMEOUT} \PYG{o}{=} \PYG{l+m+mf}{5.0}
+
+  \PYG{k}{def} \PYG{n+nf}{weatherData}\PYG{p}{():}
+      \PYG{k}{while} \PYG{n+nb+bp}{True}\PYG{p}{:}
+              \PYG{n}{resultDHT} \PYG{o}{=} \PYG{n}{temphum}\PYG{o}{.}\PYG{n}{read}\PYG{p}{()}
+              \PYG{n}{resultRain} \PYG{o}{=} \PYG{n}{rain}\PYG{o}{.}\PYG{n}{read}\PYG{p}{()}
+              \PYG{k}{if} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{is\PYGZus{}valid}\PYG{p}{():}
+                  \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Last Valid Input: \PYGZdq{}} \PYG{o}{+} \PYG{n+nb}{str}\PYG{p}{(}\PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{o}{.}\PYG{n}{now}\PYG{p}{()))}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Temperature: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{ C\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{temperature}\PYG{p}{)}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Humidity: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{ }\PYG{l+s+si}{\PYGZpc{}\PYGZpc{}}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{humidity}\PYG{p}{)}
+                  \PYG{k}{print} \PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Raining?: }\PYG{l+s+si}{\PYGZpc{}d}\PYG{l+s+s2}{\PYGZdq{}} \PYG{o}{\PYGZpc{}} \PYG{n}{resultRain}\PYG{p}{)}
+                  \PYG{n}{query} \PYG{o}{=} \PYG{l+s+s2}{\PYGZdq{}INSERT INTO data (temp, humidity, rain, datetime) VALUES (}\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{, }\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{, }\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{, }\PYG{l+s+si}{\PYGZpc{}s}\PYG{l+s+s2}{)\PYGZdq{}}
+                  \PYG{n}{args} \PYG{o}{=} \PYG{p}{(}\PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{temperature}\PYG{p}{,} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{humidity}\PYG{p}{,} \PYG{n}{resultRain}\PYG{p}{,} \PYG{n}{datetime}\PYG{o}{.}\PYG{n}{datetime}\PYG{o}{.}\PYG{n}{now}\PYG{p}{())}
+
+                  \PYG{n}{cursor}\PYG{o}{.}\PYG{n}{execute}\PYG{p}{(}\PYG{n}{query}\PYG{p}{,} \PYG{n}{args}\PYG{p}{)}
+                  \PYG{n}{connection}\PYG{o}{.}\PYG{n}{commit}\PYG{p}{()}
+                  \PYG{n}{time}\PYG{o}{.}\PYG{n}{sleep}\PYG{p}{(}\PYG{l+m+mi}{60}\PYG{p}{)}
+              \PYG{k}{else}\PYG{p}{:}
+                  \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s2}{\PYGZdq{}Error \PYGZdq{}}\PYG{p}{,} \PYG{n}{resultDHT}\PYG{o}{.}\PYG{n}{error\PYGZus{}code}\PYG{p}{)}
+
+
+
+  \PYG{k}{if} \PYG{n+nv+vm}{\PYGZus{}\PYGZus{}name\PYGZus{}\PYGZus{}} \PYG{o}{==} \PYG{l+s+s1}{\PYGZsq{}\PYGZus{}\PYGZus{}main\PYGZus{}\PYGZus{}\PYGZsq{}}\PYG{p}{:}
+      \PYG{k}{with} \PYG{n}{sshtunnel}\PYG{o}{.}\PYG{n}{SSHTunnelForwarder}\PYG{p}{(}
+      \PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}ssh.pythonanywhere.com\PYGZsq{}}\PYG{p}{),}
+      \PYG{n}{ssh\PYGZus{}username}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}USERNAME\PYGZsq{}}\PYG{p}{,} \PYG{n}{ssh\PYGZus{}password}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}PASSWORD\PYGZsq{}}\PYG{p}{,}
+      \PYG{n}{remote\PYGZus{}bind\PYGZus{}address}\PYG{o}{=}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}REMOTE\PYGZus{}BIND\PYGZus{}ADDRESS\PYGZsq{}}\PYG{p}{,} \PYG{l+m+mi}{3306}\PYG{p}{)}
+  \PYG{p}{)} \PYG{k}{as} \PYG{n}{tunnel}\PYG{p}{:}
+          \PYG{n}{connection} \PYG{o}{=} \PYG{n}{mysql}\PYG{o}{.}\PYG{n}{connector}\PYG{o}{.}\PYG{n}{connect}\PYG{p}{(}
+          \PYG{n}{user}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}USER\PYGZsq{}}\PYG{p}{,} \PYG{n}{password}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}PASSWORD\PYGZsq{}}\PYG{p}{,}
+          \PYG{n}{host}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}127.0.0.1\PYGZsq{}}\PYG{p}{,} \PYG{n}{port}\PYG{o}{=}\PYG{n}{tunnel}\PYG{o}{.}\PYG{n}{local\PYGZus{}bind\PYGZus{}port}\PYG{p}{,}
+          \PYG{n}{database}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}DATABASE\PYGZsq{}}\PYG{p}{,}
+      \PYG{p}{)}
+          \PYG{n}{db\PYGZus{}info} \PYG{o}{=} \PYG{n}{connection}\PYG{o}{.}\PYG{n}{get\PYGZus{}server\PYGZus{}info}\PYG{p}{()}
+          \PYG{k}{if} \PYG{n}{connection}\PYG{o}{.}\PYG{n}{is\PYGZus{}connected}\PYG{p}{():}
+              \PYG{n}{cursor} \PYG{o}{=} \PYG{n}{connection}\PYG{o}{.}\PYG{n}{cursor}\PYG{p}{()}
+              \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Connected to MySQL DB...version on \PYGZsq{}}\PYG{p}{,} \PYG{n}{db\PYGZus{}info}\PYG{p}{)}
+              \PYG{n}{weatherData}\PYG{p}{()}
+          \PYG{k}{else}\PYG{p}{:}
+              \PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Failed to connect to database.\PYGZsq{}}\PYG{p}{)}
+
+          \PYG{n}{connection}\PYG{o}{.}\PYG{n}{close}\PYG{p}{()}
+\end{Verbatim}
