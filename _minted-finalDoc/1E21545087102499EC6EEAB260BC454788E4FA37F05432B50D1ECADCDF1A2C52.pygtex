@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+    raspivid \PYGZhy{}o \PYGZhy{} \PYGZhy{}t \PYG{l+m}{0} \PYGZhy{}vf \PYGZhy{}hf \PYGZhy{}w \PYG{l+m}{1280} \PYGZhy{}h \PYG{l+m}{720} \PYGZhy{}fps \PYG{l+m}{24} \PYGZhy{}b \PYG{l+m}{6000000} \PYG{p}{|} avconv \PYGZhy{}re \PYGZhy{}ar \PYG{l+m}{44100} \PYGZhy{}ac \PYG{l+m}{2} \PYGZhy{}acodec pcm\PYGZus{}s16le \PYGZhy{}f s16le \PYGZhy{}ac \PYG{l+m}{2} \PYGZhy{}i /dev/zero \PYGZhy{}f h264 \PYGZhy{}i \PYGZhy{} \PYGZhy{}vcodec copy \PYGZhy{}acodec aac \PYGZhy{}ab 128k \PYGZhy{}g \PYG{l+m}{50} \PYGZhy{}strict experimental \PYGZhy{}f flv rtmp://a.rtmp.youtube.com/live2/\PYG{o}{[}STREAM\PYGZus{}SECRET\PYGZus{}KEY\PYG{o}{]}
+\end{Verbatim}

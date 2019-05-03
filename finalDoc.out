@@ -38,7 +38,7 @@
 \BOOKMARK [2][-]{subsection.5.5}{Connectivity}{section.5}% 38
 \BOOKMARK [2][-]{subsection.5.6}{PiCamera}{section.5}% 39
 \BOOKMARK [2][-]{subsection.5.7}{Web Framework and Data Display Web Page}{section.5}% 40
-\BOOKMARK [2][-]{subsection.5.8}{Object Classes}{section.5}% 41
+\BOOKMARK [2][-]{subsection.5.8}{Objects and Interfaces}{section.5}% 41
 \BOOKMARK [2][-]{subsection.5.9}{Development Environment Setup}{section.5}% 42
 \BOOKMARK [3][-]{subsubsection.5.9.1}{Raspberry Pi}{subsection.5.9}% 43
 \BOOKMARK [3][-]{subsubsection.5.9.2}{Web Development Environment}{subsection.5.9}% 44
@@ -48,50 +48,51 @@
 \BOOKMARK [2][-]{subsection.6.3}{System Overview}{section.6}% 48
 \BOOKMARK [2][-]{subsection.6.4}{Physical Environment Setup}{section.6}% 49
 \BOOKMARK [3][-]{subsubsection.6.4.1}{Circuit Details}{subsection.6.4}% 50
-\BOOKMARK [2][-]{subsection.6.5}{Data Collection}{section.6}% 51
-\BOOKMARK [3][-]{subsubsection.6.5.1}{dht11.py}{subsection.6.5}% 52
-\BOOKMARK [3][-]{subsubsection.6.5.2}{rainSensor.py}{subsection.6.5}% 53
-\BOOKMARK [3][-]{subsubsection.6.5.3}{dataSend.py}{subsection.6.5}% 54
-\BOOKMARK [2][-]{subsection.6.6}{MySQL Database}{section.6}% 55
-\BOOKMARK [2][-]{subsection.6.7}{Data Processing and Presentation}{section.6}% 56
-\BOOKMARK [3][-]{subsubsection.6.7.1}{Flask\137app.py}{subsection.6.7}% 57
-\BOOKMARK [3][-]{subsubsection.6.7.2}{main.html}{subsection.6.7}% 58
-\BOOKMARK [4][-]{paragraph.6.7.2.1}{getFreshData\(\)}{subsubsection.6.7.2}% 59
-\BOOKMARK [4][-]{paragraph.6.7.2.2}{createLineChart\(chartName, theData, canvas\)}{subsubsection.6.7.2}% 60
-\BOOKMARK [4][-]{paragraph.6.7.2.3}{initialiseChart\(days\)}{subsubsection.6.7.2}% 61
-\BOOKMARK [4][-]{paragraph.6.7.2.4}{historicChart\(\)}{subsubsection.6.7.2}% 62
-\BOOKMARK [4][-]{paragraph.6.7.2.5}{liveChart\(\)}{subsubsection.6.7.2}% 63
-\BOOKMARK [4][-]{paragraph.6.7.2.6}{Page Operation}{subsubsection.6.7.2}% 64
-\BOOKMARK [1][-]{section.7}{Testing and Evaluation}{}% 65
-\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 66
-\BOOKMARK [2][-]{subsection.7.2}{Testing Methodology}{section.7}% 67
-\BOOKMARK [3][-]{subsubsection.7.2.1}{PiCamera Testing}{subsection.7.2}% 68
-\BOOKMARK [3][-]{subsubsection.7.2.2}{Sensor Testing}{subsection.7.2}% 69
-\BOOKMARK [3][-]{subsubsection.7.2.3}{Data Collection Testing}{subsection.7.2}% 70
-\BOOKMARK [3][-]{subsubsection.7.2.4}{Data Display Testing}{subsection.7.2}% 71
-\BOOKMARK [2][-]{subsection.7.3}{Evaluation}{section.7}% 72
-\BOOKMARK [3][-]{subsubsection.7.3.1}{PiBB - SR001}{subsection.7.3}% 73
-\BOOKMARK [3][-]{subsubsection.7.3.2}{PiBB - SR002}{subsection.7.3}% 74
-\BOOKMARK [3][-]{subsubsection.7.3.3}{PiBB - SR003}{subsection.7.3}% 75
-\BOOKMARK [3][-]{subsubsection.7.3.4}{PiBB - SR004}{subsection.7.3}% 76
-\BOOKMARK [3][-]{subsubsection.7.3.5}{PiBB - SR005}{subsection.7.3}% 77
-\BOOKMARK [3][-]{subsubsection.7.3.6}{PiBB - SR006}{subsection.7.3}% 78
-\BOOKMARK [3][-]{subsubsection.7.3.7}{PiBB - SR007}{subsection.7.3}% 79
-\BOOKMARK [3][-]{subsubsection.7.3.8}{PiBB - SR008}{subsection.7.3}% 80
-\BOOKMARK [3][-]{subsubsection.7.3.9}{PiBB - SR009}{subsection.7.3}% 81
-\BOOKMARK [3][-]{subsubsection.7.3.10}{PiBB - SR010}{subsection.7.3}% 82
-\BOOKMARK [2][-]{subsection.7.4}{Implementation of the Prototype}{section.7}% 83
-\BOOKMARK [1][-]{section.8}{Further Work}{}% 84
-\BOOKMARK [2][-]{subsection.8.1}{Power Management Software}{section.8}% 85
-\BOOKMARK [2][-]{subsection.8.2}{Website Improvements}{section.8}% 86
-\BOOKMARK [2][-]{subsection.8.3}{Connection to Other Services Using APIs and Community Creation}{section.8}% 87
-\BOOKMARK [1][-]{section.9}{Conclusions}{}% 88
-\BOOKMARK [1][-]{appendix.A}{Application Code}{}% 89
-\BOOKMARK [2][-]{subsection.A.1}{dht11.py}{appendix.A}% 90
-\BOOKMARK [2][-]{subsection.A.2}{rainSensor.py}{appendix.A}% 91
-\BOOKMARK [2][-]{subsection.A.3}{dataSend.py}{appendix.A}% 92
-\BOOKMARK [2][-]{subsection.A.4}{flask\137app.py}{appendix.A}% 93
-\BOOKMARK [2][-]{subsection.A.5}{main.html}{appendix.A}% 94
-\BOOKMARK [2][-]{subsection.A.6}{camTest.py}{appendix.A}% 95
-\BOOKMARK [2][-]{subsection.A.7}{sensorTest.py}{appendix.A}% 96
-\BOOKMARK [2][-]{subsection.A.8}{pandasTest.py}{appendix.A}% 97
+\BOOKMARK [2][-]{subsection.6.5}{PiCamera Command}{section.6}% 51
+\BOOKMARK [2][-]{subsection.6.6}{Data Collection}{section.6}% 52
+\BOOKMARK [3][-]{subsubsection.6.6.1}{dht11.py}{subsection.6.6}% 53
+\BOOKMARK [3][-]{subsubsection.6.6.2}{rainSensor.py}{subsection.6.6}% 54
+\BOOKMARK [3][-]{subsubsection.6.6.3}{dataSend.py}{subsection.6.6}% 55
+\BOOKMARK [2][-]{subsection.6.7}{MySQL Database}{section.6}% 56
+\BOOKMARK [2][-]{subsection.6.8}{Data Processing and Presentation}{section.6}% 57
+\BOOKMARK [3][-]{subsubsection.6.8.1}{Flask\137app.py}{subsection.6.8}% 58
+\BOOKMARK [3][-]{subsubsection.6.8.2}{main.html}{subsection.6.8}% 59
+\BOOKMARK [4][-]{paragraph.6.8.2.1}{getFreshData\(\)}{subsubsection.6.8.2}% 60
+\BOOKMARK [4][-]{paragraph.6.8.2.2}{createLineChart\(chartName, theData, canvas\)}{subsubsection.6.8.2}% 61
+\BOOKMARK [4][-]{paragraph.6.8.2.3}{initialiseChart\(days\)}{subsubsection.6.8.2}% 62
+\BOOKMARK [4][-]{paragraph.6.8.2.4}{historicChart\(\)}{subsubsection.6.8.2}% 63
+\BOOKMARK [4][-]{paragraph.6.8.2.5}{liveChart\(\)}{subsubsection.6.8.2}% 64
+\BOOKMARK [4][-]{paragraph.6.8.2.6}{Page Operation}{subsubsection.6.8.2}% 65
+\BOOKMARK [1][-]{section.7}{Testing and Evaluation}{}% 66
+\BOOKMARK [2][-]{subsection.7.1}{Introduction}{section.7}% 67
+\BOOKMARK [2][-]{subsection.7.2}{Testing Methodology}{section.7}% 68
+\BOOKMARK [3][-]{subsubsection.7.2.1}{PiCamera Testing}{subsection.7.2}% 69
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Sensor Testing}{subsection.7.2}% 70
+\BOOKMARK [3][-]{subsubsection.7.2.3}{Data Collection Testing}{subsection.7.2}% 71
+\BOOKMARK [3][-]{subsubsection.7.2.4}{Data Display Testing}{subsection.7.2}% 72
+\BOOKMARK [2][-]{subsection.7.3}{Evaluation}{section.7}% 73
+\BOOKMARK [3][-]{subsubsection.7.3.1}{PiBB - SR001}{subsection.7.3}% 74
+\BOOKMARK [3][-]{subsubsection.7.3.2}{PiBB - SR002}{subsection.7.3}% 75
+\BOOKMARK [3][-]{subsubsection.7.3.3}{PiBB - SR003}{subsection.7.3}% 76
+\BOOKMARK [3][-]{subsubsection.7.3.4}{PiBB - SR004}{subsection.7.3}% 77
+\BOOKMARK [3][-]{subsubsection.7.3.5}{PiBB - SR005}{subsection.7.3}% 78
+\BOOKMARK [3][-]{subsubsection.7.3.6}{PiBB - SR006}{subsection.7.3}% 79
+\BOOKMARK [3][-]{subsubsection.7.3.7}{PiBB - SR007}{subsection.7.3}% 80
+\BOOKMARK [3][-]{subsubsection.7.3.8}{PiBB - SR008}{subsection.7.3}% 81
+\BOOKMARK [3][-]{subsubsection.7.3.9}{PiBB - SR009}{subsection.7.3}% 82
+\BOOKMARK [3][-]{subsubsection.7.3.10}{PiBB - SR010}{subsection.7.3}% 83
+\BOOKMARK [2][-]{subsection.7.4}{Implementation of the Prototype}{section.7}% 84
+\BOOKMARK [1][-]{section.8}{Further Work}{}% 85
+\BOOKMARK [2][-]{subsection.8.1}{Power Management Software}{section.8}% 86
+\BOOKMARK [2][-]{subsection.8.2}{Website Improvements}{section.8}% 87
+\BOOKMARK [2][-]{subsection.8.3}{Connection to Other Services Using APIs and Community Creation}{section.8}% 88
+\BOOKMARK [1][-]{section.9}{Conclusions}{}% 89
+\BOOKMARK [1][-]{appendix.A}{Application Code}{}% 90
+\BOOKMARK [2][-]{subsection.A.1}{dht11.py}{appendix.A}% 91
+\BOOKMARK [2][-]{subsection.A.2}{rainSensor.py}{appendix.A}% 92
+\BOOKMARK [2][-]{subsection.A.3}{dataSend.py}{appendix.A}% 93
+\BOOKMARK [2][-]{subsection.A.4}{flask\137app.py}{appendix.A}% 94
+\BOOKMARK [2][-]{subsection.A.5}{main.html}{appendix.A}% 95
+\BOOKMARK [2][-]{subsection.A.6}{camTest.py}{appendix.A}% 96
+\BOOKMARK [2][-]{subsection.A.7}{sensorTest.py}{appendix.A}% 97
+\BOOKMARK [2][-]{subsection.A.8}{pandasTest.py}{appendix.A}% 98

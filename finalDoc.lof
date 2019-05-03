@@ -1,6 +1,6 @@
-\contentsline {figure}{\numberline {1}{\ignorespaces Power consumption vs. CPU utilisation\cite {Kaup2014}}}{12}{figure.1}
+\contentsline {figure}{\numberline {1}{\ignorespaces Power consumption vs. CPU utilisation\cite {Kaup2014}}}{11}{figure.1}
 \contentsline {figure}{\numberline {2}{\ignorespaces A basic solar circuit\cite {website:edgefx}}}{13}{figure.2}
-\contentsline {figure}{\numberline {3}{\ignorespaces 2.4GHz WiFi Channels\cite {zigbeechannels}}}{15}{figure.3}
+\contentsline {figure}{\numberline {3}{\ignorespaces 2.4GHz WiFi Channels\cite {zigbeechannels}}}{14}{figure.3}
 \contentsline {figure}{\numberline {4}{\ignorespaces 2.4GHz Zigbee Channels\cite {zigbeechannels}}}{15}{figure.4}
 \contentsline {figure}{\numberline {5}{\ignorespaces Use Case Diagram}}{18}{figure.5}
 \contentsline {figure}{\numberline {6}{\ignorespaces Web Page Wireframe}}{22}{figure.6}
@@ -9,15 +9,16 @@
 \contentsline {figure}{\numberline {9}{\ignorespaces Enabling PiCamera}}{24}{figure.9}
 \contentsline {figure}{\numberline {10}{\ignorespaces Selecting a web framework on Python Anywhere}}{25}{figure.10}
 \contentsline {figure}{\numberline {11}{\ignorespaces Selecting a which version of Python to use}}{26}{figure.11}
-\contentsline {figure}{\numberline {12}{\ignorespaces Diagram of an Iterative SDLC}}{27}{figure.12}
+\contentsline {figure}{\numberline {12}{\ignorespaces Diagram of an Iterative SDLC\cite {website:testingexcellence}}}{27}{figure.12}
 \contentsline {figure}{\numberline {13}{\ignorespaces The Raspberry Pi}}{28}{figure.13}
 \contentsline {figure}{\numberline {14}{\ignorespaces The PiCamera with IR bulb attachments}}{29}{figure.14}
 \contentsline {figure}{\numberline {15}{\ignorespaces An overall image of the completed circuit}}{29}{figure.15}
-\contentsline {figure}{\numberline {16}{\ignorespaces A diagram of the GPIO pins on a Raspberry Pi Model 3}}{30}{figure.16}
+\contentsline {figure}{\numberline {16}{\ignorespaces A diagram of the GPIO pins on a Raspberry Pi Model 3\cite {website:gpiopins}}}{30}{figure.16}
 \contentsline {figure}{\numberline {17}{\ignorespaces An image of the GPIO pins}}{30}{figure.17}
-\contentsline {figure}{\numberline {18}{\ignorespaces The small controller board for the rain sensor. This board has a potentiometer which can be used to adjust the sensitivity of the rain sensor.}}{31}{figure.18}
-\contentsline {figure}{\numberline {19}{\ignorespaces The FC-37 rain sensor}}{32}{figure.19}
-\contentsline {figure}{\numberline {20}{\ignorespaces The DHT11 temperature and humidity Sensor.}}{32}{figure.20}
-\contentsline {figure}{\numberline {21}{\ignorespaces An image showing sensors connected to the breadboard. The DHT11 is on the left and you can see here the three pins on the sensor.}}{33}{figure.21}
-\contentsline {figure}{\numberline {22}{\ignorespaces An image of the slot that the PiCamera goes into}}{33}{figure.22}
-\contentsline {figure}{\numberline {23}{\ignorespaces A test image taken with the infra-red PiCamera}}{39}{figure.23}
+\contentsline {figure}{\numberline {18}{\ignorespaces The circuit diagram for the device not including the camera. The image was created with open source software Fritzing}}{31}{figure.18}
+\contentsline {figure}{\numberline {19}{\ignorespaces The small controller board for the rain sensor. This board has a potentiometer which can be used to adjust the sensitivity of the rain sensor.}}{32}{figure.19}
+\contentsline {figure}{\numberline {20}{\ignorespaces The FC-37 rain sensor}}{32}{figure.20}
+\contentsline {figure}{\numberline {21}{\ignorespaces The DHT11 temperature and humidity Sensor.}}{33}{figure.21}
+\contentsline {figure}{\numberline {22}{\ignorespaces An image showing sensors connected to the breadboard. The DHT11 is on the left and you can see here the three pins on the sensor.}}{33}{figure.22}
+\contentsline {figure}{\numberline {23}{\ignorespaces An image of the slot that the PiCamera goes into}}{34}{figure.23}
+\contentsline {figure}{\numberline {24}{\ignorespaces A test image taken with the infra-red PiCamera}}{40}{figure.24}
